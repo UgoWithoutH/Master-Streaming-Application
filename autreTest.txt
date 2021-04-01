@@ -1,3 +1,0 @@
-System.out.println("Ugo le plus beau");
-System.out.println("C'est faux :)");
-System.out.println("Sad :(");
