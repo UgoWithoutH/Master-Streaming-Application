@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Des vies froissees.jpg" />
+    <None Remove="Enola Holmes.jpg" />
+    <None Remove="La mission.jpg" />
+    <None Remove="Notre ete.jpg" />
+    <None Remove="Série policières\La reine du sud.jpg" />
+    <None Remove="Série policières\Ozark.jpg" />
+    <None Remove="Série policières\Permis de vivre.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Drame\Des vies froissees.jpg" />
+    <Resource Include="Drame\Enola Holmes.jpg" />
+    <Resource Include="Drame\La mission.jpg" />
+    <Resource Include="Drame\Notre ete.jpg" />
+    <Resource Include="Série policières\La reine du sud.jpg" />
+    <Resource Include="Série policières\Ozark.jpg" />
+    <Resource Include="Série policières\Permis de vivre.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
