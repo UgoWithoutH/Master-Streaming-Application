@@ -72,7 +72,16 @@
         <Border Padding="10 15 0 0" Margin="0 20 0 0">
             <StackPanel Orientation="Vertical">
 
-                <TextBlock Margin="{StaticResource espacementGenre}">Séries policières</TextBlock>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="{StaticResource espacementGenre}">Séries policières</TextBlock>
+                    <Button Width="100"  Grid.Column ="1">Filtrer par</Button>
+                    <Button Width="100"  Grid.Column ="2">Trier par</Button>
+                </Grid>
 
                 <ListBox  SelectedIndex="0" Background="#313131" BorderBrush="#313131">
                     <ListBox.ItemsPanel>
