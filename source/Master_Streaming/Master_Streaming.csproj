@@ -6,6 +6,7 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+
   <ItemGroup>
     <None Remove="Des vies froissees.jpg" />
     <None Remove="Enola Holmes.jpg" />
@@ -25,7 +26,7 @@
     <Resource Include="Série policières\Ozark.jpg" />
     <Resource Include="Série policières\Permis de vivre.jpg" />
   </ItemGroup>
-
+		
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
