@@ -17,40 +17,56 @@
             <Setter Property="Width" Value="250"/>
         </Style>
 
-        <Thickness x:Key="espacement" Top="0" Left="0" Right="15" Bottom="0"/>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
 
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="0 0 0 10"/>
+        </Style>
+
+        <Thickness x:Key="espacement" Right="15"/>
+        <Thickness x:Key="headerList" Right="25"/>
     </UserControl.Resources>
 
     <StackPanel Orientation="Vertical">
-        <TextBlock>Drame</TextBlock>
-            <ListBox  SelectedIndex="0" Background="#313131" BorderBrush="#313131">
+
+
+
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="{StaticResource headerList}">GENRE</TextBlock>
+
+            <ComboBox x:Name="filtrage" Margin="{StaticResource headerList}">
+                <TextBlock Foreground="Black" FontSize="15">Toutes dates</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15">2020</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15">2019</TextBlock>
+            </ComboBox>
+
+            <ComboBox x:Name="trie" Margin="{StaticResource headerList}">
+                <TextBlock Foreground="Black" FontSize="15">Alphabétique</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15">Note</TextBlock>
+            </ComboBox>
+            
+        </StackPanel>
+
+
+        <ListBox  SelectedIndex="0" Background="#313131" BorderBrush="#313131">
         <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
             </ItemsPanelTemplate>
         </ListBox.ItemsPanel>
 
-            <StackPanel Margin="{StaticResource espacement}">
-                <Image Source="Enola Holmes.jpg"/>
-                <TextBlock HorizontalAlignment="center">Enola Holmes</TextBlock>
-            </StackPanel>
+            
 
-            <StackPanel Margin="{StaticResource espacement}">
-                <Image Source="La mission.jpg"/>
-                <TextBlock HorizontalAlignment="center">La Mission</TextBlock>
-            </StackPanel>
-
-            <StackPanel Margin="{StaticResource espacement}">
-                <Image Source="Des vies froissees.jpg"/>
-                <TextBlock HorizontalAlignment="center">Des vies froissées</TextBlock>
-            </StackPanel>
-
-            <StackPanel Margin="{StaticResource espacement}">
-                <Image Source="Notre ete.jpg"/>
-                <TextBlock HorizontalAlignment="center">Notre été</TextBlock>
-            </StackPanel>
-
-
+            <local:UC_serie></local:UC_serie>
+            <local:UC_serie></local:UC_serie>
+            <local:UC_serie></local:UC_serie>
+            <local:UC_serie></local:UC_serie>
+            <local:UC_serie></local:UC_serie>
+            
         </ListBox>
 </StackPanel>
     

@@ -14,15 +14,13 @@ using System.Windows.Shapes;
 namespace Master_Streaming
 {
     /// <summary>
-    /// Logique d'interaction pour UC_listeSeries.xaml
+    /// Logique d'interaction pour UC_serie.xaml
     /// </summary>
-    public partial class UC_listeSeries : UserControl
+    public partial class UC_serie : UserControl
     {
-        public UC_listeSeries()
+        public UC_serie()
         {
             InitializeComponent();
-            filtrage.SelectedIndex = 0; //valeur par défaut de la combobox du filtrage
-            trie.SelectedIndex = 0; //valeur par défaut de la combobox du trie
         }
     }
 }
