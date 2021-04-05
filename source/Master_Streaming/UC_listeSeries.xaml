@@ -32,24 +32,23 @@
     </UserControl.Resources>
 
     <StackPanel Orientation="Vertical">
+        <DockPanel Height="40">
+            
 
-
-
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="{StaticResource headerList}">GENRE</TextBlock>
-
-            <ComboBox x:Name="filtrage" Margin="{StaticResource headerList}">
+            <ComboBox x:Name="filtrage" DockPanel.Dock="Right" FontFamily="Comic Sans MS" Margin="25,0,25,0">
                 <TextBlock Foreground="Black" FontSize="15">Toutes dates</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">2020</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">2019</TextBlock>
             </ComboBox>
 
-            <ComboBox x:Name="trie" Margin="{StaticResource headerList}">
+            <ComboBox x:Name="trie" DockPanel.Dock="Right" FontFamily="Comic Sans MS">
                 <TextBlock Foreground="Black" FontSize="15">Alphabétique</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">Note</TextBlock>
             </ComboBox>
+
+            <TextBlock FontFamily="Comic Sans MS">LISTENOM</TextBlock>
             
-        </StackPanel>
+        </DockPanel>
 
 
         <ListBox  SelectedIndex="0" Background="#313131" BorderBrush="#313131">
