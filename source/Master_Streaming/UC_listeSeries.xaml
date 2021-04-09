@@ -58,14 +58,17 @@
             </ItemsPanelTemplate>
         </ListBox.ItemsPanel>
 
-            
 
-            <local:UC_serie></local:UC_serie>
-            <local:UC_serie></local:UC_serie>
-            <local:UC_serie></local:UC_serie>
-            <local:UC_serie></local:UC_serie>
-            <local:UC_serie></local:UC_serie>
-            
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Horizontal">
+                    <local:UC_serie></local:UC_serie>
+                    <local:UC_serie></local:UC_serie>
+                    <local:UC_serie></local:UC_serie>
+                    <local:UC_serie></local:UC_serie>
+                    <local:UC_serie></local:UC_serie>
+                </StackPanel>
+            </ScrollViewer>
+
         </ListBox>
 </StackPanel>
     

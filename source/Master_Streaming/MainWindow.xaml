@@ -29,9 +29,10 @@
             <local:UC_header/>
         </StackPanel>
 
-        
+
+
         <Border Padding="10 15 0 0" Margin="0 20 0 0">
-            <local:UC_listeSeries></local:UC_listeSeries>
+            <local:UC_listeSeries Loaded="UC_listeSeries_Loaded"></local:UC_listeSeries>
         </Border>
         
         <Border Padding="10 15 0 0" Margin="0 20 0 0">
