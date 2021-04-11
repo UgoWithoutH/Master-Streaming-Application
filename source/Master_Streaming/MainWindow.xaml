@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Master_Streaming"
+        xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
 
 
     <Window.Resources>
-
+        
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
@@ -21,24 +21,69 @@
 
         <Thickness x:Key="espacement" Top="0" Left="0" Right="15" Bottom="10"/>
         <Thickness x:Key="espacementGenre" Top="0" Left="0" Right="0" Bottom="10"/>
+
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="70"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
         
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
     </Window.Resources>
 
-    <StackPanel Background="#313131">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers> 
+
+
+
+    <Grid Background="#313131">
         <StackPanel Background="#313131">
             <local:UC_header/>
         </StackPanel>
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
 
+            <StackPanel>
+                <Grid Height="50" Background="White">
+                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
+                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                    </Button>
 
+                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
+                        <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
 
-        <Border Padding="10 15 0 0" Margin="0 20 0 0">
-            <local:UC_listeSeries Loaded="UC_listeSeries_Loaded"></local:UC_listeSeries>
-        </Border>
-        
-        <Border Padding="10 15 0 0" Margin="0 20 0 0">
+                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="170">
+                                <TextBlock Text="jean" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                    <TextBlock/>
+                    <TextBlock/>
+                    <TextBlock/>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <StackPanel Margin="80 100 0 0">
             <local:UC_listeSeries></local:UC_listeSeries>
-            
-        </Border>
-    </StackPanel>
-    
+        </StackPanel>
+    </Grid>
 </Window>

@@ -18,6 +18,11 @@
     <None Remove="Série policières\Permis de vivre.jpg" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
+  </ItemGroup>
+
   <ItemGroup>
     <Resource Include="Drame\Des vies froissees.jpg" />
     <Resource Include="Drame\Enola Holmes.jpg" />
