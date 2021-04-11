@@ -32,23 +32,28 @@
     </UserControl.Resources>
 
     <StackPanel Orientation="Vertical">
-        <DockPanel Height="40">
-            
-
-            <ComboBox x:Name="filtrage" DockPanel.Dock="Right" FontFamily="Comic Sans MS" Margin="25,0,25,0">
+        <Grid Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+      
+            <ComboBox x:Name="filtrage" Grid.Column="1" FontFamily="Comic Sans MS" Margin="25,0,0,0" HorizontalAlignment="Right">
                 <TextBlock Foreground="Black" FontSize="15">Toutes dates</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">2020</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">2019</TextBlock>
             </ComboBox>
 
-            <ComboBox x:Name="trie" DockPanel.Dock="Right" FontFamily="Comic Sans MS">
+            <ComboBox x:Name="trie" Grid.Column="2" FontFamily="Comic Sans MS" Margin="25,0,0,0" HorizontalAlignment="Left">
                 <TextBlock Foreground="Black" FontSize="15">Alphabétique</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">Note</TextBlock>
             </ComboBox>
 
             <TextBlock FontFamily="Comic Sans MS">LISTENOM</TextBlock>
-            
-        </DockPanel>
+
+        </Grid>
 
 
         <ListBox  SelectedIndex="0" Background="#313131" BorderBrush="#313131">
@@ -59,7 +64,7 @@
         </ListBox.ItemsPanel>
 
 
-            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <StackPanel Orientation="Horizontal">
                     <local:UC_serie></local:UC_serie>
                     <local:UC_serie></local:UC_serie>

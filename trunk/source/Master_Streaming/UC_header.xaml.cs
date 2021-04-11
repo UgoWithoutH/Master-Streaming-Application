@@ -22,5 +22,10 @@ namespace Master_Streaming
         {
             InitializeComponent();
         }
+
+        private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

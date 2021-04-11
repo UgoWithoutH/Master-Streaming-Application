@@ -3,17 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Master_Streaming"
+             xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#232323">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Watchlist" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF"/>
-        <TextBlock Grid.Column="1" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
-        <Button Grid.Column="2" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green"/>
+        <Button Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF"/>
+        <TextBlock Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
+        <Button Grid.Column="3" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green"/>
+
+        <materialDesign:PopupBox Grid.Column="4" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+            <StackPanel Width="150">
+                <Button x:Name="ButtonPopUpLogout" Click="ButtonPopUpLogout_Click" Width="150">
+                    <TextBlock Foreground="Black" FontSize="15">
+                        Déconnexion
+                    </TextBlock>
+                </Button>
+            </StackPanel>  
+        </materialDesign:PopupBox>
+
+
     </Grid>
 </UserControl>
