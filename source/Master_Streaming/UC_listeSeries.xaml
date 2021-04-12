@@ -34,19 +34,20 @@
     <StackPanel Orientation="Vertical">
         <Grid Height="40">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1.5*"/>
             </Grid.ColumnDefinitions>
-      
-            <ComboBox x:Name="filtrage" Grid.Column="1" FontFamily="Comic Sans MS" Margin="25,0,0,0" HorizontalAlignment="Right">
+            
+            
+            <ComboBox x:Name="filtrage" Grid.Column="2" FontFamily="Comic Sans MS" HorizontalAlignment="Left">
                 <TextBlock Foreground="Black" FontSize="15">Toutes dates</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">2020</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">2019</TextBlock>
             </ComboBox>
 
-            <ComboBox x:Name="trie" Grid.Column="2" FontFamily="Comic Sans MS" Margin="25,0,0,0" HorizontalAlignment="Left">
+            <ComboBox x:Name="trie" Grid.Column="3" FontFamily="Comic Sans MS" HorizontalAlignment="Left">
                 <TextBlock Foreground="Black" FontSize="15">Alphabétique</TextBlock>
                 <TextBlock Foreground="Black" FontSize="15">Note</TextBlock>
             </ComboBox>

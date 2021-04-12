@@ -9,7 +9,7 @@
 
 
     <Window.Resources>
-        
+
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
@@ -28,7 +28,7 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.25" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        
+
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="70"/>
@@ -42,11 +42,11 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
         </EventTrigger>
-        
+
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-    </Window.Triggers> 
+    </Window.Triggers>
 
 
 
@@ -54,7 +54,10 @@
         <StackPanel Background="#313131">
             <local:UC_header/>
         </StackPanel>
-        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
+        <Grid x:Name="GridMenu" Width="75" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
+            <Grid.Effect>
+                <DropShadowEffect/>
+            </Grid.Effect>
 
             <StackPanel>
                 <Grid Height="50" Background="White">
