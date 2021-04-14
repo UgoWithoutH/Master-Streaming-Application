@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classes_Master_Streaming;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,17 @@ namespace Master_Streaming
         public UC_listeSeries()
         {
             InitializeComponent();
+
+            var listSerie = new List<Serie>()
+            {
+                new Serie("Des vies froissees","/images/Drame/Des vies froissees.jpg"),
+                new Serie("Enola Holmes","/images/Drame/Enola Holmes.jpg"),
+                new Serie("La mission","/images/Drame/La mission.jpg"),
+                new Serie("Notre ete","/images/Drame/Notre ete.jpg"),
+            };
+
+            MylisteSerie.ItemsSource = listSerie;
+
             filtrage.SelectedIndex = 0; //valeur par défaut de la combobox du filtrage
             trie.SelectedIndex = 0; //valeur par défaut de la combobox du trie
         }

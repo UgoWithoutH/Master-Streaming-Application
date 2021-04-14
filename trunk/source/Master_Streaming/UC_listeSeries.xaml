@@ -8,12 +8,12 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" x:Key="TextBlockBinding">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
 
-        <Style TargetType="Image">
+        <Style TargetType="Image" x:Key="ImageBinding">
             <Setter Property="Width" Value="250"/>
         </Style>
 
@@ -52,12 +52,13 @@
                 <TextBlock Foreground="Black" FontSize="15">Note</TextBlock>
             </ComboBox>
 
-            <TextBlock FontFamily="Comic Sans MS">LISTENOM</TextBlock>
+            <TextBlock x:Name="texteGenre" FontFamily="Comic Sans MS">LISTENOM</TextBlock>
 
         </Grid>
 
-
-        <ListBox  SelectedIndex="0" Background="#313131" BorderBrush="#313131">
+        <StackPanel>
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ListBox x:Name="MylisteSerie" SelectedIndex="0" Background="#313131" BorderBrush="#313131">
         <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
@@ -65,17 +66,23 @@
         </ListBox.ItemsPanel>
 
 
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <StackPanel Orientation="Horizontal">
-                    <local:UC_serie></local:UC_serie>
-                    <local:UC_serie></local:UC_serie>
-                    <local:UC_serie></local:UC_serie>
-                    <local:UC_serie></local:UC_serie>
-                    <local:UC_serie></local:UC_serie>
-                </StackPanel>
-            </ScrollViewer>
+
+            
+                <ListBox.ItemTemplate>
+                <DataTemplate>
+                            <StackPanel Margin="0 0 15 0">
+                                <Image Source="{Binding ImageName}" Style="{StaticResource ImageBinding}"/>
+                                <TextBlock HorizontalAlignment="center" Text="{Binding Titre}" Style="{StaticResource TextBlockBinding}"/>
+                            </StackPanel>
+                        </DataTemplate>
+            </ListBox.ItemTemplate>
+
+                
+            
 
         </ListBox>
-</StackPanel>
+        </ScrollViewer>
+        </StackPanel>
+    </StackPanel>
     
 </UserControl>
