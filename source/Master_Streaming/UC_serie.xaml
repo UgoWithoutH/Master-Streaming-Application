@@ -12,8 +12,8 @@
     </UserControl.Resources>
     
     <StackPanel Margin="{StaticResource espacement}">
-        <Image Source="random.jpg"/>
-        <TextBlock HorizontalAlignment="center">(nom)</TextBlock>
+        <Image x:Name="image"  Source="random.jpg"/>
+        <TextBlock x:Name="titre" HorizontalAlignment="center">(nom)</TextBlock>
     </StackPanel>
     
 

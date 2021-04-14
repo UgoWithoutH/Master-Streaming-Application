@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Classes_Master_Streaming;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,18 +24,41 @@ namespace Master_Streaming
         public MainWindow()
         {
             InitializeComponent();
+            var listGenres = new List<Genre>()
+            {
+                new Genre("Humour"),
+                new Genre("Action"),
+                new Genre("Drame"),
+                new Genre("Amour"),
+             };
+
+           
+
+            ListViewMenu.ItemsSource = listGenres;
+
+          
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            buttonAddGenre.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
             ButtonCloseMenu.Visibility = Visibility.Visible;
+            buttonAddGenre.Visibility = Visibility.Visible;
+        }
+
+        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            uc_listSeries.texteGenre.Text = (e.AddedItems[0] as Genre).getNom();
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            buttonAddGenre.Visibility = Visibility.Collapsed;
         }
     }
 }

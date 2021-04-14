@@ -10,12 +10,13 @@
   <ItemGroup>
     <None Remove="Des vies froissees.jpg" />
     <None Remove="Enola Holmes.jpg" />
+    <None Remove="images\icones\add.png" />
     <None Remove="La mission.jpg" />
     <None Remove="Notre ete.jpg" />
     <None Remove="random.jpg" />
-    <None Remove="Série policières\La reine du sud.jpg" />
-    <None Remove="Série policières\Ozark.jpg" />
-    <None Remove="Série policières\Permis de vivre.jpg" />
+    <None Remove="images\Série policières\La reine du sud.jpg" />
+    <None Remove="images\Série policières\Ozark.jpg" />
+    <None Remove="images\Série policières\Permis de vivre.jpg" />
   </ItemGroup>
 
 
@@ -23,15 +24,21 @@
     <PackageReference Include="MaterialDesignThemes" Version="4.0.0" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <Resource Include="Drame\Des vies froissees.jpg" />
-    <Resource Include="Drame\Enola Holmes.jpg" />
-    <Resource Include="Drame\La mission.jpg" />
-    <Resource Include="Drame\Notre ete.jpg" />
+    <ProjectReference Include="..\Classes_Master_Streaming\Classes_Master_Streaming.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="images\Drame\Des vies froissees.jpg" />
+    <Resource Include="images\Drame\Enola Holmes.jpg" />
+    <Resource Include="images\Drame\La mission.jpg" />
+    <Resource Include="images\Drame\Notre ete.jpg" />
+    <Resource Include="images\icones\add.png" />
     <Resource Include="random.jpg" />
-    <Resource Include="Série policières\La reine du sud.jpg" />
-    <Resource Include="Série policières\Ozark.jpg" />
-    <Resource Include="Série policières\Permis de vivre.jpg" />
+    <Resource Include="images\Série policières\La reine du sud.jpg" />
+    <Resource Include="images\Série policières\Ozark.jpg" />
+    <Resource Include="images\Série policières\Permis de vivre.jpg" />
   </ItemGroup>
 		
   <ItemGroup>

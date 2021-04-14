@@ -46,6 +46,11 @@
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
+
+        <EventTrigger RoutedEvent="ListView.SelectionChanged" SourceName="ListViewMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+        
     </Window.Triggers>
 
 
@@ -54,13 +59,17 @@
         <StackPanel Background="#313131">
             <local:UC_header/>
         </StackPanel>
-        <Grid x:Name="GridMenu" Width="75" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
+        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
             <Grid.Effect>
                 <DropShadowEffect/>
             </Grid.Effect>
 
             <StackPanel>
-                <Grid Height="50" Background="White">
+                <Grid Height="80" Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
                     <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                     </Button>
@@ -68,25 +77,36 @@
                     <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Background="#B2B2B2">
+                        <Button x:Name="buttonAddGenre" Width="auto" Background="White" BorderBrush="White" Margin=" 30 0 0 0" Visibility="Collapsed">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="images/icones/add.png" Width="auto"/>
+                                    <TextBlock Grid.Column="1" Text="Nouveau genre" Foreground="Black" FontSize="10" FontFamily="Bahnschrift" HorizontalAlignment="Left" VerticalAlignment="Center" Margin=" 10 0 0 0"/>
+                                </Grid>
+                            </Button.Content>
+                            </Button>
+                        
+                    </StackPanel>
                 </Grid>
 
-                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single">
+                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="170">
-                                <TextBlock Text="jean" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="Genre" Text="{Binding Nom}" HorizontalAlignment="Center" Foreground="White"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-
-                    <TextBlock/>
-                    <TextBlock/>
-                    <TextBlock/>
                 </ListView>
             </StackPanel>
         </Grid>
         <StackPanel Margin="80 100 0 0">
-            <local:UC_listeSeries></local:UC_listeSeries>
+            <local:UC_listeSeries x:Name="uc_listSeries"></local:UC_listeSeries>
         </StackPanel>
     </Grid>
 </Window>
