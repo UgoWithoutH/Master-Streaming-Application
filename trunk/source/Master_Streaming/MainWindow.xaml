@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow" Height="800" Width="1200">
 
 
     <Window.Resources>
@@ -108,5 +108,6 @@
         <StackPanel Margin="80 100 0 0">
             <local:UC_listeSeries x:Name="uc_listSeries"></local:UC_listeSeries>
         </StackPanel>
+        
     </Grid>
 </Window>

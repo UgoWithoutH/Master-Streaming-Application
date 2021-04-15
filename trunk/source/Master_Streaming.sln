@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master_Streaming", "Master_Streaming\Master_Streaming.csproj", "{D3E3DA22-174F-46CE-B796-AFDF775A782C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classes_Master_Streaming", "Classes_Master_Streaming\Classes_Master_Streaming.csproj", "{76DB07ED-9599-4830-8095-C1039839CECC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class", "Class\Class.csproj", "{4F8552F9-17F7-42ED-AF2A-D3C4AB49C76D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D3E3DA22-174F-46CE-B796-AFDF775A782C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3E3DA22-174F-46CE-B796-AFDF775A782C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3E3DA22-174F-46CE-B796-AFDF775A782C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76DB07ED-9599-4830-8095-C1039839CECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76DB07ED-9599-4830-8095-C1039839CECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76DB07ED-9599-4830-8095-C1039839CECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76DB07ED-9599-4830-8095-C1039839CECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F8552F9-17F7-42ED-AF2A-D3C4AB49C76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F8552F9-17F7-42ED-AF2A-D3C4AB49C76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F8552F9-17F7-42ED-AF2A-D3C4AB49C76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F8552F9-17F7-42ED-AF2A-D3C4AB49C76D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

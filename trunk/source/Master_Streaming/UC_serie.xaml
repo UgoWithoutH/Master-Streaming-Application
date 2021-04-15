@@ -15,6 +15,5 @@
         <Image x:Name="image"  Source="random.jpg"/>
         <TextBlock x:Name="titre" HorizontalAlignment="center">(nom)</TextBlock>
     </StackPanel>
-    
 
 </UserControl>
