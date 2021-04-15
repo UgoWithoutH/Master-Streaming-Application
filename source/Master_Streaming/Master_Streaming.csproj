@@ -10,13 +10,16 @@
   <ItemGroup>
     <None Remove="Des vies froissees.jpg" />
     <None Remove="Enola Holmes.jpg" />
+    <None Remove="images\Drame\Des vies froissees.jpg" />
+    <None Remove="images\Drame\Enola Holmes.jpg" />
+    <None Remove="images\Drame\La mission.jpg" />
+    <None Remove="images\Drame\Notre ete.jpg" />
     <None Remove="images\icones\add.png" />
-    <None Remove="La mission.jpg" />
-    <None Remove="Notre ete.jpg" />
-    <None Remove="random.jpg" />
     <None Remove="images\Série policières\La reine du sud.jpg" />
     <None Remove="images\Série policières\Ozark.jpg" />
     <None Remove="images\Série policières\Permis de vivre.jpg" />
+    <None Remove="La mission.jpg" />
+    <None Remove="Notre ete.jpg" />
   </ItemGroup>
 
 
@@ -26,7 +29,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\Classes_Master_Streaming\Classes_Master_Streaming.csproj" />
+    <ProjectReference Include="..\Class\Class.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +38,6 @@
     <Resource Include="images\Drame\La mission.jpg" />
     <Resource Include="images\Drame\Notre ete.jpg" />
     <Resource Include="images\icones\add.png" />
-    <Resource Include="random.jpg" />
     <Resource Include="images\Série policières\La reine du sud.jpg" />
     <Resource Include="images\Série policières\Ozark.jpg" />
     <Resource Include="images\Série policières\Permis de vivre.jpg" />
