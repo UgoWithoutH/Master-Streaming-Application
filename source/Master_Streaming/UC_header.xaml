@@ -11,14 +11,26 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.5*"/>
             <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF"/>
         <TextBlock Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
-        <Button Grid.Column="3" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green"/>
+        <Button Background="White" Grid.Column="3" Width="150" Height="30">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
 
-        <materialDesign:PopupBox Grid.Column="4" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+                <Image Source="images/icones/loupe.png" Margin="-15 0 0 0"/>
+                <TextBox Text="Recherche" Foreground="Black" Grid.Column="1" Margin="0 -4 0 0"/>
+            </Grid>
+        </Button>
+        <Button Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green"/>
+
+        <materialDesign:PopupBox Grid.Column="5" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
             <StackPanel Width="150">
                 <Button x:Name="ButtonPopUpLogout" Click="ButtonPopUpLogout_Click" Width="150">
                     <TextBlock Foreground="Black" FontSize="15">
