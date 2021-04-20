@@ -32,18 +32,24 @@ namespace Master_Streaming
                 new Genre("Amour"),
              };
 
-           
+
 
             ListViewMenu.ItemsSource = listGenres;
 
-          
+
         }
+
+        private const string TEXT_ADD_GENRE = "Nom du genre à ajouter";
+        private const string TEXT_SUPP_GENRE = "Nom du genre à supprimer";
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             buttonAddGenre.Visibility = Visibility.Collapsed;
+            buttonSuppGenre.Visibility = Visibility.Collapsed;
+            boxAddGenre.Visibility = Visibility.Collapsed;
+            boxSuppGenre.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -51,6 +57,9 @@ namespace Master_Streaming
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
             ButtonCloseMenu.Visibility = Visibility.Visible;
             buttonAddGenre.Visibility = Visibility.Visible;
+            buttonSuppGenre.Visibility = Visibility.Visible;
+            boxAddGenre.Text = TEXT_ADD_GENRE;
+            boxSuppGenre.Text = TEXT_SUPP_GENRE;
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,6 +68,19 @@ namespace Master_Streaming
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             buttonAddGenre.Visibility = Visibility.Collapsed;
+            buttonSuppGenre.Visibility = Visibility.Collapsed;
+        }
+
+        private void AddGenreButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            boxAddGenre.Visibility = Visibility.Visible;
+            boxSuppGenre.Visibility = Visibility.Collapsed;
+        }
+
+        private void SuppGenreButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            boxAddGenre.Visibility = Visibility.Collapsed;
+            boxSuppGenre.Visibility = Visibility.Visible;
         }
     }
 }

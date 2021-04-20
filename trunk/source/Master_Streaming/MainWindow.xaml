@@ -65,10 +65,11 @@
             </Grid.Effect>
 
             <StackPanel>
-                <Grid Height="80" Background="White">
+                <Grid Height="180" Background="White">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.7*"/>
                         <RowDefinition Height="1*"/>
+
                     </Grid.RowDefinitions>
                     <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
@@ -77,21 +78,41 @@
                     <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal" Background="#B2B2B2">
-                        <Button x:Name="buttonAddGenre" Width="auto" Background="White" BorderBrush="White" Margin=" 30 0 0 0" Visibility="Collapsed">
+                    
+                    <WrapPanel Grid.Row="1" Orientation="Horizontal" Background="#B2B2B2">
+                        <Button x:Name="buttonAddGenre" Width="auto" Background="White" BorderBrush="White" Margin=" 30 5 0 0" Visibility="Collapsed" Click="AddGenreButton_Clicked">
                             <Button.Content>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
                                     </Grid.ColumnDefinitions>
                                     <Image Source="images/icones/add.png" Width="auto"/>
                                     <TextBlock Grid.Column="1" Text="Nouveau genre" Foreground="Black" FontSize="10" FontFamily="Bahnschrift" HorizontalAlignment="Left" VerticalAlignment="Center" Margin=" 10 0 0 0"/>
                                 </Grid>
                             </Button.Content>
-                            </Button>
+                        </Button>
+
+                        <TextBox x:Name="boxAddGenre" Width="140" Visibility="Collapsed" Text="Nom du genre à ajouter" Margin=" 25 5 0 0"/>
+
+                        <Button x:Name="buttonSuppGenre" Width="auto" Background="White" BorderBrush="White" Margin=" 26 5 0 0" Visibility="Collapsed" Click="SuppGenreButton_Clicked">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="images/icones/minus.png" Width="auto"/>
+                                    <TextBlock Grid.Column="1" Text="Supprimer genre" Foreground="Black" FontSize="10" FontFamily="Bahnschrift" HorizontalAlignment="Left" VerticalAlignment="Center" Margin=" 10 0 0 0"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+
+                        <TextBox x:Name="boxSuppGenre" Width="150" Visibility="Collapsed" Text="Nom du genre à supprimer" Margin=" 25 5 0 0"/>
                         
-                    </StackPanel>
+                    </WrapPanel>
+                    
+                    
                 </Grid>
 
                 <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="ListViewMenu_SelectionChanged">
