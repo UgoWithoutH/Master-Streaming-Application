@@ -93,7 +93,7 @@
                             </Button.Content>
                         </Button>
 
-                        <TextBox x:Name="boxAddGenre" Width="140" Visibility="Collapsed" Text="Nom du genre à ajouter" Margin=" 25 5 0 0"/>
+                        <TextBox x:Name="boxAddGenre" Width="140" Visibility="Collapsed" Text="Nom du genre à ajouter" Margin=" 25 5 0 0" KeyDown="AddGenreBox_Validated_With_Enter"/>
 
                         <Button x:Name="buttonSuppGenre" Width="auto" Background="White" BorderBrush="White" Margin=" 26 5 0 0" Visibility="Collapsed" Click="SuppGenreButton_Clicked">
                             <Button.Content>
@@ -108,7 +108,7 @@
                             </Button.Content>
                         </Button>
 
-                        <TextBox x:Name="boxSuppGenre" Width="150" Visibility="Collapsed" Text="Nom du genre à supprimer" Margin=" 25 5 0 0"/>
+                        <TextBox x:Name="boxSuppGenre" Width="150" Visibility="Collapsed" Text="Nom du genre à supprimer" Margin=" 25 5 0 0" KeyDown="SuppGenreBox_Validated_With_Enter"/>
                         
                     </WrapPanel>
                     

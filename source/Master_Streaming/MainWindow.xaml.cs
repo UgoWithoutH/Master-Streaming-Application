@@ -75,12 +75,53 @@ namespace Master_Streaming
         {
             boxAddGenre.Visibility = Visibility.Visible;
             boxSuppGenre.Visibility = Visibility.Collapsed;
+            boxSuppGenre.Text = TEXT_SUPP_GENRE;
         }
 
         private void SuppGenreButton_Clicked(object sender, RoutedEventArgs e)
         {
             boxAddGenre.Visibility = Visibility.Collapsed;
             boxSuppGenre.Visibility = Visibility.Visible;
+            boxAddGenre.Text = TEXT_ADD_GENRE;
+        }
+
+        private void AddGenreBox_Validated_With_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (boxAddGenre.Text != TEXT_ADD_GENRE && boxAddGenre.Text != null)
+                {
+                    // faudra mettre à jour la vue ici
+                    new Genre(boxAddGenre.Text);
+                    boxAddGenre.Text = TEXT_ADD_GENRE;
+                    boxAddGenre.Foreground = Brushes.Black;
+                }
+
+                else
+                {
+                    boxAddGenre.Text = "Renseignez un nom valide";
+                    boxAddGenre.Foreground = Brushes.Red;
+                }
+            }
+        }
+
+        private void SuppGenreBox_Validated_With_Enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (boxSuppGenre.Text != TEXT_SUPP_GENRE && boxSuppGenre.Text != null)
+                {
+                    // màj de kla vue ici aussi + suppression du genre
+                    boxSuppGenre.Text = TEXT_SUPP_GENRE;
+                    boxSuppGenre.Foreground = Brushes.Black;
+                }
+
+                else
+                {
+                    boxSuppGenre.Text = "Renseignez un nom valide";
+                    boxSuppGenre.Foreground = Brushes.Red;
+                }
+            }
         }
     }
 }
