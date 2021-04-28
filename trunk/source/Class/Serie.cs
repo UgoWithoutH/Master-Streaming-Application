@@ -4,16 +4,25 @@ using System.Text;
 
 namespace Class
 {
-   public class Serie
+   public class Serie : Oeuvre
     {
-        public string Titre { get; private set; }
+        public int NbSaisons { get; set; }
 
-        public string ImageName { get; private set; }
-
-        public Serie(string titre, string imageName)
+        public Serie(string titre, DateTime dateSortie, int? note, string description, string imageName, int nbSaisons, List<Auteur> listeAuteurs)
+            : base(titre, dateSortie, note, description, imageName, listeAuteurs)
         {
-            Titre = titre;
-            ImageName = imageName;
+            NbSaisons = NbSaisons;
+        }
+
+        public Serie(string titre, DateTime dateSortie, string description, string imageName, int nbSaisons)
+            : base(titre, dateSortie, description, imageName)
+        {
+            NbSaisons = NbSaisons;
+        }
+
+        public override string ToString()
+        {
+            return $"{Titre} , {DateSortie} , {Note} , {Description}";
         }
     }
 }
