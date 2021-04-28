@@ -21,10 +21,8 @@ namespace Master_Streaming
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-            var listGenres = new List<Genre>()
+
+        List<Genre> listGenres = new List<Genre>()
             {
                 new Genre("Humour"),
                 new Genre("Action"),
@@ -32,7 +30,9 @@ namespace Master_Streaming
                 new Genre("Amour"),
              };
 
-
+        public MainWindow()
+        {
+            InitializeComponent();
 
             ListViewMenu.ItemsSource = listGenres;
 
