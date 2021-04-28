@@ -25,10 +25,10 @@ namespace Master_Streaming
 
             var listSerie = new List<Serie>()
             {
-                new Serie("Des vies froissees","/images/Drame/Des vies froissees.jpg"),
-                new Serie("Enola Holmes","/images/Drame/Enola Holmes.jpg"),
-                new Serie("La mission","/images/Drame/La mission.jpg"),
-                new Serie("Notre ete","/images/Drame/Notre ete.jpg"),
+                new Serie("Des vies froissees",new DateTime(2021,03,12),"description_test","/images/Drame/Des vies froissees.jpg",1),
+                new Serie("Enola Holmes",new DateTime(2020,07,23),"description_test","/images/Drame/Enola Holmes.jpg",1),
+                new Serie("La mission",new DateTime(2020,01,21),"description_test","/images/Drame/La mission.jpg",1),
+                new Serie("Notre ete",new DateTime(2021,03,25),"description_test","/images/Drame/Notre ete.jpg",1),
             };
 
             MylisteSerie.ItemsSource = listSerie;
