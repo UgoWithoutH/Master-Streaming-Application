@@ -21,23 +21,17 @@ namespace Master_Streaming
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        List<Genre> listGenres = new List<Genre>()
-            {
-                new Genre("Humour"),
-                new Genre("Action"),
-                new Genre("Drame"),
-                new Genre("Amour"),
-             };
+        private MainManager manager = new MainManager();
 
         public MainWindow()
         {
             InitializeComponent();
-
-            ListViewMenu.ItemsSource = listGenres;
-
-
+            ListViewMenu.ItemsSource = manager.listGenres;
         }
+
+
+
+      
 
         private const string TEXT_ADD_GENRE = "Nom du genre à ajouter";
         private const string TEXT_SUPP_GENRE = "Nom du genre à supprimer";
@@ -89,19 +83,23 @@ namespace Master_Streaming
         {
             if (e.Key == Key.Return)
             {
-                if (boxAddGenre.Text != TEXT_ADD_GENRE && boxAddGenre.Text != null)
-                {
-                    // faudra mettre à jour la vue ici
-                    new Genre(boxAddGenre.Text);
-                    boxAddGenre.Text = TEXT_ADD_GENRE;
-                    boxAddGenre.Foreground = Brushes.Black;
-                }
+                foreach(Genre genre in manager.listGenres)  //liste sans doublons
+                    if (boxAddGenre.Text != TEXT_ADD_GENRE && boxAddGenre.Text != null && boxAddGenre.Text.ToUpper() != genre.getNom())
+                    {
+                        continue;
+                    }
 
-                else
-                {
-                    boxAddGenre.Text = "Renseignez un nom valide";
-                    boxAddGenre.Foreground = Brushes.Red;
-                }
+                    else
+                    {
+                        boxAddGenre.Text = "Renseignez un nom valide";
+                        boxAddGenre.Foreground = Brushes.Red;
+                        return;
+                    }
+
+                manager.listGenres.Add(new Genre(boxAddGenre.Text));
+                ListViewMenu.ItemsSource = manager.listGenres;
+                boxAddGenre.Text = TEXT_ADD_GENRE;
+                boxAddGenre.Foreground = Brushes.Black;
             }
         }
 
@@ -111,7 +109,8 @@ namespace Master_Streaming
             {
                 if (boxSuppGenre.Text != TEXT_SUPP_GENRE && boxSuppGenre.Text != null)
                 {
-                    // màj de kla vue ici aussi + suppression du genre
+                    manager.listGenres.Remove(new Genre(boxSuppGenre.Text));
+                    ListViewMenu.ItemsSource = manager.listGenres;
                     boxSuppGenre.Text = TEXT_SUPP_GENRE;
                     boxSuppGenre.Foreground = Brushes.Black;
                 }
