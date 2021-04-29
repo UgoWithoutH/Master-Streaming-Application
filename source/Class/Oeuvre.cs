@@ -27,16 +27,6 @@ namespace Class
 
         public List<Auteur> ListAuteur { get; set; } = null;
 
-        protected Oeuvre(string titre, DateTime dateSortie, int? note, string description, string imageName, List<Auteur> listAuteurs)
-        {
-            Titre = titre;
-            DateSortie = dateSortie;
-            Note = note;
-            Description = description;
-            ImageName = imageName;
-            ListAuteur = listAuteurs;
-        }
-
         protected Oeuvre(string titre, DateTime dateSortie, string description, string imageName)
         {
             Titre = titre;
@@ -45,7 +35,19 @@ namespace Class
             ImageName = imageName;
         }
 
-        public virtual bool Equals(Oeuvre other)
+        protected Oeuvre(string titre, DateTime dateSortie, int? note, string description, string imageName, List<Auteur> listAuteurs)
+            : this(titre, dateSortie, description, imageName)
+        {
+            Note = note;
+            ListAuteur = listAuteurs;
+        }
+
+        public override string ToString()
+        {
+            return ToString(); //équivalant à this.ToString(), faisant référence au ToString de la classe dérivée
+        }
+
+        public bool Equals(Oeuvre other)
         {
             return Titre.Equals(other.Titre);
         }
