@@ -21,7 +21,7 @@ namespace Class
             {
                 foreach(Oeuvre oeuvre in listVariable = ensemble.Value)
                 {
-                    if (oeuvre.Titre.ToUpper().StartsWith(chaine.ToUpper()) && !listVariable.Contains(oeuvre))
+                    if (oeuvre.Titre.ToUpper().StartsWith(chaine.ToUpper()) && !résultat.Contains(oeuvre))
                         résultat.Add(oeuvre);
                 }
                 
