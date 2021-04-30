@@ -20,7 +20,7 @@ namespace Test_Recherche
             var l2 = new List<Oeuvre>()
             {
                 new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour","////",3),
-                new Serie("Une série",DateTime.Now,"Série mêlant Drame et Action","////",3),
+                new Serie("Une série",DateTime.Now,"Série mêlant Amour","////",3),
                 new Serie("Bonne une série",new DateTime(2000,02,20),"Pas vraiment une série","////",0)
             };
 
