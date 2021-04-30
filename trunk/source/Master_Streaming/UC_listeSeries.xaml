@@ -75,10 +75,10 @@
                                 <TextBlock HorizontalAlignment="center" Text="{Binding Titre}" Style="{StaticResource TextBlockBinding}"/>
                             </StackPanel>
                         </DataTemplate>
-            </ListBox.ItemTemplate>
+                </ListBox.ItemTemplate>
 
                 
-            
+                
 
         </ListBox>
         </ScrollViewer>

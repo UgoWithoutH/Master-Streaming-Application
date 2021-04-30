@@ -27,6 +27,8 @@ namespace Class
 
         public List<Auteur> ListAuteur { get; set; } = null;
 
+        public HashSet<Genre> TagsGenres { get; private set; }
+
         protected Oeuvre(string titre, DateTime dateSortie, string description, string imageName)
         {
             Titre = titre;
@@ -59,6 +61,11 @@ namespace Class
             if (GetType() != obj.GetType()) return false;
 
             return Equals(obj as Oeuvre);
+        }
+
+        public void addTagsGenres(HashSet<Genre> tagsGenres)
+        {
+            TagsGenres = tagsGenres;
         }
     }
 }
