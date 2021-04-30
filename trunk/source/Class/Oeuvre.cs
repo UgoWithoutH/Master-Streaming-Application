@@ -29,16 +29,17 @@ namespace Class
 
         public HashSet<Genre> TagsGenres { get; private set; }
 
-        protected Oeuvre(string titre, DateTime dateSortie, string description, string imageName)
+        protected Oeuvre(string titre, DateTime dateSortie, string description, string imageName,HashSet<Genre> tagsgenres)
         {
             Titre = titre;
             DateSortie = dateSortie;
             Description = description;
             ImageName = imageName;
+            TagsGenres = tagsgenres;
         }
 
-        protected Oeuvre(string titre, DateTime dateSortie, int? note, string description, string imageName, List<Auteur> listAuteurs)
-            : this(titre, dateSortie, description, imageName)
+        protected Oeuvre(string titre, DateTime dateSortie, int? note, string description, string imageName, List<Auteur> listAuteurs, HashSet<Genre> tagsgenres)
+            : this(titre, dateSortie, description, imageName,tagsgenres)
         {
             Note = note;
             ListAuteur = listAuteurs;
@@ -66,6 +67,11 @@ namespace Class
         public void addTagsGenres(HashSet<Genre> tagsGenres)
         {
             TagsGenres = tagsGenres;
+        }
+
+        public override int GetHashCode()
+        {
+            return 590323563 + EqualityComparer<string>.Default.GetHashCode(Titre);
         }
     }
 }

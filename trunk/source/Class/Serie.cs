@@ -8,14 +8,14 @@ namespace Class
     {
         public int NbSaisons { get; set; }
 
-        public Serie(string titre, DateTime dateSortie, int? note, string description, string imageName, int nbSaisons, List<Auteur> listeAuteurs)
-            : base(titre, dateSortie, note, description, imageName, listeAuteurs)
+        public Serie(string titre, DateTime dateSortie, int? note, string description, string imageName, int nbSaisons, List<Auteur> listeAuteurs, HashSet<Genre> tagsGenres)
+            : base(titre, dateSortie, note, description, imageName, listeAuteurs, tagsGenres)
         {
             NbSaisons = NbSaisons;
         }
 
-        public Serie(string titre, DateTime dateSortie, string description, string imageName, int nbSaisons)
-            : base(titre, dateSortie, description, imageName)
+        public Serie(string titre, DateTime dateSortie, string description, string imageName, int nbSaisons, HashSet<Genre> tagsGenres)
+            : base(titre, dateSortie, description, imageName, tagsGenres)
         {
             NbSaisons = NbSaisons;
         }
