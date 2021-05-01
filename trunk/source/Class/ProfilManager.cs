@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -21,11 +22,13 @@ namespace Class
 
         public string Nom { get; private set; }
 
-        public Dictionary<Genre, HashSet<Oeuvre>> ListOeuvres { get; private set; }
+        public Dictionary<Genre, SortedSet<Oeuvre>> ListOeuvres { get; private set; }
 
         public LinkedList<Serie> listing;
 
-        public Oeuvre OeuvreSelectionnée { get; set; }
+        public Oeuvre OeuvreSélectionnée { get; private set; }
+
+        public Genre GenreSélectionné { get; private set; }
 
         public void ModifierNomProfil(string nouveauNom)
         {
@@ -34,7 +37,7 @@ namespace Class
 
         public ProfilManager()
         {
-            ListOeuvres = new Dictionary<Genre, HashSet<Oeuvre>>();
+            ListOeuvres = new Dictionary<Genre, SortedSet<Oeuvre>>();
             listing = new LinkedList<Serie>();
         }
 
@@ -76,11 +79,11 @@ namespace Class
             { 
                 if (ListOeuvres.ContainsKey(g))
                 {
-                    ListOeuvres.TryGetValue(g, out HashSet<Oeuvre> value);
+                    ListOeuvres.TryGetValue(g, out SortedSet<Oeuvre> value);
 
                     if (value == null)
                     {
-                        ListOeuvres[g] = new HashSet<Oeuvre>();
+                        ListOeuvres[g] = new SortedSet<Oeuvre>();
                         ListOeuvres[g].Add(o);
                         res = true;
                     }
@@ -105,8 +108,8 @@ namespace Class
 
             foreach (Genre g in o.TagsGenres)
             {
-                ListOeuvres.TryGetValue(g, out HashSet<Oeuvre> value);
-                if (value.Contains(o))
+                ListOeuvres.TryGetValue(g, out SortedSet<Oeuvre> value);
+                if ( value != null && value.Contains(o))
                 {
                     value.Remove(o);
                     res = true;
@@ -115,5 +118,15 @@ namespace Class
 
             return res;
         }
+
+        public void TrierOrdreAlph(Genre g)
+        {
+            ListOeuvres[g].OrderBy(o => o.Titre);
+        }
+
+        //public void TrierNotes(Genre g)
+        //{
+        //    ListOeuvres[g].OrderBy(o => o.Note); // marche pas
+        //}
     }
 }

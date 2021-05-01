@@ -13,7 +13,7 @@ namespace Test_ProfilManager
             PManager.AjouterGenre(new Genre("Drame"));
             PManager.AjouterGenre(new Genre("Action"));
 
-            foreach (KeyValuePair<Genre,HashSet<Oeuvre>> kpv in PManager.ListOeuvres)
+            foreach (KeyValuePair<Genre, SortedSet<Oeuvre>> kpv in PManager.ListOeuvres)
             {
                 Console.WriteLine($"Key : {kpv.Key} Value : {kpv.Value}");
             }
@@ -22,7 +22,7 @@ namespace Test_ProfilManager
             PManager.AjouterOeuvre(new Serie("La casa de papel", DateTime.Now, "Série mêlant Drame et Action", "////", 3, new HashSet<Genre>() { new Genre("Aventure") }));
             PManager.AjouterOeuvre(new Serie("La petite maison dans la prairie", new DateTime(2000, 02, 20), "Pas vraiement une série", "////", 0, new HashSet<Genre>() { new Genre("Drame") }));
 
-            foreach (KeyValuePair<Genre, HashSet<Oeuvre>> kpv in PManager.ListOeuvres)
+            foreach (KeyValuePair<Genre, SortedSet<Oeuvre>> kpv in PManager.ListOeuvres)
             {
                 Console.Write($"Key : {kpv.Key} value : \n");
                 foreach(Oeuvre o in kpv.Value)
@@ -31,9 +31,9 @@ namespace Test_ProfilManager
                 }
             }
 
-            Console.WriteLine("\nSuppression Genre");
+            Console.WriteLine("\nSuppression Genre Drame");
             PManager.SupprimerGenre(new Genre("Drame"));
-            foreach (KeyValuePair<Genre, HashSet<Oeuvre>> kpv in PManager.ListOeuvres)
+            foreach (KeyValuePair<Genre, SortedSet<Oeuvre>> kpv in PManager.ListOeuvres)
             {
                 Console.Write($"Key : {kpv.Key} value : \n");
                 foreach (Oeuvre o in kpv.Value)
@@ -42,9 +42,9 @@ namespace Test_ProfilManager
                 }
             }
 
-            Console.WriteLine("\nSuppression oeuvre");
+            Console.WriteLine("\nSuppression oeuvre Elite");
             PManager.SupprimerOeuvre(new Serie("Elite", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", "////", 3, new HashSet<Genre>() { new Genre("Drame"), new Genre("Action") }));
-            foreach (KeyValuePair<Genre, HashSet<Oeuvre>> kpv in PManager.ListOeuvres)
+            foreach (KeyValuePair<Genre, SortedSet<Oeuvre>> kpv in PManager.ListOeuvres)
             {
                 Console.Write($"Key : {kpv.Key} value : \n");
                 foreach (Oeuvre o in kpv.Value)

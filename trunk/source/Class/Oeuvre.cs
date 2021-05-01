@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Class
 {
-    public abstract class Oeuvre : IEquatable<Oeuvre>
+    public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable
     {
 
         public string Titre { get; set; }
@@ -29,19 +29,19 @@ namespace Class
 
         public HashSet<Genre> TagsGenres { get; private set; }
 
-        protected Oeuvre(string titre, DateTime dateSortie, string description, string imageName,HashSet<Genre> tagsgenres)
+        protected Oeuvre(string titre, DateTime dateSortie, string description, int? note,string imageName,HashSet<Genre> tagsgenres)
         {
             Titre = titre;
             DateSortie = dateSortie;
             Description = description;
+            Note = note;
             ImageName = imageName;
             TagsGenres = tagsgenres;
         }
 
-        protected Oeuvre(string titre, DateTime dateSortie, int? note, string description, string imageName, List<Auteur> listAuteurs, HashSet<Genre> tagsgenres)
-            : this(titre, dateSortie, description, imageName,tagsgenres)
+        protected Oeuvre(string titre, DateTime dateSortie, string description, int? note, string imageName, List<Auteur> listAuteurs, HashSet<Genre> tagsgenres)
+            : this(titre, dateSortie, description, note,imageName,tagsgenres)
         {
-            Note = note;
             ListAuteur = listAuteurs;
         }
 
@@ -72,6 +72,41 @@ namespace Class
         public override int GetHashCode()
         {
             return 590323563 + EqualityComparer<string>.Default.GetHashCode(Titre);
+        }
+
+        public int CompareTo(Oeuvre other)
+        {
+            return Titre.CompareTo(other.Titre);
+        }
+
+        int IComparable.CompareTo(object obj)
+        {
+            if(!(obj is Oeuvre))
+            {
+                throw new ArgumentException("Argument is not an Oeuvre","obj");
+            }
+            Oeuvre otheroeuvre = obj as Oeuvre;
+            return this.CompareTo(otheroeuvre);
+        }
+
+        public static bool operator <(Oeuvre left, Oeuvre right)
+        {
+            return left.CompareTo(right) < 0;
+        }
+
+        public static bool operator <=(Oeuvre left, Oeuvre right)
+        {
+            return left.CompareTo(right) <= 0;
+        }
+
+        public static bool operator >(Oeuvre left, Oeuvre right)
+        {
+            return left.CompareTo(right) > 0;
+        }
+
+        public static bool operator >=(Oeuvre left, Oeuvre right)
+        {
+            return left.CompareTo(right) >= 0;
         }
     }
 }
