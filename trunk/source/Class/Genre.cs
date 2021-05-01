@@ -39,7 +39,6 @@ namespace Class
 
             return Equals(obj as Genre);
         }
-
         public override int GetHashCode()
         {
             int hashCode = 1067912786;

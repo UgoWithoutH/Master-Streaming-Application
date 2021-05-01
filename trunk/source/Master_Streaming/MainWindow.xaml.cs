@@ -31,11 +31,6 @@ namespace Master_Streaming
         }
 
 
-      
-
-        private const string TEXT_ADD_GENRE = "Nom du genre à ajouter";
-        private const string TEXT_SUPP_GENRE = "Nom du genre à supprimer";
-
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Visible;
@@ -53,8 +48,6 @@ namespace Master_Streaming
             ButtonCloseMenu.Visibility = Visibility.Visible;
             buttonAddGenre.Visibility = Visibility.Visible;
             buttonSuppGenre.Visibility = Visibility.Visible;
-            boxAddGenre.Text = TEXT_ADD_GENRE;
-            boxSuppGenre.Text = TEXT_SUPP_GENRE;
             ListViewMenu.Visibility = Visibility.Visible;
         }
 
@@ -71,14 +64,16 @@ namespace Master_Streaming
         {
             boxAddGenre.Visibility = Visibility.Visible;
             boxSuppGenre.Visibility = Visibility.Collapsed;
-            boxSuppGenre.Text = TEXT_SUPP_GENRE;
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre, "Nom du genre à ajouter");
+            boxAddGenre.Background = Brushes.Transparent;
         }
 
         private void SuppGenreButton_Clicked(object sender, RoutedEventArgs e)
         {
             boxAddGenre.Visibility = Visibility.Collapsed;
             boxSuppGenre.Visibility = Visibility.Visible;
-            boxAddGenre.Text = TEXT_ADD_GENRE;
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
+            boxAddGenre.Background = Brushes.Transparent;
         }
 
         private void AddGenreBox_Validated_With_Enter(object sender, KeyEventArgs e)
@@ -86,41 +81,52 @@ namespace Master_Streaming
             if (e.Key == Key.Return)
             {
                 foreach(Genre genre in manager.ListGenres)  //liste sans doublons
-                    if (boxAddGenre.Text != TEXT_ADD_GENRE && boxAddGenre.Text != null && boxAddGenre.Text.ToUpper() != genre.getNom())
+                    if (boxAddGenre.Text != null && !boxAddGenre.Text.ToUpper().Equals(genre.getNom()))
                     {
                         continue;
                     }
 
                     else
                     {
-                        boxAddGenre.Text = "Renseignez un nom valide";
-                        boxAddGenre.Foreground = Brushes.Red;
+                        boxAddGenre.Text = null;
+                        MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre,"Renseignez un nom valide");
+                        boxAddGenre.Background = Brushes.Tomato;
                         return;
                     }
 
                 manager.ListGenres.Add(new Genre(boxAddGenre.Text));
                 ListViewMenu.ItemsSource = manager.ListGenres;
-                boxAddGenre.Text = TEXT_ADD_GENRE;
-                boxAddGenre.Foreground = Brushes.Black;
+                boxAddGenre.Text = null;
+                MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre, "Nom du genre à ajouter");
+                boxAddGenre.Background = Brushes.Transparent;
             }
         }
 
         private void SuppGenreBox_Validated_With_Enter(object sender, KeyEventArgs e)
         {
+            bool isExistant = false;
+
             if (e.Key == Key.Return)
             {
-                if (boxSuppGenre.Text != TEXT_SUPP_GENRE && boxSuppGenre.Text != null)
+                foreach (Genre genre in manager.ListGenres)  //vérification que le nom du genre entré par l'utilisateur est existant
+                {
+                    if (boxSuppGenre.Text != null && boxSuppGenre.Text.ToUpper().Equals(genre.getNom())) isExistant = true;
+                }
+
+                if (isExistant)
                 {
                     manager.ListGenres.Remove(new Genre(boxSuppGenre.Text));
                     ListViewMenu.ItemsSource = manager.ListGenres;
-                    boxSuppGenre.Text = TEXT_SUPP_GENRE;
-                    boxSuppGenre.Foreground = Brushes.Black;
+                    boxSuppGenre.Text = null;
+                    MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
+                    boxSuppGenre.Background = Brushes.Transparent;
                 }
 
                 else
                 {
-                    boxSuppGenre.Text = "Renseignez un nom valide";
-                    boxSuppGenre.Foreground = Brushes.Red;
+                    boxSuppGenre.Text = null;
+                    MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Renseignez un nom valide");
+                    boxSuppGenre.Background = Brushes.Tomato;
                 }
             }
         }
