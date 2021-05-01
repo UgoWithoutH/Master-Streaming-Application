@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Class
@@ -17,26 +16,23 @@ namespace Class
          => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
 
 
-        public ObservableCollection<Genre> ListGenres { get; private set; } = new ObservableCollection<Genre>() { new Genre("Humour"),
-                                                                                                                  new Genre("Romance") };
-
-        public string Nom { get; private set; }
-
+        public ObservableCollection<Genre> ListGenres { get; private set; }
+        public Dictionary<Genre, ObservableCollection<Oeuvre>> DicoGenreEtOeuvres { get; private set; }
         public Dictionary<Genre, SortedSet<Oeuvre>> ListOeuvres { get; private set; }
-
-        public LinkedList<Serie> listing;
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
         public Genre GenreSélectionné { get; private set; }
 
-        public void ModifierNomProfil(string nouveauNom)
-        {
-            Nom = nouveauNom;
-        }
+        public LinkedList<Serie> listing;
+
+        private Watchlist MyWatchlist;
 
         public ProfilManager()
         {
+            DicoGenreEtOeuvres = new Dictionary<Genre, ObservableCollection<Oeuvre>>();
+            ListGenres = new ObservableCollection<Genre>() { new Genre("Humour"), new Genre("Romance"), new Genre("Sci-Fi"), new Genre("GenreTest"), };
+            DicoGenreEtOeuvres.Add(ListGenres[3],new ObservableCollection<Oeuvre> { new Serie("titreGenreTest", new DateTime(2020, 5, 12), "descriptiontest", 2,"images/drame/Des vies froissees.jpg", 1, new HashSet<Genre> { ListGenres[3], ListGenres[0] })});
             ListOeuvres = new Dictionary<Genre, SortedSet<Oeuvre>>();
             listing = new LinkedList<Serie>();
         }
@@ -51,7 +47,7 @@ namespace Class
                 return true;
             }
             else return false;
-            
+
         }
 
         public bool SupprimerGenre(Genre g)
@@ -76,7 +72,7 @@ namespace Class
             if (o == null) return false;
 
             foreach (Genre g in o.TagsGenres)
-            { 
+            {
                 if (ListOeuvres.ContainsKey(g))
                 {
                     ListOeuvres.TryGetValue(g, out SortedSet<Oeuvre> value);
@@ -92,7 +88,7 @@ namespace Class
                         ListOeuvres[g].Add(o);
                         res = true;
                     }
-                }  
+                }
             }
 
             return res;
@@ -109,7 +105,7 @@ namespace Class
             foreach (Genre g in o.TagsGenres)
             {
                 ListOeuvres.TryGetValue(g, out SortedSet<Oeuvre> value);
-                if ( value != null && value.Contains(o))
+                if (value != null && value.Contains(o))
                 {
                     value.Remove(o);
                     res = true;
