@@ -17,8 +17,7 @@ namespace Class
 
 
         public ObservableCollection<Genre> ListGenres { get; private set; }
-        public Dictionary<Genre, ObservableCollection<Oeuvre>> DicoGenreEtOeuvres { get; private set; }
-        public Dictionary<Genre, SortedSet<Oeuvre>> ListOeuvres { get; private set; }
+        public Dictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres { get; private set; }
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
@@ -26,14 +25,10 @@ namespace Class
 
         public LinkedList<Serie> listing;
 
-        private Watchlist MyWatchlist;
-
         public ProfilManager()
         {
-            DicoGenreEtOeuvres = new Dictionary<Genre, ObservableCollection<Oeuvre>>();
+            ListOeuvres = new Dictionary<Genre, ObservableCollection<Oeuvre>>();
             ListGenres = new ObservableCollection<Genre>() { new Genre("Humour"), new Genre("Romance"), new Genre("Sci-Fi"), new Genre("GenreTest"), };
-            DicoGenreEtOeuvres.Add(ListGenres[3],new ObservableCollection<Oeuvre> { new Serie("titreGenreTest", new DateTime(2020, 5, 12), "descriptiontest", 2,"images/drame/Des vies froissees.jpg", 1, new HashSet<Genre> { ListGenres[3], ListGenres[0] })});
-            ListOeuvres = new Dictionary<Genre, SortedSet<Oeuvre>>();
             listing = new LinkedList<Serie>();
         }
 
@@ -75,11 +70,11 @@ namespace Class
             {
                 if (ListOeuvres.ContainsKey(g))
                 {
-                    ListOeuvres.TryGetValue(g, out SortedSet<Oeuvre> value);
+                    ListOeuvres.TryGetValue(g, out ObservableCollection<Oeuvre> value);
 
                     if (value == null)
                     {
-                        ListOeuvres[g] = new SortedSet<Oeuvre>();
+                        ListOeuvres[g] = new ObservableCollection<Oeuvre>();
                         ListOeuvres[g].Add(o);
                         res = true;
                     }
@@ -104,7 +99,7 @@ namespace Class
 
             foreach (Genre g in o.TagsGenres)
             {
-                ListOeuvres.TryGetValue(g, out SortedSet<Oeuvre> value);
+                ListOeuvres.TryGetValue(g, out ObservableCollection<Oeuvre> value);
                 if (value != null && value.Contains(o))
                 {
                     value.Remove(o);
@@ -117,12 +112,22 @@ namespace Class
 
         public void TrierOrdreAlph(Genre g)
         {
-            ListOeuvres[g].OrderBy(o => o.Titre);
+            IEnumerable<Oeuvre> res = ListOeuvres[g].OrderBy(o => o.Titre);
+            ListOeuvres[g] = new ObservableCollection<Oeuvre>();
+            foreach (Oeuvre o in res)
+            {
+                ListOeuvres[g].Add(o);
+            }
         }
 
-        //public void TrierNotes(Genre g)
-        //{
-        //    ListOeuvres[g].OrderBy(o => o.Note); // marche pas
-        //}
+        public void TrierNotes(Genre g)
+        {
+            IEnumerable<Oeuvre> res = ListOeuvres[g].OrderBy(o => o.Note);
+            ListOeuvres[g] = new ObservableCollection<Oeuvre>();
+            foreach (Oeuvre o in res)
+            {
+                ListOeuvres[g].Add(o);
+            }
+        }
     }
 }
