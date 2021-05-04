@@ -22,6 +22,8 @@ namespace Test_Oeuvre
             {
                 Console.WriteLine(o);
             }
+
+            Console.WriteLine(s1.Equals(null));
         }
     }
 }

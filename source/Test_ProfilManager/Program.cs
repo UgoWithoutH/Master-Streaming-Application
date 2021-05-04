@@ -20,6 +20,7 @@ namespace Test_ProfilManager
             }
 
             PManager.AjouterOeuvre(new Serie("Elite", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", null, "////", 3, new HashSet<Genre>() { new Genre("Drame"), new Genre("Action") }));
+            PManager.AjouterOeuvre(new Serie("Elite", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", null, "////", 3, new HashSet<Genre>() { new Genre("Drame"), new Genre("Action") }));
             PManager.AjouterOeuvre(new Serie("La casa de papel", DateTime.Now, "Série mêlant Drame et Action", null, "////", 3, new HashSet<Genre>() { new Genre("Aventure") }));
             PManager.AjouterOeuvre(new Serie("La petite maison dans la prairie", new DateTime(2000, 02, 20), "Pas vraiement une série", null, "////", 0, new HashSet<Genre>() { new Genre("Drame") }));
             PManager.AjouterOeuvre(new Serie("Peppa pig", new DateTime(2000, 02, 20), "Pas vraiement une série", null, "////", 0, new HashSet<Genre>() { new Genre("Drame") }));

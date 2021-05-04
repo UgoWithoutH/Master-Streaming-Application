@@ -57,9 +57,9 @@ namespace Class
 
         public override bool Equals(object obj)
         {
-            if (obj == null) return false;
-            if (obj == this) return true;
-            if (GetType() != obj.GetType()) return false;
+            if (ReferenceEquals(obj, null)) return false;
+            if (ReferenceEquals(obj, this)) return true;
+            if (GetType().Equals(obj.GetType())) return false;
 
             return Equals(obj as Oeuvre);
         }
