@@ -21,7 +21,7 @@ namespace Class
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
-        public Genre GenreSélectionné { get; private set; }
+        public Genre GenreSélectionné { get; set; }
 
         public LinkedList<Serie> ListingSerie { get; private set; }
 
@@ -30,6 +30,7 @@ namespace Class
         public ProfilManager()
         {
             ListOeuvres = new SortedDictionary<Genre, ObservableCollection<Oeuvre>>();
+            ListingDates = new SortedDictionary<Genre, SortedSet<int>>();
             AjouterGenre(new Genre("Humour"));
             AjouterGenre( new Genre("Romance"));
             AjouterGenre( new Genre("Sci-fi"));
