@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Class
 {
-    public class Genre : IEquatable<Genre>
+    public class Genre : IEquatable<Genre>, IComparable<Genre>, IComparable
     {
         public string Nom { 
             get => nom;
@@ -33,9 +33,9 @@ namespace Class
 
         public override bool Equals(object obj)
         {
-            if (obj == null) return false;
-            if (obj == this) return true;
-            if (GetType() != obj.GetType()) return false;
+            if (ReferenceEquals(obj, null)) return false;
+            if (ReferenceEquals(obj, this)) return true;
+            if (GetType().Equals(obj.GetType())) return false;
 
             return Equals(obj as Genre);
         }
@@ -45,6 +45,41 @@ namespace Class
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Nom);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(nom);
             return hashCode;
+        }
+
+        public int CompareTo(Genre other)
+        {
+            return Nom.CompareTo(other.Nom);
+        }
+
+        int IComparable.CompareTo(object obj)
+        {
+            if (!(obj is Genre))
+            {
+                throw new ArgumentException("Argument is not a Genre", "obj");
+            }
+            Genre othergenre = obj as Genre;
+            return this.CompareTo(othergenre);
+        }
+
+        public static bool operator <(Genre left, Genre right)
+        {
+            return left.CompareTo(right) < 0;
+        }
+
+        public static bool operator <=(Genre left, Genre right)
+        {
+            return left.CompareTo(right) <= 0;
+        }
+
+        public static bool operator >(Genre left, Genre right)
+        {
+            return left.CompareTo(right) > 0;
+        }
+
+        public static bool operator >=(Genre left, Genre right)
+        {
+            return left.CompareTo(right) >= 0;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Class
 
 
         public ObservableCollection<Genre> ListGenres { get; private set; }
-        public Dictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres { get; private set; }
+        public SortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres { get; private set; }
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
@@ -25,16 +25,21 @@ namespace Class
 
         public LinkedList<Serie> ListingSerie { get; private set; }
 
-        public Dictionary<Genre,SortedSet<int>> ListingDates { get; private set; }
+        public SortedDictionary<Genre,SortedSet<int>> ListingDates { get; private set; }
 
         public ProfilManager()
         {
-            ListOeuvres = new Dictionary<Genre, ObservableCollection<Oeuvre>>();
+            ListOeuvres = new SortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListGenres = new ObservableCollection<Genre>() { new Genre("Humour"), new Genre("Romance"), new Genre("Sci-Fi"), new Genre("GenreTest"), };
             ListingSerie = new LinkedList<Serie>();
-            ListingDates = new Dictionary<Genre,SortedSet<int>>();
+            ListingDates = new SortedDictionary<Genre,SortedSet<int>>();
         }
 
+        /// <summary>
+        /// Ajouter un genre dans le SortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
+        /// </summary>
+        /// <param name="g">Genre qui doit être ajouté</param>
+        /// <returns>true si l'ajout du genre a réussi sinon false</returns>
         public bool AjouterGenre(Genre g)
         {
             if (g == null) return false;
@@ -49,6 +54,11 @@ namespace Class
 
         }
 
+        /// <summary>
+        /// Supprimer un Genre dans le le SortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
+        /// </summary>
+        /// <param name="g">Genre qui doit être supprimé</param>
+        /// <returns>true si la suppression du genre a réussi sinon false</returns>
         public bool SupprimerGenre(Genre g)
         {
             if (g == null) return false;
@@ -62,6 +72,11 @@ namespace Class
             else return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="o">Oeuvre qui doit être ajoutée au SortedDictionary des Oeuvres (ListOeuvres)</param>
+        /// <returns></returns>
         public bool AjouterOeuvre(Oeuvre o)
         {
 
