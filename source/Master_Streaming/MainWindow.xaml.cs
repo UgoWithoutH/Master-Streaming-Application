@@ -1,6 +1,7 @@
 ﻿using Class;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Master_Streaming
         public MainWindow()
         {
             InitializeComponent();
-            ListViewMenu.ItemsSource = manager.ListGenres;
+            ListViewMenu.ItemsSource = manager.ListOeuvres.Keys;
             ListViewMenu.Visibility = Visibility.Collapsed;
         }
 
@@ -80,10 +81,13 @@ namespace Master_Streaming
         {
             if (e.Key == Key.Return)
             {
-                foreach(Genre genre in manager.ListGenres)  //liste sans doublons
-                    if (boxAddGenre.Text != null && !boxAddGenre.Text.ToUpper().Equals(genre.getNom()))
+                    if (!manager.ListOeuvres.ContainsKey(new Genre(boxAddGenre.Text)))
                     {
-                        continue;
+                        manager.AjouterGenre(new Genre(boxAddGenre.Text));
+                        ListViewMenu.ItemsSource = manager.ListOeuvres.Keys;
+                        boxAddGenre.Text = null;
+                        MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre, "Nom du genre à ajouter");
+                        boxAddGenre.Background = Brushes.Transparent;
                     }
 
                     else
@@ -94,32 +98,23 @@ namespace Master_Streaming
                         return;
                     }
 
-                manager.ListGenres.Add(new Genre(boxAddGenre.Text));
-                ListViewMenu.ItemsSource = manager.ListGenres;
-                boxAddGenre.Text = null;
-                MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre, "Nom du genre à ajouter");
-                boxAddGenre.Background = Brushes.Transparent;
+               
             }
         }
 
         private void SuppGenreBox_Validated_With_Enter(object sender, KeyEventArgs e)
         {
-            bool isExistant = false;
+            //bool isExistant = false;
 
             if (e.Key == Key.Return)
             {
-                foreach (Genre genre in manager.ListGenres)  //vérification que le nom du genre entré par l'utilisateur est existant
+                if (manager.ListOeuvres.ContainsKey(new Genre(boxSuppGenre.Text)))
                 {
-                    if (boxSuppGenre.Text != null && boxSuppGenre.Text.ToUpper().Equals(genre.getNom())) isExistant = true;
-                }
-
-                if (isExistant)
-                {
-                    manager.ListGenres.Remove(new Genre(boxSuppGenre.Text));
-                    ListViewMenu.ItemsSource = manager.ListGenres;
-                    boxSuppGenre.Text = null;
-                    MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
-                    boxSuppGenre.Background = Brushes.Transparent;
+                   manager.SupprimerGenre(new Genre(boxSuppGenre.Text));
+                   ListViewMenu.ItemsSource = manager.ListOeuvres.Keys;
+                   boxSuppGenre.Text = null;
+                   MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
+                   boxSuppGenre.Background = Brushes.Transparent;
                 }
 
                 else
