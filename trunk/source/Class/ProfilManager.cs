@@ -30,7 +30,10 @@ namespace Class
         public ProfilManager()
         {
             ListOeuvres = new SortedDictionary<Genre, ObservableCollection<Oeuvre>>();
-            ListGenres = new ObservableCollection<Genre>() { new Genre("Humour"), new Genre("Romance"), new Genre("Sci-Fi"), new Genre("GenreTest"), };
+            AjouterGenre(new Genre("Humour"));
+            AjouterGenre( new Genre("Romance"));
+            AjouterGenre( new Genre("Sci-fi"));
+            AjouterGenre( new Genre("Genretest"));
             ListingSerie = new LinkedList<Serie>();
             ListingDates = new SortedDictionary<Genre,SortedSet<int>>();
         }
@@ -94,8 +97,7 @@ namespace Class
 
                     if (value == null)
                     {
-                        ListOeuvres[g] = new ObservableCollection<Oeuvre>();
-                        ListOeuvres[g].Add(o);
+                        ListOeuvres[g] = new ObservableCollection<Oeuvre>() { o};
                         if(ListingDates[g] == null)
                         {
                             ListingDates[g] = new SortedSet<int>();
