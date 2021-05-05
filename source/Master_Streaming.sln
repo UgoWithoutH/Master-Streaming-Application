@@ -27,7 +27,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_fonctionnels", "Tests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_ProfilManager_Tris et filtres", "Test_ProfilManager_Tris et filtres\Test_ProfilManager_Tris et filtres.csproj", "{123D61D2-A89B-41B3-80E8-2FE32C972913}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestU_Recherche", "TestU_Recherche\TestU_Recherche.csproj", "{AFD76CE4-5C91-4F0E-8713-3380639CC20D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestU_Recherche", "TestU_Recherche\TestU_Recherche.csproj", "{AFD76CE4-5C91-4F0E-8713-3380639CC20D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_Unitaires", "Tests_Unitaires", "{08E8A511-F14A-4B6C-9B16-D8948B97D1A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,7 @@ Global
 		{615001D2-9E79-439D-AA59-22001CC8F8B6} = {71A02715-5698-403A-ACA5-093EF1F32A4A}
 		{D022EA6C-ED1B-4A4F-A945-65A46B864C22} = {71A02715-5698-403A-ACA5-093EF1F32A4A}
 		{123D61D2-A89B-41B3-80E8-2FE32C972913} = {D022EA6C-ED1B-4A4F-A945-65A46B864C22}
+		{AFD76CE4-5C91-4F0E-8713-3380639CC20D} = {08E8A511-F14A-4B6C-9B16-D8948B97D1A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6DD33DD3-1EBE-46BF-9030-9DBE084C1BB6}
