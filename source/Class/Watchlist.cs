@@ -18,9 +18,7 @@ namespace Class
             int nbInWatchlistBefore = OeuvresVisionnees.Count;
             OeuvresVisionnees.Add(new OeuvreWatch(DateTime.Now, o));
             int nbInWatchlistAfter = OeuvresVisionnees.Count;
-            if (nbInWatchlistAfter > nbInWatchlistBefore)
-                return true;
-            return false;
+            return nbInWatchlistAfter > nbInWatchlistBefore;
         }
 
         public bool SupprimerOeuvre(Oeuvre o)

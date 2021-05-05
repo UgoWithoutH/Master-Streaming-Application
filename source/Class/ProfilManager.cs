@@ -31,10 +31,10 @@ namespace Class
         {
             ListOeuvres = new SortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListingDates = new SortedDictionary<Genre, SortedSet<int>>();
-            AjouterGenre(new Genre("Humour"));
-            AjouterGenre( new Genre("Romance"));
-            AjouterGenre( new Genre("Sci-fi"));
-            AjouterGenre( new Genre("Genretest"));
+            //AjouterGenre(new Genre("Humour"));
+            //AjouterGenre( new Genre("Romance"));
+            //AjouterGenre( new Genre("Sci-fi"));
+            //AjouterGenre( new Genre("Genretest"));
             ListingSerie = new LinkedList<Serie>();
             ListingDates = new SortedDictionary<Genre,SortedSet<int>>();
         }
@@ -44,14 +44,14 @@ namespace Class
         /// </summary>
         /// <param name="g">Genre qui doit être ajouté</param>
         /// <returns>true si l'ajout du genre a réussi sinon false</returns>
-        public bool AjouterGenre(Genre g)
+        public bool AjouterGenre(Genre genre)
         {
-            if (g == null) return false;
+            if (genre == null) return false;
 
-            if (!ListOeuvres.ContainsKey(g))
+            if (!ListOeuvres.ContainsKey(genre))
             {
-                ListOeuvres.Add(g, null);
-                ListingDates.Add(g, null);
+                ListOeuvres.Add(genre, new ObservableCollection<Oeuvre>());
+                ListingDates.Add(genre, new SortedSet<int>());
                 return true;
             }
             else return false;
@@ -63,14 +63,14 @@ namespace Class
         /// </summary>
         /// <param name="g">Genre qui doit être supprimé</param>
         /// <returns>true si la suppression du genre a réussi sinon false</returns>
-        public bool SupprimerGenre(Genre g)
+        public bool SupprimerGenre(Genre genre)
         {
-            if (g == null) return false;
+            if (genre == null) return false;
 
-            if (ListOeuvres.ContainsKey(g))
+            if (ListOeuvres.ContainsKey(genre))
             {
-                ListOeuvres.Remove(g);
-                ListingDates.Remove(g);
+                ListOeuvres.Remove(genre);
+                ListingDates.Remove(genre);
                 return true;
             }
             else return false;
@@ -81,38 +81,25 @@ namespace Class
         /// </summary>
         /// <param name="o">Oeuvre qui doit être ajoutée au SortedDictionary des Oeuvres (ListOeuvres)</param>
         /// <returns></returns>
-        public bool AjouterOeuvre(Oeuvre o)
+        public bool AjouterOeuvre(Oeuvre oeuvre)
         {
 
-            if (o is Serie) ListingSerie.AddFirst((Serie)o);
+            if (oeuvre is Serie) ListingSerie.AddFirst((Serie)oeuvre);
 
             bool res = false;
 
-            if (o == null) return false;
+            if (oeuvre == null) return false;
 
-            foreach (Genre g in o.TagsGenres)
+            foreach (Genre genre in oeuvre.TagsGenres)
             {
-                if (ListOeuvres.ContainsKey(g))
+                if (ListOeuvres.ContainsKey(genre))
                 {
-                    ListOeuvres.TryGetValue(g, out ObservableCollection<Oeuvre> value);
+                    ListOeuvres.TryGetValue(genre, out ObservableCollection<Oeuvre> value);
 
-                    if (value == null)
+                    if (!value.Contains(oeuvre))
                     {
-                        ListOeuvres[g] = new ObservableCollection<Oeuvre>() { o};
-                        if(ListingDates[g] == null)
-                        {
-                            ListingDates[g] = new SortedSet<int>();
-                        }
-                        ListingDates[g].Add(o.DateSortie.Year);
-                    }
-                    else if (!value.Contains(o))
-                    {
-                        ListOeuvres[g].Add(o);
-                        if (ListingDates[g] == null)
-                        {
-                            ListingDates[g] = new SortedSet<int>();
-                        }
-                        ListingDates[g].Add(o.DateSortie.Year);
+                        ListOeuvres[genre].Add(oeuvre);
+                        ListingDates[genre].Add(oeuvre.DateSortie.Year);
                     }
                     res = true;
                 }
@@ -121,21 +108,21 @@ namespace Class
             return res;
         }
 
-        public bool SupprimerOeuvre(Oeuvre o)
+        public bool SupprimerOeuvre(Oeuvre oeuvre)
         {
-            if (o is Serie) ListingSerie.Remove((Serie)o);
+            if (oeuvre is Serie) ListingSerie.Remove((Serie)oeuvre);
 
             bool res = false;
 
-            if (o == null) return false;
+            if (oeuvre == null) return false;
 
-            foreach (Genre g in o.TagsGenres)
+            foreach (Genre genre in oeuvre.TagsGenres)
             {
-                ListOeuvres.TryGetValue(g, out ObservableCollection<Oeuvre> value);
-                if (value != null && value.Contains(o))
+                ListOeuvres.TryGetValue(genre, out ObservableCollection<Oeuvre> value);
+                if (value.Contains(oeuvre))
                 {
-                    value.Remove(o);
-                    CheckListDates(g,o.DateSortie.Year);
+                    value.Remove(oeuvre);
+                    CheckListDates(genre,oeuvre.DateSortie.Year);
                     res = true;
                 }
             }
@@ -143,14 +130,14 @@ namespace Class
             return res;
         }
 
-        public void CheckListDates(Genre g, int year)
+        public void CheckListDates(Genre genre, int year)
         {
             int check = 0;
 
-            ListOeuvres.TryGetValue(g, out ObservableCollection <Oeuvre> value);
-            foreach(Oeuvre o in value)
+            ListOeuvres.TryGetValue(genre, out ObservableCollection <Oeuvre> value);
+            foreach(Oeuvre oeuvre in value)
             {
-                if(o.DateSortie.Year == year)
+                if(oeuvre.DateSortie.Year == year)
                 {
                     check = 1;
                 }
@@ -158,27 +145,27 @@ namespace Class
 
             if (check == 0)
             {
-                ListingDates[g].Remove(year);
+                ListingDates[genre].Remove(year);
             }
         }
 
-        public void TrierOrdreAlph(Genre g)
+        public void TrierOrdreAlph(Genre genre)
         {
-            IEnumerable<Oeuvre> res = ListOeuvres[g].OrderBy(o => o.Titre);
-            ListOeuvres[g] = new ObservableCollection<Oeuvre>();
-            foreach (Oeuvre o in res)
+            IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Titre);
+            ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
+            foreach (Oeuvre oeuvre in res)
             {
-                ListOeuvres[g].Add(o);
+                ListOeuvres[genre].Add(oeuvre);
             }
         }
 
-        public void TrierNotes(Genre g)
+        public void TrierNotes(Genre genre)
         {
-            IEnumerable<Oeuvre> res = ListOeuvres[g].OrderBy(o => o.Note).ThenBy(o => o.Titre);
-            ListOeuvres[g] = new ObservableCollection<Oeuvre>();
-            foreach (Oeuvre o in res)
+            IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre);
+            ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
+            foreach (Oeuvre oeuvre in res)
             {
-                ListOeuvres[g].Add(o);
+                ListOeuvres[genre].Add(oeuvre);
             }
         }
     }
