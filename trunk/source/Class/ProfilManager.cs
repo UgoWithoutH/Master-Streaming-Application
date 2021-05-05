@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swordfish.NET.Collections;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -17,7 +18,7 @@ namespace Class
 
 
         public ObservableCollection<Genre> ListGenres { get; private set; }
-        public SortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres { get; private set; }
+        public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres { get; private set; }
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
@@ -29,12 +30,12 @@ namespace Class
 
         public ProfilManager()
         {
-            ListOeuvres = new SortedDictionary<Genre, ObservableCollection<Oeuvre>>();
+            ListOeuvres = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListingDates = new SortedDictionary<Genre, SortedSet<int>>();
-            //AjouterGenre(new Genre("Humour"));
-            //AjouterGenre( new Genre("Romance"));
-            //AjouterGenre( new Genre("Sci-fi"));
-            //AjouterGenre( new Genre("Genretest"));
+            AjouterGenre(new Genre("Humour"));
+            AjouterGenre( new Genre("Romance"));
+            AjouterGenre( new Genre("Sci-fi"));
+            AjouterGenre( new Genre("Genretest"));
             ListingSerie = new LinkedList<Serie>();
             ListingDates = new SortedDictionary<Genre,SortedSet<int>>();
         }

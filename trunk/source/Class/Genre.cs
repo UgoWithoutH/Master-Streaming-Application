@@ -28,6 +28,7 @@ namespace Class
 
         public bool Equals(Genre other)
         {
+            if (other == null) return false;
             return Nom.Equals(other.Nom);
         }
 
