@@ -52,6 +52,7 @@ namespace Class
 
         public bool Equals(Oeuvre other)
         {
+            if (other == null) return false;
             return Titre.Equals(other.Titre);
         }
 

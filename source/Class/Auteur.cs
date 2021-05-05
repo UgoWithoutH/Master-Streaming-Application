@@ -6,9 +6,9 @@ namespace Class
 {
     public class Auteur : IEquatable<Auteur>
     {
-        public string Nom { get; set; }
+        public string Nom { get; private set; }
 
-        public string Prenom { get; set; }
+        public string Prenom { get; private set; }
 
         public Métier Profession { get; private set; }
 
@@ -26,6 +26,7 @@ namespace Class
 
         public bool Equals(Auteur other)
         {
+            if (other == null) return false;
             return Nom.Equals(other.Nom) && Prenom.Equals(other.Prenom) && Profession.Equals(other.Profession);
         }
 
