@@ -46,7 +46,7 @@ namespace Test_ProfilManager_Tris_et_filtres
             //{
             //    Console.WriteLine(o);
             //}
-
+            //
             //Tris
 
             Genre genreCourant = new Genre("Drame");
