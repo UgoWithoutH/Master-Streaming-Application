@@ -16,7 +16,7 @@ namespace Test_ProfilManager
 
             foreach (KeyValuePair<Genre, ObservableCollection<Oeuvre>> kpv in PManager.ListOeuvres)
             {
-                Console.WriteLine($"Key : {kpv.Key} Value : {kpv.Value}");
+                Console.WriteLine($"Key : {kpv.Key}");
             }
 
             PManager.AjouterOeuvre(new Serie("Elite", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", null, "////", 3, new HashSet<Genre>() { new Genre("Drame"), new Genre("Action") }));

@@ -14,7 +14,7 @@ namespace Test_Recherche
             {
                 new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",0,"////",3, new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
                 new Serie("La casa de papel",DateTime.Now,"Série mêlant Drame et Action",null,"////",3, new HashSet<Genre>(){new Genre("Drame")}),
-                new Serie("La petite maison dans la prairie",new DateTime(2000,02,20),null,"Pas vraiement une série","////",0, new HashSet<Genre>(){new Genre("Drame")}),
+                new Serie("La petite maison dans la prairie",new DateTime(2000,02,20),"Pas vraiement une série",null,"////",0, new HashSet<Genre>(){new Genre("Drame")}),
             };
 
             var l2 = new List<Oeuvre>()
