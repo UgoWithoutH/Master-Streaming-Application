@@ -3,22 +3,20 @@ using System.Collections.Generic;
 
 namespace Class
 {
-    public class Genre : IEquatable<Genre>, IComparable<Genre>, IComparable
+    public class Genre : ObservableObject, IEquatable<Genre>, IComparable<Genre>, IComparable
     {
         public string Nom { 
             get => nom;
-            private set => nom = value.ToUpper();
-           }
+            private set 
+            { 
+                nom = value.ToUpper();
+            }
+        }
         private string nom;
 
         public Genre (string nom)
         {
             Nom = nom;
-        }
-
-        public string getNom()
-        {
-            return Nom;
         }
 
         public override string ToString()

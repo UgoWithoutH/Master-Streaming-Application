@@ -27,22 +27,64 @@ namespace Class
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
-        public Genre GenreSélectionné { get; set; }
+
+        private Genre genreSélectionné;
+
+        public Genre GenreSélectionné
+        {
+            get { return genreSélectionné; }
+            set 
+            {
+                genreSélectionné = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
+        private ObservableCollection<Oeuvre> listOeuvresSélectionnée;
+
+        public ObservableCollection<Oeuvre> ListOeuvresSélectionnée
+        {
+            get { return listOeuvresSélectionnée; }
+            set 
+            { 
+                listOeuvresSélectionnée = value;
+                OnPropertyChanged();
+            }
+        }
 
         public LinkedList<Serie> ListingSerie { get; private set; }
 
         public SortedDictionary<Genre,SortedSet<int>> ListingDates { get; private set; }
 
+        private SortedSet<int> listFiltrage;
+
+        public SortedSet<int> ListFiltrage
+        {
+            get { return listFiltrage; }
+            set { listFiltrage = value; }
+        }
+
+
         public ProfilManager()
         {
             ListOeuvres = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListingDates = new SortedDictionary<Genre, SortedSet<int>>();
-            AjouterGenre(new Genre("Humour"));
-            AjouterGenre( new Genre("Romance"));
-            AjouterGenre( new Genre("Sci-fi"));
-            AjouterGenre( new Genre("Genretest"));
             ListingSerie = new LinkedList<Serie>();
             ListingDates = new SortedDictionary<Genre,SortedSet<int>>();
+        }
+
+        public void chargeDonnées() // temporaire
+        {
+            AjouterGenre(new Genre("Humour"));
+            AjouterGenre(new Genre("Romance"));
+            AjouterGenre(new Genre("Aventure"));
+            AjouterGenre(new Genre("Action"));
+            AjouterOeuvre(new Serie("Des vies froissees", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", null, "/images/Drame/Des vies froissees.jpg", 3, new HashSet<Genre>() { new Genre("Humour"), new Genre("Romance") }));
+            AjouterOeuvre(new Serie("Enola Holmes", DateTime.Now, "Série mêlant Drame et Action", null, "/images/Drame/Enola Holmes.jpg", 3, new HashSet<Genre>() { new Genre("Aventure") }));
+            AjouterOeuvre(new Serie("La mission", new DateTime(2000, 02, 20), "Pas vraiement une série", null, "/images/Drame/La mission.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
+            AjouterOeuvre(new Serie("Notre ete", new DateTime(2000, 02, 20), "Pas vraiement une série", null, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
         }
 
         /// <summary>
@@ -173,6 +215,31 @@ namespace Class
             {
                 ListOeuvres[genre].Add(oeuvre);
             }
+        }
+
+        public int ChangeGenreSélectionné(ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> données, string Textgenre)
+        {
+            int index = Array.IndexOf(ListOeuvres.Keys.ToArray(), new Genre(Textgenre));
+
+            Genre[] listingGenre = données.Keys.ToArray();
+
+            if (index == 0)
+            {
+                GenreSélectionné = listingGenre[1];
+                return 1;
+            }
+
+            else if (index == (ListOeuvres.Count) - 1)
+            {
+                GenreSélectionné = listingGenre[(ListOeuvres.Count) - 2];
+                return ((ListOeuvres.Count) - 2);
+            }
+
+            else
+            {
+                GenreSélectionné = listingGenre[index + 1];
+                return (index + 1);
+            } 
         }
     }
 }
