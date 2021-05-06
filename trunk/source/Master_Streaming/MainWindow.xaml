@@ -115,7 +115,7 @@
                     
                 </Grid>
 
-                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionMode="Single" SelectionChanged="ListViewMenu_SelectionChanged">
+                <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ListOeuvres.Keys}" SelectionMode="Single" SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Width="170">

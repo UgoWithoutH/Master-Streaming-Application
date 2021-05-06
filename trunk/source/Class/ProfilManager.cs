@@ -9,16 +9,21 @@ using System.Text;
 
 namespace Class
 {
-    public class ProfilManager : INotifyPropertyChanged
+    public class ProfilManager : ObservableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        void OnPropertyChanged(string propertyname)
-         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
-
-
         public ObservableCollection<Genre> ListGenres { get; private set; }
-        public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres { get; private set; }
+
+        private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
+
+        public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres
+        {
+            get { return listOeuvres; }
+            private set 
+            { 
+                listOeuvres = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Oeuvre OeuvreSélectionnée { get; private set; }
 
