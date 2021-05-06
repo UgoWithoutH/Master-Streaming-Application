@@ -27,8 +27,8 @@ namespace Master_Streaming
         public MainWindow()
         {
             InitializeComponent();
-            ListViewMenu.ItemsSource = manager.ListOeuvres.Keys;
             ListViewMenu.Visibility = Visibility.Collapsed;
+            DataContext = manager;
         }
 
 
@@ -84,7 +84,6 @@ namespace Master_Streaming
                     if (!manager.ListOeuvres.ContainsKey(new Genre(boxAddGenre.Text)))
                     {
                         manager.AjouterGenre(new Genre(boxAddGenre.Text));
-                        ListViewMenu.ItemsSource = manager.ListOeuvres.Keys;
                         boxAddGenre.Text = null;
                         MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre, "Nom du genre à ajouter");
                         boxAddGenre.Background = Brushes.Transparent;
@@ -111,7 +110,6 @@ namespace Master_Streaming
                 if (manager.ListOeuvres.ContainsKey(new Genre(boxSuppGenre.Text)))
                 {
                    manager.SupprimerGenre(new Genre(boxSuppGenre.Text));
-                   ListViewMenu.ItemsSource = manager.ListOeuvres.Keys;
                    boxSuppGenre.Text = null;
                    MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
                    boxSuppGenre.Background = Brushes.Transparent;
