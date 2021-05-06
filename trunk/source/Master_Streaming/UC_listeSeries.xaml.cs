@@ -19,6 +19,7 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_listeSeries : UserControl
     {
+        public ProfilManager manager => (App.Current as App).Pmanager;
         public UC_listeSeries()
         {
             InitializeComponent();
@@ -31,10 +32,20 @@ namespace Master_Streaming
                 new Serie("Notre ete",new DateTime(2021,03,25),"description_test", 5, "/images/Drame/Notre ete.jpg",1,null /*idem*/),
             };
 
-            MylisteSerie.ItemsSource = listSerie;
+            DataContext = manager;
 
             filtrage.SelectedIndex = 0; //valeur par défaut de la combobox du filtrage
             trie.SelectedIndex = 0; //valeur par défaut de la combobox du trie
+        }
+
+        private void filtrage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void trie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

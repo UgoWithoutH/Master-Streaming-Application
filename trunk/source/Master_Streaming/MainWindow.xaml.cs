@@ -1,6 +1,8 @@
 ﻿using Class;
+using Swordfish.NET.Collections.Auxiliary;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
@@ -22,14 +24,14 @@ namespace Master_Streaming
     /// </summary>
     public partial class MainWindow : Window
     {
-        private ProfilManager manager = new ProfilManager();
+        public ProfilManager manager => (App.Current as App).Pmanager;
 
         public MainWindow()
         {
             InitializeComponent();
             ListViewMenu.Visibility = Visibility.Collapsed;
             DataContext = manager;
-        }
+        } 
 
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
@@ -54,11 +56,16 @@ namespace Master_Streaming
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            uc_listSeries.texteGenre.Text = (e.AddedItems[0] as Genre).getNom();
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-            buttonAddGenre.Visibility = Visibility.Collapsed;
-            buttonSuppGenre.Visibility = Visibility.Collapsed;
+            if (e.AddedItems.Count != 0)
+            {
+                manager.GenreSélectionné = (e.AddedItems[0] as Genre);
+                manager.ListOeuvresSélectionnée = manager.ListOeuvres[manager.GenreSélectionné];
+                manager.ListFiltrage = manager.ListingDates[manager.GenreSélectionné];
+                ButtonOpenMenu.Visibility = Visibility.Visible;
+                ButtonCloseMenu.Visibility = Visibility.Collapsed;
+                buttonAddGenre.Visibility = Visibility.Collapsed;
+                buttonSuppGenre.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void AddGenreButton_Clicked(object sender, RoutedEventArgs e)
@@ -71,6 +78,7 @@ namespace Master_Streaming
 
         private void SuppGenreButton_Clicked(object sender, RoutedEventArgs e)
         {
+           
             boxAddGenre.Visibility = Visibility.Collapsed;
             boxSuppGenre.Visibility = Visibility.Visible;
             MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
@@ -109,10 +117,15 @@ namespace Master_Streaming
             {
                 if (manager.ListOeuvres.ContainsKey(new Genre(boxSuppGenre.Text)))
                 {
-                   manager.SupprimerGenre(new Genre(boxSuppGenre.Text));
-                   boxSuppGenre.Text = null;
-                   MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
-                   boxSuppGenre.Background = Brushes.Transparent;
+                    if (manager.GenreSélectionné.Nom.Equals(boxSuppGenre.Text))
+                    {
+                        int index = manager.ChangeGenreSélectionné(manager.ListOeuvres, boxSuppGenre.Text);
+                        ListViewMenu.SelectedItem = ListViewMenu.SelectedIndex - 1;
+                    }
+                    manager.SupprimerGenre(new Genre(boxSuppGenre.Text));
+                    boxSuppGenre.Text = null;
+                    MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
+                    boxSuppGenre.Background = Brushes.Transparent;
                 }
 
                 else
