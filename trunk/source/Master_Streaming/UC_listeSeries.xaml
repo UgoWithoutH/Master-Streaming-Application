@@ -41,7 +41,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <ComboBox x:Name="filtrage" Grid.Column="2" ItemsSource="{Binding ListingDates}" SelectedValuePath="Key" SelectedItem="{Binding GenreSélectionné}" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="filtrage_SelectionChanged">
+            <ComboBox x:Name="filtrage" Grid.Column="2" ItemsSource="{Binding ListingDatesParGenre}" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="filtrage_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Foreground="Black" Text="{Binding}" FontSize="15"/>
@@ -60,7 +60,7 @@
 
         <StackPanel>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <ListBox x:Name="MylisteSerie" ItemsSource="{Binding ListOeuvresSélectionnée}" SelectedIndex="0" Background="#313131" BorderBrush="#313131">
+                <ListBox x:Name="MylisteSerie" ItemsSource="{Binding ListOeuvresParGenre}" SelectedIndex="0" Background="#313131" BorderBrush="#313131">
         <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>

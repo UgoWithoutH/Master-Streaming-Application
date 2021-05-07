@@ -33,9 +33,6 @@ namespace Master_Streaming
             };
 
             DataContext = manager;
-
-            filtrage.SelectedIndex = 0; //valeur par défaut de la combobox du filtrage
-            trie.SelectedIndex = 0; //valeur par défaut de la combobox du trie
         }
 
         private void filtrage_SelectionChanged(object sender, SelectionChangedEventArgs e)

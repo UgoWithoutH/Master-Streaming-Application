@@ -1,4 +1,5 @@
 ﻿using Swordfish.NET.Collections;
+using Swordfish.NET.Collections.Auxiliary;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,10 +19,11 @@ namespace Class
         public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres
         {
             get { return listOeuvres; }
-            private set 
-            { 
+            private set
+            {
                 listOeuvres = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(ListOeuvresParGenre));
             }
         }
 
@@ -33,37 +35,66 @@ namespace Class
         public Genre GenreSélectionné
         {
             get { return genreSélectionné; }
-            set 
+            set
             {
                 genreSélectionné = value;
                 OnPropertyChanged();
+                OnPropertyChanged(nameof(ListingDatesParGenre));
+                OnPropertyChanged(nameof(ListOeuvresParGenre));
             }
         }
 
 
 
-        private ObservableCollection<Oeuvre> listOeuvresSélectionnée;
+        //private ObservableCollection<Oeuvre> listOeuvresSélectionnée;
 
-        public ObservableCollection<Oeuvre> ListOeuvresSélectionnée
+        //public ObservableCollection<Oeuvre> ListOeuvresSélectionnée
+        //{
+        //    get { return listOeuvresSélectionnée; }
+        //    set 
+        //    { 
+        //        listOeuvresSélectionnée = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
+        public ObservableCollection<Oeuvre> ListOeuvresParGenre
         {
-            get { return listOeuvresSélectionnée; }
-            set 
-            { 
-                listOeuvresSélectionnée = value;
-                OnPropertyChanged();
+            get
+            {
+                if(ListOeuvres.Keys.Count == 1)
+                {
+                    return null;
+                }
+                else return ListOeuvres[GenreSélectionné];
             }
         }
-
         public LinkedList<Serie> ListingSerie { get; private set; }
 
-        public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<int>> ListingDates { get; private set; }
-
-        private SortedSet<int> listFiltrage;
-
-        public SortedSet<int> ListFiltrage
+        public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<string>> ListingDates
         {
-            get { return listFiltrage; }
-            set { listFiltrage = value; }
+            get { return listingDates; }
+            set
+            {
+                listingDates = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ListingDatesParGenre));
+            }
+        }
+
+        private ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>> listingDates;
+
+        public ConcurrentObservableSortedSet<string> ListingDatesParGenre
+        {
+            get 
+            { 
+                if(GenreSélectionné != null)
+                {
+                    return ListingDates[GenreSélectionné];
+                }
+
+                return new ConcurrentObservableSortedSet<string>();
+            }
         }
 
 
@@ -71,7 +102,7 @@ namespace Class
         {
             ListOeuvres = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListingSerie = new LinkedList<Serie>();
-            ListingDates = new ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<int>>();
+            ListingDates = new ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>>();
         }
 
         public void chargeDonnées() // temporaire
@@ -98,7 +129,7 @@ namespace Class
             if (!ListOeuvres.ContainsKey(genre))
             {
                 ListOeuvres.Add(genre, new ObservableCollection<Oeuvre>());
-                ListingDates.Add(genre, new ConcurrentObservableSortedSet<int>());
+                ListingDates.Add(genre, new ConcurrentObservableSortedSet<string>() { "Toutes dates" });
                 return true;
             }
             else return false;
@@ -146,7 +177,7 @@ namespace Class
                     if (!value.Contains(oeuvre))
                     {
                         ListOeuvres[genre].Add(oeuvre);
-                        ListingDates[genre].Add(oeuvre.DateSortie.Year);
+                        ListingDates[genre].Add(oeuvre.DateSortie.Year.ToString());
                     }
                     res = true;
                 }
@@ -169,7 +200,7 @@ namespace Class
                 if (value.Contains(oeuvre))
                 {
                     value.Remove(oeuvre);
-                    CheckListDates(genre,oeuvre.DateSortie.Year);
+                    CheckListDates(genre,oeuvre.DateSortie.Year.ToString());
                     res = true;
                 }
             }
@@ -177,14 +208,14 @@ namespace Class
             return res;
         }
 
-        public void CheckListDates(Genre genre, int year)
+        public void CheckListDates(Genre genre, string year)
         {
             int check = 0;
 
             ListOeuvres.TryGetValue(genre, out ObservableCollection <Oeuvre> value);
             foreach(Oeuvre oeuvre in value)
             {
-                if(oeuvre.DateSortie.Year == year)
+                if(oeuvre.DateSortie.Year.ToString() == year)
                 {
                     check = 1;
                 }
@@ -216,28 +247,31 @@ namespace Class
             }
         }
 
-        public int ChangeGenreSélectionné(ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> données, string Textgenre)
+        public void ChangeGenreSélectionné(ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> données, string Textgenre)
         {
+
+            if (données.Count == 1)
+            {
+                GenreSélectionné = null;
+            }
+
             int index = Array.IndexOf(ListOeuvres.Keys.ToArray(), new Genre(Textgenre));
 
             Genre[] listingGenre = données.Keys.ToArray();
 
-            if (index == 0)
+            if (index == 0 && données.Count != 1)
             {
                 GenreSélectionné = listingGenre[1];
-                return 1;
             }
 
-            else if (index == (ListOeuvres.Count) - 1)
+            else if (index != 0 && index == (ListOeuvres.Count) - 1)
             {
                 GenreSélectionné = listingGenre[(ListOeuvres.Count) - 2];
-                return ((ListOeuvres.Count) - 2);
             }
 
-            else
+            else if (index != 0)
             {
                 GenreSélectionné = listingGenre[index + 1];
-                return (index + 1);
             } 
         }
     }
