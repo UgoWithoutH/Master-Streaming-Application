@@ -15,7 +15,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF"/>
+        <Button Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked"/>
         <TextBlock Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
         <Button Background="White" Grid.Column="3" Width="150" Height="30">
             <Grid>
@@ -24,11 +24,13 @@
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="images/icones/loupe.png" Margin="-15 0 0 0"/>
-                <TextBox Text="Recherche" Foreground="Black" Grid.Column="1" Margin="0 -4 0 0"/>
+                <Button Click="Recherche_Button_Clicked"  Background="Transparent" Width="60" Grid.Column="0" Margin="-25,-7,0,0">
+                    <Image Source="images/icones/loupe.png" />
+                </Button>
+                <TextBox Text="Recherche" Foreground="Black" Grid.Column="1" Margin="12,-4,0,0" HorizontalAlignment="Right" Width="67"/>
             </Grid>
         </Button>
-        <Button Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green"/>
+        <Button Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked"/>
 
         <materialDesign:PopupBox Grid.Column="5" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
             <StackPanel Width="150">
