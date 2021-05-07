@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -31,8 +32,10 @@ namespace Master_Streaming
             InitializeComponent();
             ListViewMenu.Visibility = Visibility.Collapsed;
             DataContext = manager;
-        } 
-
+            manager.GenreSélectionné = manager.ListOeuvres.Keys.FirstOrDefault();
+            uc_listSeries.filtrage.SelectedItem = "Toutes dates";
+            //uc_listSeries.trie.SelectedItem = "Alphabétique"; //Quand la liste sera faite pour se binde dessus
+        }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
@@ -59,13 +62,20 @@ namespace Master_Streaming
             if (e.AddedItems.Count != 0)
             {
                 manager.GenreSélectionné = (e.AddedItems[0] as Genre);
-                manager.ListOeuvresSélectionnée = manager.ListOeuvres[manager.GenreSélectionné];
-                //manager.ListFiltrage = manager.ListingDates[manager.GenreSélectionné];
-                ButtonOpenMenu.Visibility = Visibility.Visible;
-                ButtonCloseMenu.Visibility = Visibility.Collapsed;
-                buttonAddGenre.Visibility = Visibility.Collapsed;
-                buttonSuppGenre.Visibility = Visibility.Collapsed;
+                CollapsedVisibility();
+                uc_listSeries.filtrage.SelectedItem = "Toutes dates"; //valeur par défaut de la combobox du filtrage
+                /*uc_listSeries.trie.SelectedIndex = 0;*/ //valeur par défaut de la combobox du trie
             }
+        }
+
+        private void CollapsedVisibility()
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            buttonAddGenre.Visibility = Visibility.Collapsed;
+            buttonSuppGenre.Visibility = Visibility.Collapsed;
+            boxSuppGenre.Visibility = Visibility.Collapsed;
+            ListViewMenu.Visibility = Visibility.Collapsed;
         }
 
         private void AddGenreButton_Clicked(object sender, RoutedEventArgs e)
@@ -78,7 +88,6 @@ namespace Master_Streaming
 
         private void SuppGenreButton_Clicked(object sender, RoutedEventArgs e)
         {
-           
             boxAddGenre.Visibility = Visibility.Collapsed;
             boxSuppGenre.Visibility = Visibility.Visible;
             MaterialDesignThemes.Wpf.HintAssist.SetHint(boxSuppGenre, "Nom du genre à supprimer");
@@ -103,9 +112,7 @@ namespace Master_Streaming
                         MaterialDesignThemes.Wpf.HintAssist.SetHint(boxAddGenre,"Renseignez un nom valide");
                         boxAddGenre.Background = Brushes.Tomato;
                         return;
-                    }
-
-               
+                    }    
             }
         }
 
@@ -115,12 +122,14 @@ namespace Master_Streaming
 
             if (e.Key == Key.Return)
             {
-                if (manager.ListOeuvres.ContainsKey(new Genre(boxSuppGenre.Text)))
+                if (manager.ListOeuvres.ContainsKey(new Genre(boxSuppGenre.Text.ToUpper())))
                 {
-                    if (manager.GenreSélectionné.Nom.Equals(boxSuppGenre.Text))
+                    if (manager.GenreSélectionné.Nom.Equals(boxSuppGenre.Text.ToUpper()))
                     {
-                        int index = manager.ChangeGenreSélectionné(manager.ListOeuvres, boxSuppGenre.Text);
-                        ListViewMenu.SelectedItem = ListViewMenu.SelectedIndex - 1;
+                        manager.ChangeGenreSélectionné(manager.ListOeuvres, boxSuppGenre.Text);
+                        CollapsedVisibility();
+                        Storyboard sb = this.FindResource("CloseMenu") as Storyboard; //pour chercher la Storyboard (animation) dans MainWindow.xaml
+                        sb.Begin(); //lancer la Storyboard
                     }
                     manager.SupprimerGenre(new Genre(boxSuppGenre.Text));
                     boxSuppGenre.Text = null;

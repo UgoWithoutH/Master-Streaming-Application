@@ -50,7 +50,6 @@
         <EventTrigger RoutedEvent="ListView.SelectionChanged" SourceName="ListViewMenu">
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
-        
     </Window.Triggers>
 
 
