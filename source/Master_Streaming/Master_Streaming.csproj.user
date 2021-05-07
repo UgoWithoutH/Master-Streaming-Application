@@ -10,9 +10,6 @@
     <Compile Update="AjouterWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="RechercheWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="UC_header.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,9 +17,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UC_serie.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="WatchlistWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -33,9 +27,6 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="RechercheWindow.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="UC_header.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -43,9 +34,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UC_serie.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="WatchlistWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
