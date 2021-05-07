@@ -56,7 +56,7 @@ namespace Class
 
         public LinkedList<Serie> ListingSerie { get; private set; }
 
-        public SortedDictionary<Genre,SortedSet<int>> ListingDates { get; private set; }
+        public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<int>> ListingDates { get; private set; }
 
         private SortedSet<int> listFiltrage;
 
@@ -70,9 +70,8 @@ namespace Class
         public ProfilManager()
         {
             ListOeuvres = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
-            ListingDates = new SortedDictionary<Genre, SortedSet<int>>();
             ListingSerie = new LinkedList<Serie>();
-            ListingDates = new SortedDictionary<Genre,SortedSet<int>>();
+            ListingDates = new ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<int>>();
         }
 
         public void chargeDonnées() // temporaire
@@ -99,7 +98,7 @@ namespace Class
             if (!ListOeuvres.ContainsKey(genre))
             {
                 ListOeuvres.Add(genre, new ObservableCollection<Oeuvre>());
-                ListingDates.Add(genre, new SortedSet<int>());
+                ListingDates.Add(genre, new ConcurrentObservableSortedSet<int>());
                 return true;
             }
             else return false;
