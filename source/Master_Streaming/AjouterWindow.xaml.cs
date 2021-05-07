@@ -8,24 +8,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Master_Streaming
 {
     /// <summary>
-    /// Logique d'interaction pour UC_ajouter.xaml
+    /// Logique d'interaction pour AjouterWindow.xaml
     /// </summary>
-    public partial class UC_ajouter : UserControl
+    public partial class AjouterWindow : Window
     {
-        public UC_ajouter()
+        public AjouterWindow()
         {
             InitializeComponent();
-        }
-
-        private void BasicRatingBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<int> e)
-        {
-            
         }
     }
 }
