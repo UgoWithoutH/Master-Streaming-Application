@@ -60,7 +60,7 @@ namespace Master_Streaming
             {
                 manager.GenreSélectionné = (e.AddedItems[0] as Genre);
                 manager.ListOeuvresSélectionnée = manager.ListOeuvres[manager.GenreSélectionné];
-                manager.ListFiltrage = manager.ListingDates[manager.GenreSélectionné];
+                //manager.ListFiltrage = manager.ListingDates[manager.GenreSélectionné];
                 ButtonOpenMenu.Visibility = Visibility.Visible;
                 ButtonCloseMenu.Visibility = Visibility.Collapsed;
                 buttonAddGenre.Visibility = Visibility.Collapsed;

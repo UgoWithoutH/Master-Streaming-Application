@@ -41,10 +41,10 @@
             </Grid.ColumnDefinitions>
 
 
-            <ComboBox x:Name="filtrage" Grid.Column="2" ItemsSource="{Binding ListFiltrage}" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="filtrage_SelectionChanged">
+            <ComboBox x:Name="filtrage" Grid.Column="2" ItemsSource="{Binding ListingDates}" SelectedValuePath="Key" SelectedItem="{Binding GenreSélectionné}" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="filtrage_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Foreground="Black" FontSize="15"/>
+                        <TextBlock Foreground="Black" Text="{Binding}" FontSize="15"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
