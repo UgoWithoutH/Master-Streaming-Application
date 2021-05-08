@@ -6,7 +6,7 @@ namespace Class
 {
     public class Watchlist
     {
-        private List<OeuvreWatch> OeuvresVisionnees { get; set; }
+        public List<OeuvreWatch> OeuvresVisionnees { get; set; }
 
         public Watchlist()
         {

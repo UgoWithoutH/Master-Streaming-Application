@@ -30,5 +30,10 @@ namespace Master_Streaming
         {
             this.Close();
         }
+
+        private void Remove_From_Watchlist_Clicked(object sender, RoutedEventArgs e)
+        {
+            //Manager.MyWatchlist.SupprimerOeuvre();
+        }
     }
 }

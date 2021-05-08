@@ -106,7 +106,7 @@ namespace Class
             MyWatchlist = new Watchlist();
 
             /// temporaire, pour tester le Binding sur la Watchlist
-            MyWatchlist.AjouterOeuvre(new Serie("Elite", DateTime.Now, "C'est cool", 4, "/images/Drame/Enola Holmes.jpg", 52, new List<Auteur>() { new Auteur("Jean","Paul",Métier.Acteur), new Auteur("Paul","Jack",Métier.Cascadeur)}, new HashSet<Genre>() { new Genre("Drame") }));
+            MyWatchlist.AjouterOeuvre(new Serie("Elite", DateTime.Now, "C'est cool", 4, "/images/Drame/Enola Holmes.jpg", 52, null, new HashSet<Genre>() { new Genre("Drame") }));
             MyWatchlist.AjouterOeuvre(new Serie("Harry", new DateTime(1999, 01, 15), "C'est cool", null, "/images/Drame/Notre ete.jpg", 52, new HashSet<Genre>() { new Genre("Action"), new Genre("Drame")}));
         }
 

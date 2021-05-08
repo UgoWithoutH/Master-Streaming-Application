@@ -1,6 +1,8 @@
 ﻿using Class;
+using Swordfish.NET.Collections;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Test_Recherche
 {
@@ -8,16 +10,16 @@ namespace Test_Recherche
     {
         static void Main(string[] args)
         {
-            var ensemble = new Dictionary<Genre, List<Oeuvre>>();
+            var ensemble = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
 
-            var l1 = new List<Oeuvre>()
+            var l1 = new ObservableCollection<Oeuvre>()
             {
                 new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",0,"////",3, new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
                 new Serie("La casa de papel",DateTime.Now,"Série mêlant Drame et Action",null,"////",3, new HashSet<Genre>(){new Genre("Drame")}),
                 new Serie("La petite maison dans la prairie",new DateTime(2000,02,20),"Pas vraiement une série",null,"////",0, new HashSet<Genre>(){new Genre("Drame")}),
             };
 
-            var l2 = new List<Oeuvre>()
+            var l2 = new ObservableCollection<Oeuvre>()
             {
                 new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",null,"////",3, new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
                 new Serie("Une série",DateTime.Now,"Série mêlant Amour",null,"////",3, new HashSet<Genre>(){new Genre("Amour")}),
