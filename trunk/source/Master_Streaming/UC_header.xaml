@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid Background="#232323">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -15,19 +16,24 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
+        
         <Button Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked"/>
         <TextBlock Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
-        <Button Background="White" Grid.Column="3" Width="150" Height="30">
+        <Button Background="White" Grid.Column="3" Width="150" Height="33">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Click="Recherche_Button_Clicked"  Background="Transparent" Width="60" Grid.Column="0" Margin="-25,-7,0,0">
+                <Button Click="Recherche_Button_Clicked"  Background="Transparent" BorderBrush="Transparent" Width="60" Grid.Column="0" Margin="-25,-7,0,0">
                     <Image Source="images/icones/loupe.png" />
                 </Button>
-                <TextBox Text="Recherche" Foreground="Black" Grid.Column="1" Margin="12,-4,0,0" HorizontalAlignment="Right" Width="67"/>
+                <TextBox x:Name="entree_Recherche" Grid.Column="1"  HorizontalAlignment="Right" Foreground="Black">
+                    <materialDesign:HintAssist.Hint>
+                        <TextBlock Foreground="DarkSlateGray" VerticalAlignment="Center" FontSize="16">Recherche</TextBlock>
+                    </materialDesign:HintAssist.Hint>
+                </TextBox>
             </Grid>
         </Button>
         <Button Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked"/>

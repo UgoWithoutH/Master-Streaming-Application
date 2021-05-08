@@ -33,7 +33,7 @@
     </Window.Resources>
     
     <StackPanel>
-        <Button Width="100" HorizontalAlignment="Left" Margin="10 10 0 0" Content="Annuler" Background="Red" BorderBrush="{x:Null}"/>
+        <Button Width="100" HorizontalAlignment="Left" Margin="10 10 0 0" Content="Annuler" Background="Red" BorderBrush="{x:Null}" Click="Annuler_Button_Clicked"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>

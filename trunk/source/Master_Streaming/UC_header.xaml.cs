@@ -47,6 +47,10 @@ namespace Master_Streaming
         private void Recherche_Button_Clicked(object sender, RoutedEventArgs e)
         {
             var theRecherche = new RechercheWindow();
+
+            ///test Binding de la recherche
+            theRecherche.DataContext = URecherche.RechercherOeuvres(Manager.ListOeuvres, entree_Recherche.Text);
+
             theRecherche.Show();
         }
     }

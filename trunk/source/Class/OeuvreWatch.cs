@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Class
 {
-    class OeuvreWatch : Oeuvre
+    public class OeuvreWatch : Oeuvre
     {
         public DateTime TimeAdd { get; }
         public Oeuvre OriginalOeuvre { get; }

@@ -21,5 +21,10 @@ namespace Master_Streaming
         {
             InitializeComponent();
         }
+
+        private void Annuler_Button_Clicked (object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

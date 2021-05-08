@@ -6,11 +6,22 @@
         xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="WatchlistWindow" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="Image" x:Key="ImageBinding">
+            <Setter Property="Width" Value="250"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TextBlockBinding">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Resources>
+    
     <Grid Background="#313131">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
 
         <Button x:Name="back_to_menu" Height="40" Width="100" Background="AntiqueWhite" BorderThickness="1" BorderBrush="AliceBlue" Click="Back_To_Menu_Clicked"  VerticalAlignment="Top">
@@ -20,23 +31,32 @@
             </StackPanel>
         </Button>
 
-        <ListBox Grid.Column="1" ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="1">
+            <ListBox ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
 
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Image Source="{Binding OriginalOeuvre.ImageName}" Style="{StaticResource ImageBinding}"/>
-                        <TextBlock Text="{Binding OriginalOeuvre.Titre}" DockPanel.Dock="Bottom" Background="AliceBlue"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel  Orientation="Horizontal">
+                            <StackPanel>
+                                <Image Source="{Binding OriginalOeuvre.ImageName}" Style="{StaticResource ImageBinding}" Margin="0 25 0 0"/>
+                                <TextBlock Text="{Binding OriginalOeuvre.Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
+                            </StackPanel>
 
-        </ListBox>
-        
+                            <Button Background="Transparent" Click="Remove_From_Watchlist_Clicked" BorderBrush="Blue" BorderThickness="2" Margin="8 0 0 0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="MinusBox" Height="30" Foreground="Blue" Margin="0 -5 10 0"/>
+                                    <TextBlock Text="Remove from Watchlist" FontSize="20" Foreground="Blue"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
     </Grid>
 </Window>
