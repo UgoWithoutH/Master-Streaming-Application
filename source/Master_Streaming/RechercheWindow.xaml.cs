@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Class;
 
 namespace Master_Streaming
 {
@@ -17,9 +18,12 @@ namespace Master_Streaming
     /// </summary>
     public partial class RechercheWindow : Window
     {
+        public ProfilManager Manager => (App.Current as App).Pmanager;
+
         public RechercheWindow()
         {
             InitializeComponent();
+            DataContext = Manager;
         }
 
         private void Back_To_Menu_Clicked (object sender, RoutedEventArgs e)

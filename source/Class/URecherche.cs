@@ -16,6 +16,9 @@ namespace Class
         /// <returns>La liste des Oeuvres contenant au début de leur Titre la chaine de caractères</returns>
         public static ObservableCollection<Oeuvre> RechercherOeuvres(this ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> données, string chaine) //this pour faire une méthode d'extension
         {
+            if (chaine.Equals(""))
+                return null;
+
             var résultat = new ObservableCollection<Oeuvre>();
             ObservableCollection<Oeuvre> listVariable = null;
 

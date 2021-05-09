@@ -10,9 +10,11 @@ using System.Text;
 
 namespace Class
 {
-    public class ProfilManager : ObservableObject
+    public class ProfilManager : ObservableObject 
     {
         public ObservableCollection<Genre> ListGenres { get; private set; }
+
+        public ObservableCollection<Oeuvre> LastRecherche { get; set; }
 
         private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
 

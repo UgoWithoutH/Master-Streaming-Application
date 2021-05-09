@@ -33,7 +33,12 @@ namespace Master_Streaming
 
         private void Remove_From_Watchlist_Clicked(object sender, RoutedEventArgs e)
         {
-            //Manager.MyWatchlist.SupprimerOeuvre();
+            Manager.MyWatchlist.SupprimerOeuvre(sender as Oeuvre);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
