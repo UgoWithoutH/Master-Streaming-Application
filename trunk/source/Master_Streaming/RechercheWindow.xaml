@@ -7,11 +7,29 @@
         mc:Ignorable="d"
         Title="RechercheWindow" Height="450" Width="800">
 
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="title_style">
+            <Setter Property="Foreground" Value="Ivory"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TextBlockBinding">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="Image" x:Key="ImageBinding">
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Margin" Value="0 10 0 0"/>
+        </Style>
+    </Window.Resources>
+
     <Grid Background="#313131">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="0.2*"/>
         </Grid.ColumnDefinitions>
 
         <Button x:Name="back_to_menu" Height="40" Width="100" Background="AntiqueWhite" BorderThickness="1" BorderBrush="AliceBlue" Click="Back_To_Menu_Clicked"  VerticalAlignment="Top">
@@ -21,9 +39,11 @@
             </StackPanel>
         </Button>
 
-        <StackPanel>
-            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <ListBox x:Name="MylisteSerie" SelectedIndex="0" Background="#313131" BorderBrush="#313131">
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Text="Recherche" Style="{StaticResource title_style}"/>
+
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Column="1">
+                <ListBox ItemsSource="{Binding LastRecherche}" SelectedIndex="0" Background="#313131" BorderBrush="#313131">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>
@@ -32,8 +52,9 @@
 
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Margin="0 0 15 0">
-                                <TextBlock HorizontalAlignment="center" Text="{Binding Titre}"/>
+                            <StackPanel>
+                                <Image Source="{Binding ImageName}" Style="{StaticResource ImageBinding}"/>
+                                <TextBlock Text="{Binding Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

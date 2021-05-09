@@ -16,6 +16,13 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
+
+        <Style TargetType="TextBlock" x:Key="title_style">
+            <Setter Property="Foreground" Value="Ivory"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     
     <Grid Background="#313131">
@@ -31,32 +38,36 @@
             </StackPanel>
         </Button>
 
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="1">
-            <ListBox ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Text="Watchlist" Style="{StaticResource title_style}"/>
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel  Orientation="Horizontal">
-                            <StackPanel>
-                                <Image Source="{Binding OriginalOeuvre.ImageName}" Style="{StaticResource ImageBinding}" Margin="0 25 0 0"/>
-                                <TextBlock Text="{Binding OriginalOeuvre.Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
-                            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="1">
+                <ListBox ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
 
-                            <Button Background="Transparent" Click="Remove_From_Watchlist_Clicked" BorderBrush="Blue" BorderThickness="2" Margin="8 0 0 0">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <materialDesign:PackIcon Kind="MinusBox" Height="30" Foreground="Blue" Margin="0 -5 10 0"/>
-                                    <TextBlock Text="Remove from Watchlist" FontSize="20" Foreground="Blue"/>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel  Orientation="Horizontal">
+                                <StackPanel>
+                                    <Image Source="{Binding OriginalOeuvre.ImageName}" Style="{StaticResource ImageBinding}" Margin="0 25 0 0"/>
+                                    <TextBlock Text="{Binding OriginalOeuvre.Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
                                 </StackPanel>
-                            </Button>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
+
+                                <Button Background="Transparent" Click="Remove_From_Watchlist_Clicked" BorderBrush="Blue" BorderThickness="2" Margin="8 0 0 0">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <materialDesign:PackIcon Kind="MinusBox" Height="30" Foreground="Blue" Margin="0 -5 10 0"/>
+                                        <TextBlock Text="Remove from Watchlist" FontSize="20" Foreground="Blue"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </StackPanel>
     </Grid>
 </Window>
