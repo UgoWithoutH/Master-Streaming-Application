@@ -19,16 +19,42 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_Detail : UserControl
     {
-        ProfilManager PManager => (Application.Current as App).Pmanager;
+        ProfilManager manager => (Application.Current as App).Pmanager;
         public UC_Detail()
         {
             InitializeComponent();
-            DataContext = PManager.OeuvreSélectionnée;
+            DataContext = manager.OeuvreSélectionnée;
+            Text_BtnWatch();
+        }
+
+        private void Text_BtnWatch()
+        {
+            btn_watch.Content = GetText();
+        }
+
+        private string GetText()
+        {
+            return !manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)) ? "Ajouter à la Watchlist" : "Supprimer de la Watchlist"; 
+        }
+
+        private void btn_watch_Click(object sender, RoutedEventArgs e)
+        {
+            if (manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)))
+            {
+                manager.MyWatchlist.SupprimerOeuvre(manager.OeuvreSélectionnée);
+            }
+            else
+            {
+                manager.MyWatchlist.AjouterOeuvre(manager.OeuvreSélectionnée);
+            }
+            (sender as Button).Content = GetText();
         }
 
         private void Button_Click_chevron(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
         }
+
+        
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1200" MinHeight="800" MinWidth="1200">
+             d:DesignHeight="800" d:DesignWidth="1250" MinHeight="800" MinWidth="1250">
     
     <UserControl.Resources>
         <Style TargetType="Image" x:Key="ImageBinding">
@@ -19,20 +19,20 @@
     </UserControl.Resources>
 
     <Grid Background="#313131">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
-        <Button x:Name="back_to_menu" Height="40" Width="100" Background="AntiqueWhite" BorderThickness="1" BorderBrush="AliceBlue" VerticalAlignment="Top">
+        <Button Height="40" Width="100" Background="AntiqueWhite" BorderThickness="1" BorderBrush="AliceBlue" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Button_Click" Margin="15">
             <StackPanel Orientation="Horizontal" >
                 <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Foreground="Black"/>
                 <TextBlock Text="Retour" Foreground="Black"/>
             </StackPanel>
         </Button>
 
-        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Column="1">
-            <ListBox ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}">
+        <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="1">
+            <ListBox ItemsSource="{Binding OeuvresVisionnees}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
@@ -43,8 +43,8 @@
                     <DataTemplate>
                         <StackPanel  Orientation="Horizontal">
                             <StackPanel>
-                                <Image Source="{Binding OriginalOeuvre.ImageName}" Style="{StaticResource ImageBinding}" Margin="0 25 0 0"/>
-                                <TextBlock Text="{Binding OriginalOeuvre.Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
+                                <Image Source="{Binding ImageName}" Style="{StaticResource ImageBinding}" Margin="0 25 0 0"/>
+                                <TextBlock Text="{Binding Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
                             </StackPanel>
 
                             <Button Background="Transparent" BorderBrush="Blue" BorderThickness="2" Margin="8 0 0 0">

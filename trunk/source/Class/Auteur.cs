@@ -6,7 +6,7 @@ namespace Class
 {
     public class Auteur : IEquatable<Auteur>
     {
-        public string Nom { get; private set; }
+        public string Nom { get; private set; } // passer public pour modif
 
         public string Prenom { get; private set; }
 

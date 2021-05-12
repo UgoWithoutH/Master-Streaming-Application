@@ -19,11 +19,17 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_Watchlist : UserControl
     {
-        public ProfilManager Manager => (App.Current as App).Pmanager;
+        public ProfilManager manager => (App.Current as App).Pmanager;
 
         public UC_Watchlist()
         {
             InitializeComponent();
+            DataContext = manager.MyWatchlist;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
     }
 }

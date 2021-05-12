@@ -59,7 +59,6 @@ namespace Master_Streaming
         {
             ContentControlDetail.Visibility = Visibility.Visible;
             ContentControlDetail.Content = new UC_Detail();
-            (ContentControlDetail.Content as UC_Detail).btn_retour.Visibility = Visibility.Hidden;
         }
     }
 }
