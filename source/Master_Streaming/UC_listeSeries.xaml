@@ -49,9 +49,12 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
 
-            <ComboBox x:Name="trie" Grid.Column="3" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="trie_SelectionChanged">
-                <TextBlock Foreground="Black" FontSize="15">Alphabétique</TextBlock>
-                <TextBlock Foreground="Black" FontSize="15">Note</TextBlock>
+            <ComboBox x:Name="trie" ItemsSource="{Binding ListingTris}" Grid.Column="3" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="trie_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Foreground="Black" Text="{Binding}" FontSize="15"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
             </ComboBox>
 
             <TextBlock x:Name="texteGenre" Text="{Binding GenreSélectionné.Nom}" FontFamily="Comic Sans MS"/>
@@ -60,28 +63,27 @@
 
         <StackPanel>
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                <ListBox x:Name="MylisteSerie" ItemsSource="{Binding ListOeuvresParGenre}" SelectedIndex="0" Background="#313131" BorderBrush="#313131">
+                <ListBox x:Name="MylisteSerie" ItemsSource="{Binding ListFiltrée}" SelectedItem="{Binding OeuvreSélectionnée}" SelectedIndex="0" Background="#313131" BorderBrush="#313131" MouseDoubleClick="MylisteSerie_MouseDoubleClick">
         <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel/>
             </ItemsPanelTemplate>
         </ListBox.ItemsPanel>
-         
-                <ListBox.ItemTemplate>
-                <DataTemplate>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
                             <StackPanel Margin="0 0 15 0">
                                 <Image Source="{Binding ImageName}" Style="{StaticResource ImageBinding}"/>
                                 <TextBlock HorizontalAlignment="center" Text="{Binding Titre}" Style="{StaticResource TextBlockBinding}"/>
                             </StackPanel>
                         </DataTemplate>
-                </ListBox.ItemTemplate>
-
-                
-                
-
-        </ListBox>
+                    </ListBox.ItemTemplate>
+                </ListBox>
         </ScrollViewer>
         </StackPanel>
+        <ContentControl x:Name="ContentControlDetail">
+
+        </ContentControl>
     </StackPanel>
     
 </UserControl>
