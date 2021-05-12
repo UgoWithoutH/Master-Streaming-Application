@@ -12,7 +12,11 @@ namespace Class
         public DateTime DateSortie { get; set; }
 
         public int? Note {
-            get => note;
+            get
+            {
+                if (note == null) return 0;
+                else return note;
+            }
             set
             {
                 if (value < 0) note = 0;

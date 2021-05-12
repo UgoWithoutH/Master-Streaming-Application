@@ -1,19 +1,13 @@
 ﻿using Class;
-using Swordfish.NET.Collections.Auxiliary;
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -21,16 +15,21 @@ using System.Windows.Shapes;
 namespace Master_Streaming
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour UC_Ajouter.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UC_Ajouter : UserControl
     {
-        public ProfilManager manager => (App.Current as App).Pmanager;
+        ProfilManager PManager = (Application.Current as App).Pmanager;
 
-        public MainWindow()
+
+        public UC_Ajouter()
         {
             InitializeComponent();
         }
- 
+
+        private void Button_Annul_Click(object sender, RoutedEventArgs e)
+        {
+            (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+        }
     }
 }

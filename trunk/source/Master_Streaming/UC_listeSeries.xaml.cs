@@ -1,6 +1,12 @@
 ﻿using Class;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,26 +29,37 @@ namespace Master_Streaming
         public UC_listeSeries()
         {
             InitializeComponent();
-
-            var listSerie = new List<Serie>()
-            {
-                new Serie("Des vies froissees",new DateTime(2021,03,12),"description_test", 2, "/images/Drame/Des vies froissees.jpg",1,null /*Hashset<Genre> à ajouter*/),
-                new Serie("Enola Holmes",new DateTime(2020,07,23),"description_test", 3, "/images/Drame/Enola Holmes.jpg",1,null /*idem*/),
-                new Serie("La mission",new DateTime(2020,01,21),"description_test", 4, "/images/Drame/La mission.jpg",1,null /*idem*/),
-                new Serie("Notre ete",new DateTime(2021,03,25),"description_test", 5, "/images/Drame/Notre ete.jpg",1,null /*idem*/),
-            };
-
+            filtrage.SelectedItem = "Toutes dates";
+            trie.SelectedItem = "Alphabétique";
             DataContext = manager;
         }
 
         private void filtrage_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(filtrage.SelectedItem != null)
+            {
+                ContentControlDetail.Visibility = Visibility.Hidden;
+                manager.Filtrage(filtrage.SelectedItem.ToString());
+                trie.SelectedItem = "Alphabétique";
+            }
+                
         }
 
         private void trie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (trie.SelectedItem != null)
+            {
+                ContentControlDetail.Visibility = Visibility.Hidden;
+                manager.tri(trie.SelectedItem.ToString());
+            }
 
+        }
+
+        private void MylisteSerie_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ContentControlDetail.Visibility = Visibility.Visible;
+            ContentControlDetail.Content = new UC_Detail();
+            (ContentControlDetail.Content as UC_Detail).btn_retour.Visibility = Visibility.Hidden;
         }
     }
 }

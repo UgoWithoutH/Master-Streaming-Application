@@ -29,7 +29,9 @@ namespace Class
             }
         }
 
-        public Oeuvre OeuvreSélectionnée { get; private set; }
+        public ObservableCollection<Oeuvre> ListFiltrée { get; private set; }
+
+        public Oeuvre OeuvreSélectionnée { get; set; }
 
 
         private Genre genreSélectionné;
@@ -47,18 +49,6 @@ namespace Class
         }
 
         public Watchlist MyWatchlist { get; set; }
-
-        //private ObservableCollection<Oeuvre> listOeuvresSélectionnée;
-
-        //public ObservableCollection<Oeuvre> ListOeuvresSélectionnée
-        //{
-        //    get { return listOeuvresSélectionnée; }
-        //    set 
-        //    { 
-        //        listOeuvresSélectionnée = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
 
         public ObservableCollection<Oeuvre> ListOeuvresParGenre
         {
@@ -99,13 +89,17 @@ namespace Class
             }
         }
 
+        public ObservableCollection<string> ListingTris { get; private set; }
+
 
         public ProfilManager()
         {
             ListOeuvres = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListingSerie = new LinkedList<Serie>();
             ListingDates = new ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>>();
+            ListFiltrée = new ObservableCollection<Oeuvre>();
             MyWatchlist = new Watchlist();
+            ListingTris = new ObservableCollection<string>() { "Alphabétique", "Notes" };
 
             /// temporaire, pour tester le Binding sur la Watchlist
             MyWatchlist.AjouterOeuvre(new Serie("Elite", DateTime.Now, "C'est cool", 4, "/images/Drame/Enola Holmes.jpg", 52, null, new HashSet<Genre>() { new Genre("Drame") }));
@@ -120,8 +114,8 @@ namespace Class
             AjouterGenre(new Genre("Action"));
             AjouterOeuvre(new Serie("Des vies froissees", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", null, "/images/Drame/Des vies froissees.jpg", 3, new HashSet<Genre>() { new Genre("Humour"), new Genre("Romance") }));
             AjouterOeuvre(new Serie("Enola Holmes", DateTime.Now, "Série mêlant Drame et Action", null, "/images/Drame/Enola Holmes.jpg", 3, new HashSet<Genre>() { new Genre("Aventure") }));
-            AjouterOeuvre(new Serie("La mission", new DateTime(2000, 02, 20), "Pas vraiement une série", null, "/images/Drame/La mission.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
-            AjouterOeuvre(new Serie("Notre ete", new DateTime(2000, 02, 20), "Pas vraiement une série", null, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
+            AjouterOeuvre(new Serie("La mission", new DateTime(2000, 02, 20), "Pas vraiment une série", null, "/images/Drame/La mission.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
+            AjouterOeuvre(new Serie("Notre été", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
         }
 
         /// <summary>
@@ -252,6 +246,45 @@ namespace Class
             {
                 ListOeuvres[genre].Add(oeuvre);
             }
+        }
+
+        public void Filtrage(string filtre)
+        {
+            if(filtre.ToUpper().Equals("TOUTES DATES"))
+            {
+                ListFiltrée = ListOeuvresParGenre;
+            }
+            else 
+            {
+                int dateFiltre = int.Parse(filtre);
+                ListFiltrée = new ObservableCollection<Oeuvre>();
+                foreach (Oeuvre oeuvre in ListOeuvresParGenre.ToList())
+                {
+                    if (oeuvre.DateSortie.Year == dateFiltre)
+                        ListFiltrée.Add(oeuvre);
+                }
+            }
+            OnPropertyChanged(nameof(ListFiltrée));
+        }
+
+        public void tri(string tri)
+        {
+            IEnumerable<Oeuvre> liste = null;
+
+            if (tri.Equals("Alphabétique"))
+            {
+                liste = ListFiltrée.OrderBy(o => o.Titre);
+            }
+            else if (tri.Equals("Notes"))
+            {
+                liste = ListFiltrée.OrderBy(o => o.Note).Reverse();
+            }
+            ListFiltrée = new ObservableCollection<Oeuvre>();
+            foreach(Oeuvre o in liste)
+            {
+                ListFiltrée.Add(o);
+            }
+            OnPropertyChanged(nameof(ListFiltrée));
         }
 
         public void ChangeGenreSélectionné(ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> données, string Textgenre)
