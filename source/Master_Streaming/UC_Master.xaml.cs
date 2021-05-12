@@ -125,7 +125,9 @@ namespace Master_Streaming
                     if (manager.GenreSélectionné.Nom.Equals(boxSuppGenre.Text.ToUpper()))
                     {
                         manager.ChangeGenreSélectionné(manager.ListOeuvres, boxSuppGenre.Text);
+                        manager.Filtrage(uc_listSeries.filtrage.SelectedItem as string);
                         CollapsedVisibility();
+                        uc_listSeries.ContentControlDetail.Visibility = Visibility.Hidden;
                         Storyboard sb = this.FindResource("CloseMenu") as Storyboard; //pour chercher la Storyboard (animation) dans MainWindow.xaml
                         sb.Begin(); //lancer la Storyboard
                     }

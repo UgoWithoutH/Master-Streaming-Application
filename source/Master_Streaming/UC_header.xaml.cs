@@ -39,15 +39,29 @@ namespace Master_Streaming
 
         private void Watchlist_Button_Clicked(object sender, RoutedEventArgs e)
         {
-            //var theWatchlist = new WatchlistWindow();
-            //theWatchlist.Show();
+            (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Watchlist();
         }
 
-        private void Recherche_Button_Clicked(object sender, RoutedEventArgs e)
+        private void Recherche()
         {
-            //var theRecherche = new RechercheWindow();
-            /////test Binding de la recherche
-            //theRecherche.DataContext = URecherche.RechercherOeuvres(Manager.ListOeuvres, entree_Recherche.Text);
+            if (!String.IsNullOrWhiteSpace(entree_Recherche.Text))
+            {
+                (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Recherche(entree_Recherche.Text);
+                Manager.ListRecherche = Manager.Recherche(entree_Recherche.Text);
+            }
+        }
+
+        private void Enter_Recherche(object sender, RoutedEventArgs e)
+        {
+            Recherche();
+        }
+
+        private void entree_Recherche_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Recherche();
+            }
         }
     }
 }

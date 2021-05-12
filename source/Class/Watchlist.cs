@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Swordfish.NET.Collections;
+using System;
 
 using System.Collections.Generic;
 
@@ -12,13 +13,13 @@ namespace Class
 
     {
 
-        public List<OeuvreWatch> OeuvresVisionnees { get; set; }
+        public ConcurrentObservableSortedSet<OeuvreWatch> OeuvresVisionnees { get; private set; }
 
         public Watchlist()
 
         {
 
-            OeuvresVisionnees = new List<OeuvreWatch>();
+            OeuvresVisionnees = new ConcurrentObservableSortedSet<OeuvreWatch>();
 
         }
 
@@ -28,7 +29,7 @@ namespace Class
 
             int nbInWatchlistBefore = OeuvresVisionnees.Count;
 
-            OeuvresVisionnees.Add(new OeuvreWatch(DateTime.Now, o));
+            OeuvresVisionnees.Add(new OeuvreWatch(DateTime.Now,o));
 
             int nbInWatchlistAfter = OeuvresVisionnees.Count;
 
@@ -42,7 +43,7 @@ namespace Class
 
             foreach (OeuvreWatch ow in OeuvresVisionnees)
 
-                if (ow.OriginalOeuvre.Equals(o))
+                if (ow.Equals(o))
 
                     return OeuvresVisionnees.Remove(ow);
 

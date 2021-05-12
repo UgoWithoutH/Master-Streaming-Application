@@ -6,12 +6,22 @@
              xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Border Padding="50 0 50 0" BorderBrush="White" BorderThickness="1">
+
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Border Padding="50 0 5 0" BorderBrush="White" BorderThickness="1" Margin="50 0 50 0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition/>
@@ -21,7 +31,9 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="btn_retour" Content="Retour" Width="100" Background="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15 10 0 0"/>
+            <!--<Button x:Name="btn_retour" Content="Retour" Width="100" Background="Black" BorderBrush="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15 10 0 0"/>-->
+
+            <Button x:Name="btn_watch" Grid.Column="2" Width="200" Background="CadetBlue" BorderBrush="White" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 10 15 0" Click="btn_watch_Click"/>
 
             <Button Width="200" Grid.Column="1" VerticalAlignment="Top" Margin="0 5 0 0" Click="Button_Click_chevron">
                 <Button.Content>

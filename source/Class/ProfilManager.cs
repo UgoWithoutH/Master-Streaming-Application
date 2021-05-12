@@ -14,8 +14,6 @@ namespace Class
     {
         public ObservableCollection<Genre> ListGenres { get; private set; }
 
-        public ObservableCollection<Oeuvre> LastRecherche { get; set; }
-
         private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
 
         public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres
@@ -93,6 +91,7 @@ namespace Class
 
         public ObservableCollection<string> ListingTris { get; private set; }
 
+        public ObservableCollection<Oeuvre> ListRecherche { get; set; }
 
         public ProfilManager()
         {
@@ -118,6 +117,9 @@ namespace Class
             AjouterOeuvre(new Serie("Enola Holmes", DateTime.Now, "Série mêlant Drame et Action", null, "/images/Drame/Enola Holmes.jpg", 3, new HashSet<Genre>() { new Genre("Aventure") }));
             AjouterOeuvre(new Serie("La mission", new DateTime(2000, 02, 20), "Pas vraiment une série", null, "/images/Drame/La mission.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
             AjouterOeuvre(new Serie("Notre été", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
+            AjouterOeuvre(new Serie("Notre hiver", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
+            AjouterOeuvre(new Serie("Notre automn", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
+            AjouterOeuvre(new Serie("Notre printemps", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new HashSet<Genre>() { new Genre("Action") }));
         }
 
         /// <summary>
@@ -230,25 +232,25 @@ namespace Class
             }
         }
 
-        public void TrierOrdreAlph(Genre genre)
-        {
-            IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Titre);
-            ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
-            foreach (Oeuvre oeuvre in res)
-            {
-                ListOeuvres[genre].Add(oeuvre);
-            }
-        }
+        //public void TrierOrdreAlph(Genre genre)
+        //{
+        //    IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Titre);
+        //    ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
+        //    foreach (Oeuvre oeuvre in res)
+        //    {
+        //        ListOeuvres[genre].Add(oeuvre);
+        //    }
+        //}
 
-        public void TrierNotes(Genre genre)
-        {
-            IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre);
-            ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
-            foreach (Oeuvre oeuvre in res)
-            {
-                ListOeuvres[genre].Add(oeuvre);
-            }
-        }
+        //public void TrierNotes(Genre genre)
+        //{
+        //    IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre);
+        //    ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
+        //    foreach (Oeuvre oeuvre in res)
+        //    {
+        //        ListOeuvres[genre].Add(oeuvre);
+        //    }
+        //}
 
         public void Filtrage(string filtre)
         {
@@ -259,12 +261,13 @@ namespace Class
             else 
             {
                 int dateFiltre = int.Parse(filtre);
-                ListFiltrée = new ObservableCollection<Oeuvre>();
-                foreach (Oeuvre oeuvre in ListOeuvresParGenre.ToList())
-                {
-                    if (oeuvre.DateSortie.Year == dateFiltre)
-                        ListFiltrée.Add(oeuvre);
-                }
+                ListFiltrée = new ObservableCollection<Oeuvre>(); // faire Clear() et Add() si pas null
+                ListFiltrée.AddRange(ListOeuvresParGenre.Where(oeuvre => oeuvre.DateSortie.Year == dateFiltre));
+                //foreach (Oeuvre oeuvre in ListOeuvresParGenre.ToList())
+                //{
+                //    if (oeuvre.DateSortie.Year == dateFiltre)
+                //        ListFiltrée.Add(oeuvre);
+                //}
             }
             OnPropertyChanged(nameof(ListFiltrée));
         }
@@ -275,14 +278,14 @@ namespace Class
 
             if (tri.Equals("Alphabétique"))
             {
-                liste = ListFiltrée.OrderBy(o => o.Titre);
+                liste = ListFiltrée.OrderBy(oeuvre => oeuvre.Titre);
             }
             else if (tri.Equals("Notes"))
             {
-                liste = ListFiltrée.OrderBy(o => o.Note).Reverse();
+                liste = ListFiltrée.OrderByDescending(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre); //décroissant
             }
             ListFiltrée = new ObservableCollection<Oeuvre>();
-            foreach(Oeuvre o in liste)
+            foreach(Oeuvre o in liste) //Addrange
             {
                 ListFiltrée.Add(o);
             }
@@ -314,7 +317,12 @@ namespace Class
             else if (index != 0)
             {
                 GenreSélectionné = listingGenre[index + 1];
-            } 
+            }
+        }
+
+        public ObservableCollection<Oeuvre> Recherche(string chaine)
+        {
+            return ListOeuvres.RechercherOeuvres(chaine);
         }
     }
 }
