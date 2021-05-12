@@ -29,7 +29,6 @@ namespace Class
             }
         }
 
-        public ObservableCollection<Oeuvre> ListFiltrée { get; private set; }
 
         public Oeuvre OeuvreSélectionnée { get; set; }
 
@@ -61,6 +60,9 @@ namespace Class
                 else return ListOeuvres[GenreSélectionné];
             }
         }
+
+        public ObservableCollection<Oeuvre> ListFiltrée { get; private set; }
+
         public LinkedList<Serie> ListingSerie { get; private set; }
 
         public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<string>> ListingDates
