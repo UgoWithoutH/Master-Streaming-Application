@@ -10,6 +10,9 @@
     <Compile Update="UC_Ajouter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="UC_ChoixProfil.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UC_Detail.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,9 +23,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UC_Master.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="UC_Recherche.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UC_serie.xaml.cs">
@@ -39,6 +39,9 @@
     <Page Update="UC_Ajouter.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="UC_ChoixProfil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="UC_Detail.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -49,9 +52,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UC_Master.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UC_Recherche.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UC_serie.xaml">
