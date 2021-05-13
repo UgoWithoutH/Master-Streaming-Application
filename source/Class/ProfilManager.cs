@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Class
 {
-    public class ProfilManager : ObservableObject 
+    public class ProfilManager : ObservableObject, IComparable
     {
         public ObservableCollection<Genre> ListGenres { get; private set; }
 
@@ -93,8 +93,11 @@ namespace Class
 
         public ObservableCollection<Oeuvre> ListRecherche { get; set; }
 
-        public ProfilManager()
+        public string Nom { get; private set; }
+
+        public ProfilManager(string nom)
         {
+            Nom = nom;
             ListOeuvres = new ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>>();
             ListingSerie = new LinkedList<Serie>();
             ListingDates = new ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>>();
@@ -323,6 +326,21 @@ namespace Class
         public ObservableCollection<Oeuvre> Recherche(string chaine)
         {
             return ListOeuvres.RechercherOeuvres(chaine);
+        }
+
+        int IComparable.CompareTo(object obj)
+        {
+            if (!(obj is ProfilManager))
+            {
+                throw new ArgumentException("Argument is not a ProfilManager", "obj");
+            }
+            ProfilManager otherpm = obj as ProfilManager;
+            return this.CompareTo(otherpm);
+        }
+
+        public int CompareTo(ProfilManager other)
+        {
+            return Nom.CompareTo(other.Nom);
         }
     }
 }

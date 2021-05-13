@@ -29,7 +29,7 @@ namespace Master_Streaming
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_ChoixProfil();
         }
 
         private void Ajouter_Button_Clicked(object sender, RoutedEventArgs e)
