@@ -30,7 +30,7 @@ namespace Master_Streaming
 
         private void MylisteRecherche_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            manager.OeuvreSélectionnée = (sender as ListBox).SelectedItem as Oeuvre; // SelectedItem="{Binding OeuvreSélectionée}" ne marche pas car une autre listBox possède ce binding, ça n'actualise pas OeuvreSélectionée
+            manager.OeuvreSélectionnée = (sender as ListBox).SelectedItem as Oeuvre; // SelectedItem="{Binding OeuvreSélectionée}" ne marche pas au tout premier doubleckick avec SelectedItem en xaml
             ContentControlDetailRecherche.Visibility = Visibility.Visible;
             ContentControlDetailRecherche.Content = new UC_Detail();
         }

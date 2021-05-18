@@ -41,6 +41,7 @@ namespace Class
                 genreSélectionné = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ListingDatesParGenre));
+                //OnPropertyChanged(nameof(ListingTris));
                 OnPropertyChanged(nameof(ListOeuvresParGenre));
             }
         }
@@ -264,14 +265,8 @@ namespace Class
             else 
             {
                 int dateFiltre = int.Parse(filtre);
-                //ListFiltrée = new ObservableCollection<Oeuvre>(); // faire Clear() et Add() si pas null
-                ListFiltrée.Clear();
+                ListFiltrée = new ObservableCollection<Oeuvre>(); //Dans notre cas on ne peut pas utiliser clear() car ListFiltrée et ListOeuvresParGenre pointe sur la même zone mémoire dans le tas
                 ListFiltrée.AddRange(ListOeuvresParGenre.Where(oeuvre => oeuvre.DateSortie.Year == dateFiltre));
-                //foreach (Oeuvre oeuvre in ListOeuvresParGenre.ToList())
-                //{
-                //    if (oeuvre.DateSortie.Year == dateFiltre)
-                //        ListFiltrée.Add(oeuvre);
-                //}
             }
             OnPropertyChanged(nameof(ListFiltrée));
         }
@@ -289,10 +284,6 @@ namespace Class
                 liste = ListFiltrée.OrderByDescending(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre); //décroissant
             }
             ListFiltrée = new ObservableCollection<Oeuvre>();
-            //foreach(Oeuvre o in liste) //Addrange
-            //{
-            //    ListFiltrée.Add(o);
-            //}
             ListFiltrée.AddRange(liste);
             OnPropertyChanged(nameof(ListFiltrée));
         }

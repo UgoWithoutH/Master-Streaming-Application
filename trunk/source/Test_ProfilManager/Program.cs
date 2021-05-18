@@ -1,4 +1,5 @@
 ﻿using Class;
+using Swordfish.NET.Collections;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ namespace Test_ProfilManager
     {
         static void Main(string[] args)
         {
-            ProfilManager PManager = new ProfilManager();
+            ProfilManager PManager = new ProfilManager("test");
 
             PManager.AjouterGenre(new Genre("Drame"));
             PManager.AjouterGenre(new Genre("Action"));
@@ -36,12 +37,12 @@ namespace Test_ProfilManager
 
 
             Console.WriteLine("\nListe des Dates :");
-            foreach (KeyValuePair<Genre,SortedSet<int>> kpv in PManager.ListingDates)
+            foreach (KeyValuePair<Genre, ConcurrentObservableSortedSet<string>> kpv in PManager.ListingDates)
             {
                 Console.Write($"Key : {kpv.Key} value : \n");
-                foreach (int i in kpv.Value)
+                foreach (string chaine in kpv.Value)
                 {
-                    Console.WriteLine($"{i}");
+                    Console.WriteLine($"{chaine}");
                 }
             }
 
@@ -57,12 +58,12 @@ namespace Test_ProfilManager
             }
 
             Console.WriteLine("\nListe des Dates :");
-            foreach (KeyValuePair<Genre, SortedSet<int>> kpv in PManager.ListingDates)
+            foreach (KeyValuePair<Genre, ConcurrentObservableSortedSet<string>> kpv in PManager.ListingDates)
             {
                 Console.Write($"Key : {kpv.Key} value : \n");
-                foreach (int i in kpv.Value)
+                foreach (string chaine in kpv.Value)
                 {
-                    Console.WriteLine($"{i}");
+                    Console.WriteLine($"{chaine}");
                 }
             }
 
@@ -78,12 +79,12 @@ namespace Test_ProfilManager
             }
 
             Console.WriteLine("\nListe des Dates :");
-            foreach (KeyValuePair<Genre, SortedSet<int>> kpv in PManager.ListingDates)
+            foreach (KeyValuePair<Genre, ConcurrentObservableSortedSet<string>> kpv in PManager.ListingDates)
             {
                 Console.Write($"Key : {kpv.Key} value : \n");
-                foreach (int i in kpv.Value)
+                foreach (string chaine in kpv.Value)
                 {
-                    Console.WriteLine($"{i}");
+                    Console.WriteLine($"{chaine}");
                 }
             }
 

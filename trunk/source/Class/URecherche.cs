@@ -1,7 +1,9 @@
 ﻿using Swordfish.NET.Collections;
+using Swordfish.NET.Collections.Auxiliary;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace Class
@@ -29,10 +31,10 @@ namespace Class
                     if (oeuvre.Titre.ToUpper().StartsWith(chaine.ToUpper()) && !résultat.Contains(oeuvre))
                         résultat.Add(oeuvre);
                 }
-                
             }
-
-            return résultat;
+            IEnumerable<Oeuvre> résultatTemporaire = résultat.OrderBy(oeuvre => oeuvre.Titre);
+             
+            return new ObservableCollection<Oeuvre>(résultatTemporaire); //on ne peut pas clear()
         }
     }
 }
