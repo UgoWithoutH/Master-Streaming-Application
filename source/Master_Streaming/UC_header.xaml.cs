@@ -19,17 +19,20 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_header : UserControl
     {
-        public ProfilManager Manager => (App.Current as App).Pmanager;
+        public MainManager Mmanager => (App.Current as App).Mmanager;
+
+        public ProfilManager Pmanager => (App.Current as App).Pmanager;
 
         public UC_header()
         {
             InitializeComponent();
-            DataContext = Manager;
+            DataContext = Pmanager;
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_ChoixProfil();
+            Mmanager.Deconnexion();
         }
 
         private void Ajouter_Button_Clicked(object sender, RoutedEventArgs e)
@@ -47,7 +50,7 @@ namespace Master_Streaming
             if (!String.IsNullOrWhiteSpace(entree_Recherche.Text))
             {
                 (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Recherche(entree_Recherche.Text);
-                Manager.ListRecherche = Manager.Recherche(entree_Recherche.Text);
+                Pmanager.ListRecherche = Pmanager.Recherche(entree_Recherche.Text);
             }
         }
 

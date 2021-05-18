@@ -42,7 +42,7 @@ namespace Class
             return false;
         }
 
-        public void Deconnexion(string nom)
+        public void Deconnexion()
         {
             ProfilCourant = null;
         }
