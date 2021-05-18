@@ -29,7 +29,7 @@ namespace Master_Streaming
         public UC_listeSeries()
         {
             InitializeComponent();
-            filtrage.SelectedItem = "Toutes dates"; //sert à rien --> car null
+            filtrage.SelectedItem = "Toutes dates";
             trie.SelectedItem = "Alphabétique";
             DataContext = manager;
         }
