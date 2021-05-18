@@ -264,7 +264,8 @@ namespace Class
             else 
             {
                 int dateFiltre = int.Parse(filtre);
-                ListFiltrée = new ObservableCollection<Oeuvre>(); // faire Clear() et Add() si pas null
+                //ListFiltrée = new ObservableCollection<Oeuvre>(); // faire Clear() et Add() si pas null
+                ListFiltrée.Clear();
                 ListFiltrée.AddRange(ListOeuvresParGenre.Where(oeuvre => oeuvre.DateSortie.Year == dateFiltre));
                 //foreach (Oeuvre oeuvre in ListOeuvresParGenre.ToList())
                 //{
@@ -288,10 +289,11 @@ namespace Class
                 liste = ListFiltrée.OrderByDescending(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre); //décroissant
             }
             ListFiltrée = new ObservableCollection<Oeuvre>();
-            foreach(Oeuvre o in liste) //Addrange
-            {
-                ListFiltrée.Add(o);
-            }
+            //foreach(Oeuvre o in liste) //Addrange
+            //{
+            //    ListFiltrée.Add(o);
+            //}
+            ListFiltrée.AddRange(liste);
             OnPropertyChanged(nameof(ListFiltrée));
         }
 

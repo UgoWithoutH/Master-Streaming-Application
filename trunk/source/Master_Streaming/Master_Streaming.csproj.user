@@ -10,9 +10,6 @@
     <Compile Update="UC_Ajouter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UC_ChoixProfil.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="UC_Detail.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,9 +34,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UC_Ajouter.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UC_ChoixProfil.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UC_Detail.xaml">
