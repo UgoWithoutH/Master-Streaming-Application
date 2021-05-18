@@ -29,7 +29,7 @@ namespace Master_Streaming
         public UC_listeSeries()
         {
             InitializeComponent();
-            filtrage.SelectedItem = "Toutes dates";
+            filtrage.SelectedItem = "Toutes dates"; //sert à rien --> car null
             trie.SelectedItem = "Alphabétique";
             DataContext = manager;
         }
@@ -40,7 +40,9 @@ namespace Master_Streaming
             {
                 ContentControlDetail.Visibility = Visibility.Hidden;
                 manager.Filtrage(filtrage.SelectedItem.ToString());
-                trie.SelectedItem = "Alphabétique";
+                trie.SelectedItem = manager.ListingTris.FirstOrDefault(); //ne déclanche par l'évévenement trie_SelectionChanged [attention]
+                if(trie.SelectedItem != null)
+                    manager.tri(trie.SelectedItem.ToString()); //pour relancer le trie à chaque filtrage (qui est alphabétique par défaut). trie.SelectedItem est null a la première ouverture des données d'un profil utilisateur
             }
                 
         }

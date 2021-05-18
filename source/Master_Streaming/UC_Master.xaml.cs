@@ -59,8 +59,9 @@ namespace Master_Streaming
                 manager.GenreSélectionné = (e.AddedItems[0] as Genre);
                 CollapsedVisibility();
                 uc_listSeries.filtrage.SelectedItem = "Toutes dates"; //valeur par défaut de la combobox du filtrage
+                uc_listSeries.trie.SelectedItem = "Alphabétique"; //valeur par défaut de la combobox du tri
                 manager.Filtrage(uc_listSeries.filtrage.SelectedItem as string);
-                /*uc_listSeries.trie.SelectedIndex = 0;*/ //valeur par défaut de la combobox du trie
+                manager.tri(uc_listSeries.trie.SelectedItem as string);
                 uc_listSeries.ContentControlDetail.Visibility = Visibility.Hidden;
             }
         }
