@@ -19,7 +19,7 @@ namespace Class
 
         public bool AjouteProfil(string nom)
         {
-            if (!nom.Equals(""))
+            if (!string.IsNullOrWhiteSpace(nom))
             {
                 ListProfils.Add(new ProfilManager(nom));
                 return true;
@@ -34,12 +34,11 @@ namespace Class
 
         public bool Connexion(string nom)
         {
-            foreach (ProfilManager pm in ListProfils)
-                if (pm.CompareTo(new ProfilManager(nom)) == 0) ///truc magique jsp si ça marche
-                {
-                    ProfilCourant = pm;
-                    return true;
-                }
+            if (ListProfils.Contains(new ProfilManager(nom))) ///truc magique jsp si ça marche
+            {
+                 ProfilCourant = ListProfils[ListProfils.IndexOf(new ProfilManager(nom))];
+                 return true;
+            }
             return false;
         }
 

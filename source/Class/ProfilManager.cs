@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Class
 {
-    public class ProfilManager : ObservableObject, IComparable
+    public class ProfilManager : ObservableObject
     {
         public ObservableCollection<Genre> ListGenres { get; private set; }
 
@@ -330,19 +330,18 @@ namespace Class
             return ListOeuvres.RechercherOeuvres(chaine);
         }
 
-        int IComparable.CompareTo(object obj)
+        public bool Equals(ProfilManager other)
         {
-            if (!(obj is ProfilManager))
-            {
-                throw new ArgumentException("Argument is not a ProfilManager", "obj");
-            }
-            ProfilManager otherpm = obj as ProfilManager;
-            return this.CompareTo(otherpm);
+            return Nom.Equals(other.Nom);
         }
 
-        public int CompareTo(ProfilManager other)
+        public override bool Equals(object obj)
         {
-            return Nom.CompareTo(other.Nom);
+            if (ReferenceEquals(obj, null)) return false;
+            if (ReferenceEquals(obj, this)) return true;
+            if (GetType() != (obj.GetType())) return false;
+
+            return Equals(obj as ProfilManager);
         }
     }
 }

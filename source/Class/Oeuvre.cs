@@ -56,7 +56,6 @@ namespace Class
 
         public bool Equals(Oeuvre other)
         {
-            if (other == null) return false;
             return Titre.Equals(other.Titre);
         }
 
@@ -64,7 +63,7 @@ namespace Class
         {
             if (ReferenceEquals(obj, null)) return false;
             if (ReferenceEquals(obj, this)) return true;
-            if (GetType().Equals(obj.GetType())) return false;
+            if (GetType() != (obj.GetType())) return false;
 
             return Equals(obj as Oeuvre);
         }
