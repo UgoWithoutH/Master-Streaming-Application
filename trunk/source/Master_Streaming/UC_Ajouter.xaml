@@ -37,45 +37,54 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.75*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="300"/>
                 <RowDefinition Height="175"/>
+                <RowDefinition Height="55"/>
+
             </Grid.RowDefinitions>
             <StackPanel Grid.RowSpan="4"  Margin="15 30">
-                <Button Width="auto" Height="500"  Background="#DCE2E7" BorderBrush="{x:Null}" VerticalAlignment="Top">
+                <Button Width="auto" Height="500"  Background="#DCE2E7" BorderBrush="{x:Null}" VerticalAlignment="Top" Click="Open_File_Explorer">
                     <Button.Content>
                         <StackPanel>
-                            <TextBlock Text="Cliquez içi pour choisir une image" FontSize="20"/>
+                            <TextBlock x:Name="imageText" Text="Cliquez içi pour choisir une image" FontSize="20"/>
                             <Image x:Name="imageChoix"/>
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <materialDesign:RatingBar x:Name="BasicRatingBar"  Value="3" HorizontalAlignment="Center" Margin="0 15 0 0"/>
+                <materialDesign:RatingBar x:Name="BasicRatingBar" Value="3" HorizontalAlignment="Center" Margin="0 15 0 0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
                 <TextBlock Text="Titre :" Style="{StaticResource champs}" Height="30"/>
-                <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
+                <TextBox x:Name="Title" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
             </StackPanel>
 
+            <StackPanel Grid.Column="1" Grid.Row="1" >
+                <StackPanel Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
+                    <TextBlock Text="Date de sortie :" Style="{StaticResource champs}" Height="30"/>
+                    <TextBox x:Name="Release_date" materialDesign:HintAssist.Hint="(DD/MM/YYYY)" materialDesign:HintAssist.Foreground="Black" FontWeight="Bold" MinWidth="200" Margin="0"/>
+                </StackPanel>
 
-            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
-                <TextBlock Text="Année de sortie :" Style="{StaticResource champs}" Height="30"/>
-                <TextBox VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
+                <StackPanel Orientation="Horizontal" Margin="18 18 0 0">
+                    <TextBlock Text="Nombre de saisons :" Style="{StaticResource champs}" Height="30"/>
+                    <TextBox x:Name="Number_seasons" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" MinWidth="200"/>
+                </StackPanel>
             </StackPanel>
+            
             <StackPanel Grid.Column="1" Grid.Row="2" Margin="{StaticResource spaceChamps}">
                 <TextBlock Text="Description :" Style="{StaticResource champs}"/>
                 <ScrollViewer>
                     <StackPanel>
-                        <TextBox Margin="25" Height="200" TextWrapping="Wrap"/>
+                        <TextBox x:Name="Desc_text" Margin="25" Height="200" TextWrapping="Wrap"/>
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
 
-            <Grid Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2" Margin="0 0 15 0">
+            <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="0 0 15 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.7*"/>
                     <ColumnDefinition/>
@@ -87,7 +96,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Auteur 1" Grid.Column="1" Style="{StaticResource AutorChamp}"/>
@@ -96,21 +105,33 @@
                 <TextBlock Text="Auteur 4" Grid.Column="4" Style="{StaticResource AutorChamp}"/>
                 <TextBlock Text="Auteur 5" Grid.Column="5" Style="{StaticResource AutorChamp}"/>
 
-                <TextBlock Text="Nom :" Grid.Row="1" Style="{StaticResource AutorChamp}"/>
-                <TextBlock Text="Prénom :" Grid.Row="2" Style="{StaticResource AutorChamp}"/>
+                <TextBlock Text="Nom :" Grid.Row="0" Style="{StaticResource AutorChamp}"/>
+                <TextBlock Text="Prénom :" Grid.Row="1" Style="{StaticResource AutorChamp}"/>
+                <TextBlock Text="Métier :" Grid.Row="2" Style="{StaticResource AutorChamp}"/>
 
-                <TextBox  Grid.Column="1" Grid.Row="1" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="2" Grid.Row="1" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="3" Grid.Row="1" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="4" Grid.Row="1" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="5" Grid.Row="1" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="1" Grid.Row="2" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="2" Grid.Row="2" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="3" Grid.Row="2" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="4" Grid.Row="2" Style="{StaticResource AutorBox}"/>
-                <TextBox  Grid.Column="5" Grid.Row="2" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_last_name_1" Grid.Column="1" Grid.Row="0" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_last_name_2" Grid.Column="2" Grid.Row="0" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_last_name_3" Grid.Column="3" Grid.Row="0" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_last_name_4" Grid.Column="4" Grid.Row="0" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_last_name_5" Grid.Column="5" Grid.Row="0" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_first_name_1" Grid.Column="1" Grid.Row="1" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_first_name_2" Grid.Column="2" Grid.Row="1" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_first_name_3" Grid.Column="3" Grid.Row="1" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_first_name_4" Grid.Column="4" Grid.Row="1" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_first_name_5" Grid.Column="5" Grid.Row="1" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_work_1" Grid.Column="1" Grid.Row="2" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_work_2" Grid.Column="2" Grid.Row="2" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_work_3" Grid.Column="3" Grid.Row="2" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_work_4" Grid.Column="4" Grid.Row="2" Style="{StaticResource AutorBox}"/>
+                <TextBox x:Name="Author_work_5" Grid.Column="5" Grid.Row="2" Style="{StaticResource AutorBox}"/>
             </Grid>
 
+            <Button Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Background="Green" BorderBrush="Green" Click="Button_Valid_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ajouter" Foreground="AliceBlue" Margin="0 0 15 0"/>
+                    <materialDesign:PackIcon Kind="CheckOutline" Foreground="AliceBlue"/>
+                </StackPanel>
+            </Button>
         </Grid>
     </StackPanel>
 </UserControl>
