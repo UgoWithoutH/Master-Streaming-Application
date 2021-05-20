@@ -41,7 +41,6 @@ namespace Class
                 genreSélectionné = value;
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(ListingDatesParGenre));
-                //OnPropertyChanged(nameof(ListingTris));
                 OnPropertyChanged(nameof(ListOeuvresParGenre));
             }
         }
@@ -94,6 +93,8 @@ namespace Class
 
         public ObservableCollection<Oeuvre> ListRecherche { get; set; }
 
+        public Oeuvre OeuvreTemporaireAjout { get; set; }
+
         public string Nom { get; private set; }
 
         public ProfilManager(string nom)
@@ -131,18 +132,15 @@ namespace Class
         /// </summary>
         /// <param name="g">Genre qui doit être ajouté</param>
         /// <returns>true si l'ajout du genre a réussi sinon false</returns>
-        public bool AjouterGenre(Genre genre)
+        public void AjouterGenre(Genre genre)
         {
-            if (genre == null) return false;
+            if (genre == null) throw new NullReferenceException("Le genre est null");
 
             if (!ListOeuvres.ContainsKey(genre))
             {
                 ListOeuvres.Add(genre, new ObservableCollection<Oeuvre>());
                 ListingDates.Add(genre, new ConcurrentObservableSortedSet<string>() { "Toutes dates" });
-                return true;
             }
-            else return false;
-
         }
 
         /// <summary>
@@ -150,17 +148,15 @@ namespace Class
         /// </summary>
         /// <param name="g">Genre qui doit être supprimé</param>
         /// <returns>true si la suppression du genre a réussi sinon false</returns>
-        public bool SupprimerGenre(Genre genre)
+        public void SupprimerGenre(Genre genre)
         {
-            if (genre == null) return false;
+            if (genre == null) throw new NullReferenceException("Le genre est null");
 
             if (ListOeuvres.ContainsKey(genre))
             {
                 ListOeuvres.Remove(genre);
                 ListingDates.Remove(genre);
-                return true;
             }
-            else return false;
         }
 
         /// <summary>
@@ -168,14 +164,12 @@ namespace Class
         /// </summary>
         /// <param name="o">Oeuvre qui doit être ajoutée au SortedDictionary des Oeuvres (ListOeuvres)</param>
         /// <returns></returns>
-        public bool AjouterOeuvre(Oeuvre oeuvre)
+        public void AjouterOeuvre(Oeuvre oeuvre)
         {
 
-            if (oeuvre is Serie) ListingSerie.AddFirst((Serie)oeuvre);
+            if (oeuvre is Serie serie) ListingSerie.AddFirst(serie);
 
-            bool res = false;
-
-            if (oeuvre == null) return false;
+            if (oeuvre == null) throw new NullReferenceException("L'oeuvre est null");
 
             foreach (Genre genre in oeuvre.TagsGenres)
             {
@@ -188,20 +182,15 @@ namespace Class
                         ListOeuvres[genre].Add(oeuvre);
                         ListingDates[genre].Add(oeuvre.DateSortie.Year.ToString());
                     }
-                    res = true;
                 }
             }
-
-            return res;
         }
 
-        public bool SupprimerOeuvre(Oeuvre oeuvre)
+        public void SupprimerOeuvre(Oeuvre oeuvre)
         {
-            if (oeuvre is Serie) ListingSerie.Remove((Serie)oeuvre);
+            if (oeuvre is Serie serie) ListingSerie.Remove(serie);
 
-            bool res = false;
-
-            if (oeuvre == null) return false;
+            if (oeuvre == null) throw new NullReferenceException("L'oeuvre est null");
 
             foreach (Genre genre in oeuvre.TagsGenres)
             {
@@ -210,11 +199,8 @@ namespace Class
                 {
                     value.Remove(oeuvre);
                     CheckListDates(genre,oeuvre.DateSortie.Year.ToString());
-                    res = true;
                 }
             }
-
-            return res;
         }
 
         public void CheckListDates(Genre genre, string year)
@@ -235,26 +221,6 @@ namespace Class
                 ListingDates[genre].Remove(year);
             }
         }
-
-        //public void TrierOrdreAlph(Genre genre)
-        //{
-        //    IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Titre);
-        //    ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
-        //    foreach (Oeuvre oeuvre in res)
-        //    {
-        //        ListOeuvres[genre].Add(oeuvre);
-        //    }
-        //}
-
-        //public void TrierNotes(Genre genre)
-        //{
-        //    IEnumerable<Oeuvre> res = ListOeuvres[genre].OrderBy(oeuvre => oeuvre.Note).ThenBy(oeuvre => oeuvre.Titre);
-        //    ListOeuvres[genre] = new ObservableCollection<Oeuvre>();
-        //    foreach (Oeuvre oeuvre in res)
-        //    {
-        //        ListOeuvres[genre].Add(oeuvre);
-        //    }
-        //}
 
         public void Filtrage(string filtre)
         {
@@ -333,6 +299,11 @@ namespace Class
             if (GetType() != (obj.GetType())) return false;
 
             return Equals(obj as ProfilManager);
+        }
+
+        public override int GetHashCode()
+        {
+            return 217408413 + EqualityComparer<string>.Default.GetHashCode(Nom);
         }
     }
 }
