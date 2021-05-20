@@ -1,6 +1,8 @@
 ﻿using Class;
+using Swordfish.NET.Collections;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,11 +39,7 @@ namespace Master_Streaming
             List<Auteur> Auteurs = new List<Auteur>();
             HashSet<Genre> Genres = new HashSet<Genre>();
 
-            //marche pas
-            //DateTime ReleaseYear = new DateTime(int.Parse(Release_date.Text.Substring(6, 9)), int.Parse(Release_date.Text.Substring(3, 4)), int.Parse(Release_date.Text.Substring(0, 1)));
-
-            //temporaire (en attendant d'avoir une bonne date)
-            DateTime ReleaseYear = new DateTime(2002, 05, 15);
+            DateTime ReleaseDate = new DateTime(int.Parse(Release_date.Text.Substring(6, 4)), int.Parse(Release_date.Text.Substring(3, 2)), int.Parse(Release_date.Text.Substring(0, 2)));
 
             //beaucoup de simplifications possibles ici, je sais pas comment les faire pour l'instant (tous les métiers sont réalisateur pour l'instant)
             //
@@ -56,12 +54,37 @@ namespace Master_Streaming
             if (!string.IsNullOrEmpty(Author_first_name_5.Text) && !string.IsNullOrEmpty(Author_last_name_5.Text) && !string.IsNullOrEmpty(Author_work_5.Text))
                 Auteurs.Add(new Auteur(Author_first_name_5.Text, Author_first_name_5.Text, Métier.Réalisateur));
 
-            //encore plus temporaire, je change ça demain, ça l'ajoute qu'au genre actuel
-            Genres.Add(PManager.GenreSélectionné);
+            
+            if (!string.IsNullOrWhiteSpace(Genre_1.Text))
+                Genres.Add(new Genre(Genre_1.Text));
+            if (!string.IsNullOrWhiteSpace(Genre_2.Text))
+                Genres.Add(new Genre(Genre_2.Text));
+            if (!string.IsNullOrWhiteSpace(Genre_3.Text))
+                Genres.Add(new Genre(Genre_3.Text));
+
+
+            if (PManager.ListOeuvres.ContainsKey(new Genre(Genre_1.Text)) && !string.IsNullOrWhiteSpace(Genre_1.Text))
+            {
+                PManager.ListOeuvres[new Genre(Genre_1.Text)].Add(new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
+                PManager.ListingDates[new Genre(Genre_1.Text)].Add(ReleaseDate.Year.ToString());
+            }
+            else if (!string.IsNullOrWhiteSpace(Genre_1.Text))
+            {
+                PManager.ListOeuvres.Add(new Genre(Genre_1.Text), new ObservableCollection<Oeuvre> { new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres) });
+                PManager.ListingDates.Add(new Genre(Genre_1.Text), new ConcurrentObservableSortedSet<string> { ReleaseDate.Year.ToString() });
+            }
+
+            if (PManager.ListOeuvres.ContainsKey(new Genre(Genre_2.Text)) && !string.IsNullOrWhiteSpace(Genre_2.Text))
+                PManager.ListOeuvres[new Genre(Genre_2.Text)].Add(new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
+            else if (!string.IsNullOrWhiteSpace(Genre_2.Text))
+                PManager.ListOeuvres.Add(new Genre(Genre_2.Text), new ObservableCollection<Oeuvre> { new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres) });
+
+            if (PManager.ListOeuvres.ContainsKey(new Genre(Genre_3.Text)) && !string.IsNullOrWhiteSpace(Genre_3.Text))
+                PManager.ListOeuvres[new Genre(Genre_3.Text)].Add(new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
+            else if (!string.IsNullOrWhiteSpace(Genre_3.Text))
+                PManager.ListOeuvres.Add(new Genre(Genre_3.Text), new ObservableCollection<Oeuvre> { new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres) });
             //
 
-            //pareil, ajoute qu'au genre actuel pour le moment
-            PManager.ListOeuvres[PManager.GenreSélectionné].Add(new Serie(Title.Text, ReleaseYear, Desc_text.Text, BasicRatingBar.Value , "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
             (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
 
