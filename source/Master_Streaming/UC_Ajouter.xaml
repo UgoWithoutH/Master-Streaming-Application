@@ -26,6 +26,12 @@
             <Setter Property="Height" Value="40"/>
         </Style>
 
+        <Style x:Key="top_space" TargetType="TextBox">
+            <Setter Property="Margin" Value="0 30 0 0"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="150"/>
+        </Style>
+
         <Style TargetType="TextBox">
             <Setter Property="FontSize" Value="20"/>
         </Style>
@@ -77,11 +83,23 @@
             
             <StackPanel Grid.Column="1" Grid.Row="2" Margin="{StaticResource spaceChamps}">
                 <TextBlock Text="Description :" Style="{StaticResource champs}"/>
-                <ScrollViewer>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
                         <TextBox x:Name="Desc_text" Margin="25" Height="200" TextWrapping="Wrap"/>
                     </StackPanel>
                 </ScrollViewer>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal"  Grid.Row="2" Grid.Column="2">
+                <Line X1="0" Y1="50" X2="0" Y2="250" Width="25" Stroke="BlueViolet"/>
+
+                <StackPanel>
+                    <TextBlock Text="Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="Genre_1" Style="{StaticResource top_space}"/>
+                    <TextBox x:Name="Genre_2"  Style="{StaticResource top_space}"/>
+                    <TextBox x:Name="Genre_3"  Style="{StaticResource top_space}"/>
+                </StackPanel>
             </StackPanel>
 
             <Grid Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="0 0 15 0">
@@ -96,7 +114,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="50"/>
-                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Auteur 1" Grid.Column="1" Style="{StaticResource AutorChamp}"/>
