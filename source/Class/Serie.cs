@@ -8,6 +8,11 @@ namespace Class
     {
         public int NbSaisons { get; set; }
 
+        public Serie()
+            : base()
+        {
+        }
+
         public Serie(string titre, DateTime dateSortie, string description, int? note, string imageName, int nbSaisons, List<Auteur> listeAuteurs, HashSet<Genre> tagsGenres)
             : base(titre, dateSortie, description, note,imageName, listeAuteurs, tagsGenres)
         {

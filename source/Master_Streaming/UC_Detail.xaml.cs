@@ -55,6 +55,9 @@ namespace Master_Streaming
             this.Visibility = Visibility.Hidden;
         }
 
-        
+        private void btn_modif_Click(object sender, RoutedEventArgs e)
+        {
+            (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_modifier();
+        }
     }
 }
