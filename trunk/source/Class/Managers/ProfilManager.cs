@@ -12,7 +12,6 @@ namespace Class
 {
     public class ProfilManager : ObservableObject
     {
-        public ObservableCollection<Genre> ListGenres { get; private set; }
 
         private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
 
@@ -95,6 +94,8 @@ namespace Class
 
         public Oeuvre OeuvreTemporaireAjout { get; set; }
 
+        public Auteur AuteurTemporaireAjout { get; set; }
+
         public string Nom { get; private set; }
 
         public ProfilManager(string nom)
@@ -106,6 +107,7 @@ namespace Class
             ListFiltrée = new ObservableCollection<Oeuvre>();
             MyWatchlist = new Watchlist();
             ListingTris = new ObservableCollection<string>() { "Alphabétique", "Notes" };
+            OeuvreTemporaireAjout = new Serie();
 
             /// temporaire, pour tester le Binding sur la Watchlist
             MyWatchlist.AjouterOeuvre(new Serie("Elite", DateTime.Now, "C'est cool", 4, "/images/Drame/Enola Holmes.jpg", 52, null, new HashSet<Genre>() { new Genre("Drame") }));

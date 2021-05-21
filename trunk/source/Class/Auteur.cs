@@ -1,16 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Class
 {
-    public class Auteur : IEquatable<Auteur>
+    public class Auteur : IEquatable<Auteur>, IDataErrorInfo
     {
+        [Required]
         public string Nom { get; private set; } // passer public pour modif
 
+        [Required]
         public string Prenom { get; private set; }
 
+        [Required]
         public Métier Profession { get; private set; }
+
+        public string Error { get; }
+
+        /// <summary>
+        /// Méthode qui permet de chercher tous les attributs et de valider ceux-ci 
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <returns></returns>
+        public string this[string columnName]
+        {
+            get
+            {
+
+                var validationResults = new List<ValidationResult>();
+
+                if (Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this)
+                    , new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    }
+                    , validationResults))
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
+        }
 
         public Auteur(string nom, string prenom, Métier profession)
         {

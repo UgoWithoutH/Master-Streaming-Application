@@ -1,14 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace Class
 {
-    public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable
+    public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable, IDataErrorInfo
     {
+        public string Error { get; }
 
+        /// <summary>
+        /// Méthode qui permet de chercher tous les attributs et de valider ceux-ci 
+        /// </summary>
+        /// <param name="columnName"></param>
+        /// <returns></returns>
+        public string this[string columnName]
+        {
+            get
+            {
+
+                var validationResults = new List<ValidationResult>();
+
+                if (Validator.TryValidateProperty(
+                    GetType().GetProperty(columnName).GetValue(this)
+                    , new ValidationContext(this)
+                    {
+                        MemberName = columnName
+                    }
+                    , validationResults))
+                    return null;
+
+                return validationResults.First().ErrorMessage;
+            }
+        }
+
+        [Required]
         public string Titre { get; set; }
 
+        [Required]
         public DateTime DateSortie { get; set; }
 
         public int? Note {
@@ -25,13 +56,28 @@ namespace Class
             }
         }
         private int? note;
+
+        [Required]
         public string Description { get; set; }
 
+        [Required]
         public string ImageName { get; set; }
 
         public List<Auteur> ListAuteur { get; set; } = null;
 
+        [Required]
         public HashSet<Genre> TagsGenres { get; private set; }
+
+        protected Oeuvre()
+        {
+            Titre = null;
+            DateSortie = new DateTime();
+            Description = null;
+            note = null;
+            ImageName = null;
+            ListAuteur = new List<Auteur>();
+            TagsGenres = new HashSet<Genre>();
+        }
 
         protected Oeuvre(string titre, DateTime dateSortie, string description, int? note,string imageName,HashSet<Genre> tagsgenres)
         {
