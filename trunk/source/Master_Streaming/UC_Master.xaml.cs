@@ -21,7 +21,7 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_Master : UserControl
     {
-        public ProfilManager manager => (App.Current as App).Pmanager;
+        public ProfilManager manager => (App.Current as App).Mmanager.ProfilCourant;
         public UC_Master()
         {
             InitializeComponent();

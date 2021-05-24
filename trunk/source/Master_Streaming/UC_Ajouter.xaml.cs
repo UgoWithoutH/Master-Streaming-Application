@@ -22,7 +22,7 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_Ajouter : UserControl
     {
-        ProfilManager PManager = (Application.Current as App).Pmanager;
+        ProfilManager PManager = (Application.Current as App).Mmanager.ProfilCourant;
 
         List<Auteur> listAuteursTemporaire = new List<Auteur>();
 
@@ -115,8 +115,8 @@ namespace Master_Streaming
             Métier[] métier = Enum.GetValues((typeof(Métier))).Cast<Métier>().ToArray();
 
             listAuteursTemporaire.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text,métier[index]));
-            nomAuteur.Text = "";
-            prenomAuteur.Text = "";
+            nomAuteur.Text = string.Empty;
+            prenomAuteur.Text = string.Empty;
         }
     }
 }

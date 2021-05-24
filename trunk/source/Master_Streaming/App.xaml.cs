@@ -14,13 +14,11 @@ namespace Master_Streaming
     /// </summary>
     public partial class App : Application
     {
-        public MainManager Mmanager { get; private set; } = new MainManager(); //existe pas non plus
-
-        public ProfilManager Pmanager { get; set; } = new ProfilManager("existe pas mais j'en ai besoin au lancement");
+        public MainManager Mmanager { get; private set; } = new MainManager(new Stub.Stub());
 
         public App()
         {
-            Mmanager.AjouteProfil("Maël");
+            Mmanager.ChargeDonnées();
         }
     }
 }
