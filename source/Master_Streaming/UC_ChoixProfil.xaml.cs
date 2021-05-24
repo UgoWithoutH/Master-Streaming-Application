@@ -31,8 +31,6 @@ namespace Master_Streaming
         private void Account_Connexion(object sender, RoutedEventArgs e)
         {
             mainManager.Connexion("Maël");
-            (App.Current as App).Pmanager = (App.Current as App).Mmanager.ProfilCourant;
-            (App.Current as App).Pmanager.chargeDonnées();
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
 

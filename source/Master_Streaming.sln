@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_Unitaires", "Tests_Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestU_MainManager", "TestU_MainManager\TestU_MainManager.csproj", "{9BABC92D-6E3E-4C89-A977-7E16E4639F14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stub", "Stub\Stub.csproj", "{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{9BABC92D-6E3E-4C89-A977-7E16E4639F14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BABC92D-6E3E-4C89-A977-7E16E4639F14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BABC92D-6E3E-4C89-A977-7E16E4639F14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Class\Class.csproj" />
+    <ProjectReference Include="..\Stub\Stub.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,14 +7,31 @@ namespace Class
 {
     public class MainManager
     {
+        public IPersistanceManager Persistance { get; private set; }
+
         public ProfilManager ProfilCourant { get; set; }
 
         public ObservableCollection<ProfilManager> ListProfils { get; private set; }
 
-        public MainManager()
+        public MainManager(IPersistanceManager persistance)
         {
-            ProfilCourant = null;
+            Persistance = persistance;
             ListProfils = new ObservableCollection<ProfilManager>();
+        }
+
+        public void ChargeDonnées()
+        {
+            var data = Persistance.ChargeDonnées();
+            foreach (ProfilManager PManager in data)
+            {
+                ListProfils.Add(PManager);
+            }
+            ProfilCourant = ListProfils.Count > 0 ? ListProfils[0] : null;
+        }
+
+        public void SauvegardeDonnées()
+        {
+            Persistance.SauvegardeDonnées(ListProfils);
         }
 
         public bool AjouteProfil(string nom)

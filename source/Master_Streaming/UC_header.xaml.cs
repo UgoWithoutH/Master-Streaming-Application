@@ -21,7 +21,7 @@ namespace Master_Streaming
     {
         public MainManager Mmanager => (App.Current as App).Mmanager;
 
-        public ProfilManager Pmanager => (App.Current as App).Pmanager;
+        public ProfilManager Pmanager => (App.Current as App).Mmanager.ProfilCourant;
 
         public UC_header()
         {

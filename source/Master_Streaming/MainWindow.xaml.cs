@@ -25,7 +25,7 @@ namespace Master_Streaming
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ProfilManager manager => (App.Current as App).Pmanager;
+        public ProfilManager manager => (App.Current as App).Mmanager.ProfilCourant;
 
         public MainWindow()
         {
