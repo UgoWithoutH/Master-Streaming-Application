@@ -202,18 +202,18 @@ namespace Class
 
             if (oeuvre == null) throw new NullReferenceException("L'oeuvre est null");
 
-                foreach (Genre genre in oeuvre.TagsGenres)
+            foreach (Genre genre in oeuvre.TagsGenres)
+            {
+                ListOeuvres.TryGetValue(genre, out ObservableCollection<Oeuvre> value);
+                if (value.Contains(oeuvre))
                 {
-                    ListOeuvres.TryGetValue(genre, out ObservableCollection<Oeuvre> value);
-                    if (value.Contains(oeuvre))
-                    {
-                        value.Remove(oeuvre);
-                        CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
+                    value.Remove(oeuvre);
+                    CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
                     OnPropertyChanged(nameof(ListOeuvres));//test
-                        OnPropertyChanged(nameof(ListOeuvresParGenre)); //test
-                        OnPropertyChanged(nameof(ListFiltrée));//test
+                    OnPropertyChanged(nameof(ListOeuvresParGenre)); //test
+                    OnPropertyChanged(nameof(ListFiltrée));//test
                 }
-                }
+            }
         }
 
         public bool checkAjoutOeuvre(Oeuvre oeuvre)
