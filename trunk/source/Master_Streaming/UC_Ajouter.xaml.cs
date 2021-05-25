@@ -91,16 +91,13 @@ namespace Master_Streaming
             if (index == -1) index = 0;
             Métier[] métier = Enum.GetValues((typeof(Métier))).Cast<Métier>().ToArray();
 
-<<<<<<< .mine            if (!(string.IsNullOrWhiteSpace(this.nomAuteur.Text) || string.IsNullOrWhiteSpace(this.prenomAuteur.Text)))
+            if (!(string.IsNullOrWhiteSpace(this.nomAuteur.Text) || string.IsNullOrWhiteSpace(this.prenomAuteur.Text)))
             {
                 PManager.SerieTemporaireAjout.ListAuteur.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text, métier[index]));
-                nomAuteur.Text = "";
-                prenomAuteur.Text = "";
+                nomAuteur.Text = string.Empty;
+                prenomAuteur.Text = string.Empty;
                 this.ListGenre.SelectedItem = null;
             }
-=======            listAuteursTemporaire.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text,métier[index]));
-            nomAuteur.Text = string.Empty;
-            prenomAuteur.Text = string.Empty;
->>>>>>> .theirs        }
+        }
     }
 }
