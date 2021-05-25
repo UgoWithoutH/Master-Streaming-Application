@@ -34,21 +34,13 @@ namespace Master_Streaming
 
         private string GetText()
         {
-            int check = 0;
-            OeuvreWatch oeuvreWatch = new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée);
-            foreach (OeuvreWatch oeuvre in manager.MyWatchlist.OeuvresVisionnees)
-            {
-                if (oeuvre.Equals(oeuvreWatch))
-                {
-                    check = 1;
-                }
-            }
-            return check == 1 ? "Supprimer de la Watchlist" : "Ajouter à la Watchlist"; 
+            return manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)) ? "Supprimer de la Watchlist" : "Ajouter à la Watchlist"; 
         }
 
         private void btn_watch_Click(object sender, RoutedEventArgs e)
         {
-            if (manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)))
+
+            if (manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée))) //checkContainsOeuvresVisionnees(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)) == 1
             {
                 manager.MyWatchlist.SupprimerOeuvre(manager.OeuvreSélectionnée);
             }

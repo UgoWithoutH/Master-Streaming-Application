@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Class
 {
-    public class OeuvreWatch : IEquatable<OeuvreWatch>, IComparable<OeuvreWatch>, IComparable
+    public class OeuvreWatch : IEquatable<OeuvreWatch>
     {
         public DateTime TimeAdd { get; }
 
@@ -19,7 +19,7 @@ namespace Class
         public override string ToString()
         {
             return $"{Oeuvre.Titre} , {Oeuvre.DateSortie} , {Oeuvre.Note} , {Oeuvre.Description}";
-        }
+        }        
 
         public bool Equals(OeuvreWatch other)
         {
@@ -30,44 +30,44 @@ namespace Class
         {
             if (ReferenceEquals(obj, null)) return false;
             if (ReferenceEquals(obj, this)) return true;
-            if (GetType() != obj.GetType()) return false;
+            if (GetType() != (obj.GetType())) return false;
 
             return Equals(obj as OeuvreWatch);
         }
 
-        public int CompareTo(OeuvreWatch other)
-        {
-            return TimeAdd.CompareTo(other.TimeAdd);
-        }
+        //public int CompareTo(OeuvreWatch other)
+        //{
+        //    return TimeAdd.CompareTo(other.TimeAdd);
+        //}
 
-        int IComparable.CompareTo(object obj)
-        {
-            if (!(obj is OeuvreWatch))
-            {
-                throw new ArgumentException("Argument is not an OeuvreWatch", "obj");
-            }
-            OeuvreWatch otheroeuvre = obj as OeuvreWatch;
-            return this.CompareTo(otheroeuvre);
-        }
+        //int IComparable.CompareTo(object obj)
+        //{
+        //    if (!(obj is OeuvreWatch))
+        //    {
+        //        throw new ArgumentException("Argument is not an OeuvreWatch", "obj");
+        //    }
+        //    OeuvreWatch otheroeuvre = obj as OeuvreWatch;
+        //    return this.CompareTo(otheroeuvre);
+        //}
 
-        public static bool operator <(OeuvreWatch left, OeuvreWatch right)
-        {
-            return left.CompareTo(right) < 0;
-        }
+        //public static bool operator <(OeuvreWatch left, OeuvreWatch right)
+        //{
+        //    return left.CompareTo(right) < 0;
+        //}
 
-        public static bool operator <=(OeuvreWatch left, OeuvreWatch right)
-        {
-            return left.CompareTo(right) <= 0;
-        }
+        //public static bool operator <=(OeuvreWatch left, OeuvreWatch right)
+        //{
+        //    return left.CompareTo(right) <= 0;
+        //}
 
-        public static bool operator >(OeuvreWatch left, OeuvreWatch right)
-        {
-            return left.CompareTo(right) > 0;
-        }
+        //public static bool operator >(OeuvreWatch left, OeuvreWatch right)
+        //{
+        //    return left.CompareTo(right) > 0;
+        //}
 
-        public static bool operator >=(OeuvreWatch left, OeuvreWatch right)
-        {
-            return left.CompareTo(right) >= 0;
-        }
+        //public static bool operator >=(OeuvreWatch left, OeuvreWatch right)
+        //{
+        //    return left.CompareTo(right) >= 0;
+        //}
     }
 }

@@ -24,12 +24,17 @@ namespace Master_Streaming
         public UC_Watchlist()
         {
             InitializeComponent();
-            DataContext = manager.MyWatchlist;
+            DataContext = manager;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+        }
+
+        private void Button_Remove(object sender, RoutedEventArgs e)
+        {
+            manager.MyWatchlist.SupprimerOeuvre(manager.OeuvreWatchSélectionnée.Oeuvre);
         }
     }
 }

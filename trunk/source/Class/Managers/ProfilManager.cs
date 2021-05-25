@@ -29,6 +29,8 @@ namespace Class
 
         public Oeuvre OeuvreSélectionnée { get; set; }
 
+        public OeuvreWatch OeuvreWatchSélectionnée { get; set; }
+
 
         private Genre genreSélectionné;
 
@@ -209,11 +211,11 @@ namespace Class
                 {
                     value.Remove(oeuvre);
                     CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
-                    OnPropertyChanged(nameof(ListOeuvres));//test
-                    OnPropertyChanged(nameof(ListOeuvresParGenre)); //test
-                    OnPropertyChanged(nameof(ListFiltrée));//test
                 }
             }
+            OnPropertyChanged(nameof(ListOeuvres));//test
+            OnPropertyChanged(nameof(ListOeuvresParGenre)); //test
+            OnPropertyChanged(nameof(ListFiltrée));//test
         }
 
         public bool checkAjoutOeuvre(Oeuvre oeuvre)
