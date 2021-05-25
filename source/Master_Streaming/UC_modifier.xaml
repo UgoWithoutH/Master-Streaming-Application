@@ -38,7 +38,7 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <Button x:Name="btn_retour" Width="100" HorizontalAlignment="Left" Margin="10 10 0 0" Content="Annuler" Background="Red" BorderBrush="{x:Null}" Click="btn_retour_Click"/>
+        <Button Width="100" HorizontalAlignment="Left" Margin="10 10 0 0" Content="Annuler" Background="Red" BorderBrush="{x:Null}" Click="btn_annuler_Click"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.5*"/>
@@ -57,27 +57,26 @@
                 <Button Width="auto" Height="500"  Background="#DCE2E7" BorderBrush="{x:Null}" VerticalAlignment="Top" Click="Open_File_Explorer">
                     <Button.Content>
                         <StackPanel>
-                            <TextBlock x:Name="imageText" Text="Cliquez içi pour choisir une image" FontSize="20"/>
-                            <Image x:Name="imageChoix"/>
+                            <Image x:Name="imageChoix" Source="{Binding ImageName, Mode=TwoWay}"/>
                         </StackPanel>
                     </Button.Content>
                 </Button>
-                <materialDesign:RatingBar x:Name="BasicRatingBar" Value="3" HorizontalAlignment="Center" Margin="0 15 0 0"/>
+                <materialDesign:RatingBar x:Name="BasicRatingBar" Value="{Binding Note, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0 15 0 0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
                 <TextBlock Text="Titre :" Style="{StaticResource champs}" Height="30"/>
-                <TextBox x:Name="Title" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
+                <TextBox x:Name="Titre" Text="{Binding Titre, Mode=TwoWay}"  VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" >
                 <StackPanel Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
                     <TextBlock Text="Date de sortie :" Style="{StaticResource champs}" Height="30"/>
-                    <TextBox x:Name="Release_date" materialDesign:HintAssist.Hint="(DD/MM/YYYY)" materialDesign:HintAssist.Foreground="Black" FontWeight="Bold" MinWidth="200" Margin="0"/>
+                    <TextBox x:Name="DateSortie" Text="{Binding DateSortie, Mode=TwoWay}" materialDesign:HintAssist.Hint="(DD/MM/YYYY)" materialDesign:HintAssist.Foreground="Black" FontWeight="Bold" MinWidth="200" Margin="0"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="18 18 0 0">
                     <TextBlock Text="Nombre de saisons :" Style="{StaticResource champs}" Height="30"/>
-                    <TextBox x:Name="Number_seasons" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" MinWidth="200"/>
+                    <TextBox x:Name="nbSaisons" Text="{Binding NbSaisons, Mode=TwoWay}" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" MinWidth="200"/>
                 </StackPanel>
             </StackPanel>
 
@@ -85,7 +84,7 @@
                 <TextBlock Text="Description :" Style="{StaticResource champs}"/>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
-                        <TextBox x:Name="Desc_text" Margin="25" Height="200" TextWrapping="Wrap"/>
+                        <TextBox x:Name="Description" Text="{Binding Description, Mode=TwoWay}" Margin="25" Height="200" TextWrapping="Wrap"/>
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
@@ -96,7 +95,7 @@
 
                 <StackPanel>
                     <TextBlock Text="Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center" Margin="0 0 0 30"/>
-                    <ListBox ItemsSource="{Binding ListOeuvres.Keys}" Height="220" SelectionMode="Multiple">
+                    <ListBox x:Name="ListGenre" ItemsSource="{Binding ListOeuvres.Keys}" Height="220" SelectionMode="Multiple">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Nom}"/>
@@ -121,7 +120,7 @@
                 <TextBlock Text="Auteurs :" Style="{StaticResource champs}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Text="Nom" Style="{StaticResource champs}" Margin="0 0 10 0"/>
-                    <TextBox x:Name="nomAuteur" Text="{Binding AuteurTemporaireAjout.Nom,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
+                    <TextBox x:Name="nomAuteur" Text="{Binding AuteurTemporaireAjout.Nom,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <StackPanel>
@@ -159,9 +158,9 @@
                 </Button>
             </Grid>
 
-            <Button Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Background="Green" BorderBrush="Green">
+            <Button Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Background="Green" BorderBrush="Green" Click="btn_valider_click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Ajouter" Foreground="AliceBlue" Margin="0 0 15 0"/>
+                    <TextBlock Text="Valider" Foreground="AliceBlue" Margin="0 0 15 0"/>
                     <materialDesign:PackIcon Kind="CheckOutline" Foreground="AliceBlue"/>
                 </StackPanel>
             </Button>

@@ -19,11 +19,11 @@ namespace Class
             NbSaisons = NbSaisons;
         }
 
-        public Serie(string titre, DateTime dateSortie, string description, int? note,string imageName, int nbSaisons, HashSet<Genre> tagsGenres)
-            : base(titre, dateSortie, description, note,imageName, tagsGenres)
-        {
-            NbSaisons = NbSaisons;
-        }
+        //public Serie(string titre, DateTime dateSortie, string description, int? note,string imageName, int nbSaisons, HashSet<Genre> tagsGenres)
+        //    : base(titre, dateSortie, description, note,imageName, tagsGenres)
+        //{
+        //    NbSaisons = NbSaisons;
+        //}
 
         public override string ToString()
         {

@@ -43,8 +43,7 @@ namespace Class
 
             foreach (OeuvreWatch ow in OeuvresVisionnees)
 
-                if (ow.Equals(o))
-
+                if (o.Titre.Equals(ow.Oeuvre.Titre))
                     return OeuvresVisionnees.Remove(ow);
 
             return false;

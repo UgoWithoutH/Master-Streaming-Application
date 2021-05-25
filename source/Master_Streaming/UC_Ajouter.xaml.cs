@@ -24,8 +24,7 @@ namespace Master_Streaming
     {
         ProfilManager PManager = (Application.Current as App).Mmanager.ProfilCourant;
 
-        List<Auteur> listAuteursTemporaire = new List<Auteur>();
-
+        string filename;
         public UC_Ajouter()
         {
             InitializeComponent();
@@ -40,56 +39,33 @@ namespace Master_Streaming
 
         private void Button_Valid_Click(object sender, RoutedEventArgs e)
         {
-            //List<Auteur> Auteurs = new List<Auteur>();
-            //HashSet<Genre> Genres = new HashSet<Genre>();
-
-            //DateTime ReleaseDate = new DateTime(int.Parse(Release_date.Text.Substring(6, 4)), int.Parse(Release_date.Text.Substring(3, 2)), int.Parse(Release_date.Text.Substring(0, 2)));
-
-            ////beaucoup de simplifications possibles ici, je sais pas comment les faire pour l'instant (tous les métiers sont réalisateur pour l'instant)
-            ////
-            //if (!string.IsNullOrEmpty(Author_first_name_1.Text) && !string.IsNullOrEmpty(Author_last_name_1.Text) && !string.IsNullOrEmpty(Author_work_1.Text))
-            //    Auteurs.Add(new Auteur(Author_first_name_1.Text, Author_first_name_1.Text, Métier.Réalisateur));
-            //if (!string.IsNullOrEmpty(Author_first_name_2.Text) && !string.IsNullOrEmpty(Author_last_name_2.Text) && !string.IsNullOrEmpty(Author_work_2.Text))
-            //    Auteurs.Add(new Auteur(Author_first_name_2.Text, Author_first_name_2.Text, Métier.Réalisateur));
-            //if (!string.IsNullOrEmpty(Author_first_name_3.Text) && !string.IsNullOrEmpty(Author_last_name_3.Text) && !string.IsNullOrEmpty(Author_work_3.Text))
-            //    Auteurs.Add(new Auteur(Author_first_name_3.Text, Author_first_name_3.Text, Métier.Réalisateur));
-            //if (!string.IsNullOrEmpty(Author_first_name_4.Text) && !string.IsNullOrEmpty(Author_last_name_4.Text) && !string.IsNullOrEmpty(Author_work_4.Text))
-            //    Auteurs.Add(new Auteur(Author_first_name_4.Text, Author_first_name_4.Text, Métier.Réalisateur));
-            //if (!string.IsNullOrEmpty(Author_first_name_5.Text) && !string.IsNullOrEmpty(Author_last_name_5.Text) && !string.IsNullOrEmpty(Author_work_5.Text))
-            //    Auteurs.Add(new Auteur(Author_first_name_5.Text, Author_first_name_5.Text, Métier.Réalisateur));
-
-            
-            //if (!string.IsNullOrWhiteSpace(Genre_1.Text))
-            //    Genres.Add(new Genre(Genre_1.Text));
-            //if (!string.IsNullOrWhiteSpace(Genre_2.Text))
-            //    Genres.Add(new Genre(Genre_2.Text));
-            //if (!string.IsNullOrWhiteSpace(Genre_3.Text))
-            //    Genres.Add(new Genre(Genre_3.Text));
-
-
-            //if (PManager.ListOeuvres.ContainsKey(new Genre(Genre_1.Text)) && !string.IsNullOrWhiteSpace(Genre_1.Text))
-            //{
-            //    PManager.ListOeuvres[new Genre(Genre_1.Text)].Add(new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
-            //    PManager.ListingDates[new Genre(Genre_1.Text)].Add(ReleaseDate.Year.ToString());
-            //}
-            //else if (!string.IsNullOrWhiteSpace(Genre_1.Text))
-            //{
-            //    PManager.ListOeuvres.Add(new Genre(Genre_1.Text), new ObservableCollection<Oeuvre> { new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres) });
-            //    PManager.ListingDates.Add(new Genre(Genre_1.Text), new ConcurrentObservableSortedSet<string> { ReleaseDate.Year.ToString() });
-            //}
-
-            //if (PManager.ListOeuvres.ContainsKey(new Genre(Genre_2.Text)) && !string.IsNullOrWhiteSpace(Genre_2.Text))
-            //    PManager.ListOeuvres[new Genre(Genre_2.Text)].Add(new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
-            //else if (!string.IsNullOrWhiteSpace(Genre_2.Text))
-            //    PManager.ListOeuvres.Add(new Genre(Genre_2.Text), new ObservableCollection<Oeuvre> { new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres) });
-
-            //if (PManager.ListOeuvres.ContainsKey(new Genre(Genre_3.Text)) && !string.IsNullOrWhiteSpace(Genre_3.Text))
-            //    PManager.ListOeuvres[new Genre(Genre_3.Text)].Add(new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres));
-            //else if (!string.IsNullOrWhiteSpace(Genre_3.Text))
-            //    PManager.ListOeuvres.Add(new Genre(Genre_3.Text), new ObservableCollection<Oeuvre> { new Serie(Title.Text, ReleaseDate, Desc_text.Text, BasicRatingBar.Value, "///", int.Parse(Number_seasons.Text), Auteurs, Genres) });
-            ////
-
-            (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+            PManager.SerieTemporaireAjout.ImageName = filename; //comme nous n'avons pour l'instant que des séries comme Oeuvre nous faisons de cette manière
+            PManager.SerieTemporaireAjout.Titre = this.Titre.Text;
+            if (string.IsNullOrWhiteSpace(this.DateSortie.Text))
+            {
+                PManager.SerieTemporaireAjout.DateSortie = new DateTime(0);
+            }
+            else
+            {
+                PManager.SerieTemporaireAjout.DateSortie = Convert.ToDateTime(this.DateSortie.Text);
+            }
+            PManager.SerieTemporaireAjout.Description = this.Description.Text;
+            if (string.IsNullOrWhiteSpace(this.nbSaisons.Text))
+            {
+                PManager.SerieTemporaireAjout.NbSaisons = 0;
+            }
+            else
+            {
+                PManager.SerieTemporaireAjout.Note = this.BasicRatingBar.Value;
+            }
+            foreach (Genre genre in this.ListGenre.SelectedItems)
+            {
+                PManager.SerieTemporaireAjout.TagsGenres.Add(genre);
+            }
+            if (PManager.AjouterOeuvre(PManager.SerieTemporaireAjout))
+            {
+                (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+            }
         }
 
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
@@ -103,7 +79,7 @@ namespace Master_Streaming
 
             if (result == true)
             {
-                string filename = dialog.FileName;
+                filename = dialog.FileName;
                 imageChoix.Source = new BitmapImage(new Uri(filename, UriKind.Absolute));
                 imageText.Text = string.Empty;
             }
@@ -112,11 +88,19 @@ namespace Master_Streaming
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int index = ListEnum.SelectedIndex;
+            if (index == -1) index = 0;
             Métier[] métier = Enum.GetValues((typeof(Métier))).Cast<Métier>().ToArray();
 
-            listAuteursTemporaire.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text,métier[index]));
+<<<<<<< .mine            if (!(string.IsNullOrWhiteSpace(this.nomAuteur.Text) || string.IsNullOrWhiteSpace(this.prenomAuteur.Text)))
+            {
+                PManager.SerieTemporaireAjout.ListAuteur.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text, métier[index]));
+                nomAuteur.Text = "";
+                prenomAuteur.Text = "";
+                this.ListGenre.SelectedItem = null;
+            }
+=======            listAuteursTemporaire.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text,métier[index]));
             nomAuteur.Text = string.Empty;
             prenomAuteur.Text = string.Empty;
-        }
+>>>>>>> .theirs        }
     }
 }

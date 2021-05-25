@@ -4,19 +4,70 @@ using System.Text;
 
 namespace Class
 {
-    public class OeuvreWatch : Oeuvre
+    public class OeuvreWatch : IEquatable<OeuvreWatch>, IComparable<OeuvreWatch>, IComparable
     {
         public DateTime TimeAdd { get; }
 
-        public OeuvreWatch(DateTime timeAdd, Oeuvre o)
-           : base(o.Titre, o.DateSortie, o.Description, o.Note, o.ImageName, o.ListAuteur,o.TagsGenres)
+        public Oeuvre Oeuvre { get; set; }
+
+        public OeuvreWatch(DateTime timeAdd, Oeuvre oeuvre)
         {
             TimeAdd = timeAdd;
+            Oeuvre = oeuvre;
         }
 
         public override string ToString()
         {
-            return $"{Titre} , {DateSortie} , {Note} , {Description}";
+            return $"{Oeuvre.Titre} , {Oeuvre.DateSortie} , {Oeuvre.Note} , {Oeuvre.Description}";
+        }
+
+        public bool Equals(OeuvreWatch other)
+        {
+            return Oeuvre.Titre.Equals(other.Oeuvre.Titre);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(obj, null)) return false;
+            if (ReferenceEquals(obj, this)) return true;
+            if (GetType() != obj.GetType()) return false;
+
+            return Equals(obj as OeuvreWatch);
+        }
+
+        public int CompareTo(OeuvreWatch other)
+        {
+            return TimeAdd.CompareTo(other.TimeAdd);
+        }
+
+        int IComparable.CompareTo(object obj)
+        {
+            if (!(obj is OeuvreWatch))
+            {
+                throw new ArgumentException("Argument is not an OeuvreWatch", "obj");
+            }
+            OeuvreWatch otheroeuvre = obj as OeuvreWatch;
+            return this.CompareTo(otheroeuvre);
+        }
+
+        public static bool operator <(OeuvreWatch left, OeuvreWatch right)
+        {
+            return left.CompareTo(right) < 0;
+        }
+
+        public static bool operator <=(OeuvreWatch left, OeuvreWatch right)
+        {
+            return left.CompareTo(right) <= 0;
+        }
+
+        public static bool operator >(OeuvreWatch left, OeuvreWatch right)
+        {
+            return left.CompareTo(right) > 0;
+        }
+
+        public static bool operator >=(OeuvreWatch left, OeuvreWatch right)
+        {
+            return left.CompareTo(right) >= 0;
         }
     }
 }

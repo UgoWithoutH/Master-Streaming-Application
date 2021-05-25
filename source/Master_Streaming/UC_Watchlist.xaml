@@ -59,12 +59,12 @@
                         <Border BorderBrush="White" BorderThickness="2" Margin="10 10" Padding="10">
                             <StackPanel  Orientation="Horizontal">
                                 <StackPanel>
-                                    <Image Source="{Binding ImageName}" Style="{StaticResource ImageBinding}"  Width="200"/>
+                                    <Image Source="{Binding Oeuvre.ImageName}" Style="{StaticResource ImageBinding}"  Width="200"/>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <Button Style="{StaticResource ButtonRemove}">
                                         <materialDesign:PackIcon Kind="MinusBox" Height="30" Foreground="#B7B7B7" Width="50"/>
                                         </Button>
-                                        <TextBlock Text="{Binding Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Oeuvre.Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
