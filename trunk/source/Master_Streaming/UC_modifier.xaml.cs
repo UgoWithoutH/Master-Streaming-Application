@@ -27,7 +27,9 @@ namespace Master_Streaming
             InitializeComponent();
             DataContext = manager.OeuvreSélectionnée;
             OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
-            manager.SupprimerOeuvre(manager.OeuvreSélectionnée);
+            //int index = manager.ListFiltrée.IndexOf(manager.OeuvreSélectionnée);
+            manager.SupprimerOeuvre(manager.OeuvreSélectionnée); //provoque le bug
+            //manager.OeuvreSélectionnée = manager.ListFiltrée[index + 1];
         }
 
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
@@ -49,14 +51,14 @@ namespace Master_Streaming
         private void btn_annuler_Click(object sender, RoutedEventArgs e)
         {
             manager.OeuvreSélectionnée = OeuvreSélectionnéeBackup;
-            manager.AjouterOeuvre(manager.OeuvreSélectionnée);
+            manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
 
         }
 
         private void btn_valider_click(object sender, RoutedEventArgs e)
         {
-            manager.AjouterOeuvre(manager.OeuvreSélectionnée);
+            manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
     }
