@@ -112,7 +112,7 @@ namespace Class
             MyWatchlist.AjouterOeuvre(new Serie("Harry", new DateTime(1999, 01, 15), "C'est cool", null, "/images/Drame/Notre ete.jpg", 52, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action"), new Genre("Drame")}));
         }
 
-<<<<<<< .mine        public void chargeDonnées() // temporaire
+      public void chargeDonnées() // temporaire
         {
             AjouterGenre(new Genre("Humour"));
             AjouterGenre(new Genre("Romance"));
@@ -126,7 +126,7 @@ namespace Class
             AjouterOeuvre(new Serie("Notre automn", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
             AjouterOeuvre(new Serie("Notre printemps", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
         }
-=======>>>>>>> .theirs
+
         /// <summary>
         /// Ajouter un genre dans le SortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
         /// </summary>
