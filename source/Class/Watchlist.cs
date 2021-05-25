@@ -2,7 +2,7 @@
 using System;
 
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace Class
@@ -13,13 +13,13 @@ namespace Class
 
     {
 
-        public ConcurrentObservableSortedSet<OeuvreWatch> OeuvresVisionnees { get; private set; }
+        public ObservableCollection<OeuvreWatch> OeuvresVisionnees { get; private set; }
 
         public Watchlist()
 
         {
 
-            OeuvresVisionnees = new ConcurrentObservableSortedSet<OeuvreWatch>();
+            OeuvresVisionnees = new ObservableCollection<OeuvreWatch>();
 
         }
 

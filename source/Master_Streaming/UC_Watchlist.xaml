@@ -36,9 +36,9 @@
             <TextBlock Text="Watchlist" FontSize="45" FontFamily="Frank Ruehl CLM" Margin="40,30,40,0"/>
             <Rectangle Height="3" Fill="White" Margin="50,20,300,0"/>
         </StackPanel>
-        
-        <ItemsControl ItemsSource="{Binding OeuvresVisionnees}" Grid.Row="2" Margin="40 0 20 0">
-                <ItemsControl.Resources>
+
+        <ListBox ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}" SelectedItem="{Binding OeuvreWatchSélectionnée}" Grid.Row="2" Margin="40 0 20 0">
+            <ListBox.Resources>
                     <Style x:Key="ButtonRemove" TargetType="Button">
                         <!--pour annuler le design de materialdesign-->
                         <Setter Property="Width" Value="auto"/>
@@ -48,21 +48,21 @@
                     </Style>
                     <Style x:Key="annulation">
                     </Style>
-                </ItemsControl.Resources>
-                <ItemsControl.ItemsPanel>
+                </ListBox.Resources>
+                <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
                     </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
+                </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="White" BorderThickness="2" Margin="10 10" Padding="10">
                             <StackPanel  Orientation="Horizontal">
                                 <StackPanel>
                                     <Image Source="{Binding Oeuvre.ImageName}" Style="{StaticResource ImageBinding}"  Width="200"/>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Style="{StaticResource ButtonRemove}">
-                                        <materialDesign:PackIcon Kind="MinusBox" Height="30" Foreground="#B7B7B7" Width="50"/>
+                                        <Button Style="{StaticResource ButtonRemove}" Click="Button_Remove">
+                                            <materialDesign:PackIcon Kind="MinusBox" Height="30" Foreground="#B7B7B7" Width="50"/>
                                         </Button>
                                         <TextBlock Text="{Binding Oeuvre.Titre}" Style="{StaticResource TextBlockBinding}" HorizontalAlignment="Center"/>
                                     </StackPanel>
@@ -70,7 +70,7 @@
                             </StackPanel>
                         </Border>
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                </ListBox.ItemTemplate>
+            </ListBox>
     </Grid>
 </UserControl>
