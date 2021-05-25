@@ -20,10 +20,14 @@ namespace Master_Streaming
     public partial class UC_modifier : UserControl
     {
         ProfilManager manager => (Application.Current as App).Mmanager.ProfilCourant;
+
+        Oeuvre OeuvreSélectionnéeBackup;
         public UC_modifier()
         {
             InitializeComponent();
             DataContext = manager.OeuvreSélectionnée;
+            OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
+            manager.SupprimerOeuvre(manager.OeuvreSélectionnée);
         }
 
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
@@ -39,14 +43,21 @@ namespace Master_Streaming
             {
                 string filename = dialog.FileName;
                 imageChoix.Source = new BitmapImage(new Uri(filename, UriKind.Absolute));
-                imageText.Text = string.Empty;
             }
         }
 
-        private void btn_retour_Click(object sender, RoutedEventArgs e)
+        private void btn_annuler_Click(object sender, RoutedEventArgs e)
         {
+            manager.OeuvreSélectionnée = OeuvreSélectionnéeBackup;
+            manager.AjouterOeuvre(manager.OeuvreSélectionnée);
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
 
+        }
+
+        private void btn_valider_click(object sender, RoutedEventArgs e)
+        {
+            manager.AjouterOeuvre(manager.OeuvreSélectionnée);
+            (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
     }
 }

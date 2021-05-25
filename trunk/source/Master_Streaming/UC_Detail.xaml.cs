@@ -34,7 +34,16 @@ namespace Master_Streaming
 
         private string GetText()
         {
-            return !manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)) ? "Ajouter à la Watchlist" : "Supprimer de la Watchlist"; 
+            int check = 0;
+            OeuvreWatch oeuvreWatch = new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée);
+            foreach (OeuvreWatch oeuvre in manager.MyWatchlist.OeuvresVisionnees)
+            {
+                if (oeuvre.Equals(oeuvreWatch))
+                {
+                    check = 1;
+                }
+            }
+            return check == 1 ? "Supprimer de la Watchlist" : "Ajouter à la Watchlist"; 
         }
 
         private void btn_watch_Click(object sender, RoutedEventArgs e)
@@ -58,6 +67,12 @@ namespace Master_Streaming
         private void btn_modif_Click(object sender, RoutedEventArgs e)
         {
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_modifier();
+        }
+
+        private void Btn_supprimer_click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Hidden;
+            manager.SupprimerOeuvre(manager.OeuvreSélectionnée);
         }
     }
 }

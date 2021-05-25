@@ -60,10 +60,15 @@ namespace Master_Streaming
                 CollapsedVisibility();
                 uc_listSeries.filtrage.SelectedItem = "Toutes dates"; //valeur par défaut de la combobox du filtrage
                 uc_listSeries.trie.SelectedItem = "Alphabétique"; //valeur par défaut de la combobox du tri
-                manager.Filtrage(uc_listSeries.filtrage.SelectedItem as string);
-                manager.tri(uc_listSeries.trie.SelectedItem as string);
-                uc_listSeries.ContentControlDetail.Visibility = Visibility.Hidden;
-            }
+                    manager.Filtrage(uc_listSeries.filtrage.SelectedItem as string);
+                    manager.tri(uc_listSeries.trie.SelectedItem as string);
+                    uc_listSeries.ContentControlDetail.Visibility = Visibility.Hidden;
+                    if (uc_listSeries.filtrage.Visibility == Visibility.Collapsed)
+                    {
+                        uc_listSeries.filtrage.Visibility = Visibility.Visible;
+                        uc_listSeries.trie.Visibility = Visibility.Visible;
+                    }
+                }
         }
 
         private void CollapsedVisibility()
@@ -126,7 +131,11 @@ namespace Master_Streaming
                     if (manager.GenreSélectionné.Nom.Equals(boxSuppGenre.Text.ToUpper()))
                     {
                         manager.ChangeGenreSélectionné(manager.ListOeuvres, boxSuppGenre.Text);
-                        manager.Filtrage(uc_listSeries.filtrage.SelectedItem as string);
+                        if(!manager.Filtrage(uc_listSeries.filtrage.SelectedItem as string))
+                        {
+                            uc_listSeries.filtrage.Visibility = Visibility.Collapsed;
+                            uc_listSeries.trie.Visibility = Visibility.Collapsed;
+                        }
                         CollapsedVisibility();
                         uc_listSeries.ContentControlDetail.Visibility = Visibility.Hidden;
                         Storyboard sb = this.FindResource("CloseMenu") as Storyboard; //pour chercher la Storyboard (animation) dans MainWindow.xaml

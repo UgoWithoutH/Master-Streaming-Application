@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Class
 {
-    public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable, IDataErrorInfo
+    public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable, IDataErrorInfo, ICloneable
     {
         public string Error { get; }
 
@@ -79,7 +79,7 @@ namespace Class
             TagsGenres = new HashSet<Genre>();
         }
 
-        protected Oeuvre(string titre, DateTime dateSortie, string description, int? note,string imageName,HashSet<Genre> tagsgenres)
+        protected Oeuvre(string titre, DateTime dateSortie, string description, int? note,string imageName, List<Auteur> listAuteurs, HashSet<Genre> tagsgenres)
         {
             Titre = titre;
             DateSortie = dateSortie;
@@ -87,12 +87,18 @@ namespace Class
             Note = note;
             ImageName = imageName;
             TagsGenres = tagsgenres;
+            ListAuteur = listAuteurs;
         }
 
-        protected Oeuvre(string titre, DateTime dateSortie, string description, int? note, string imageName, List<Auteur> listAuteurs, HashSet<Genre> tagsgenres)
-            : this(titre, dateSortie, description, note,imageName,tagsgenres)
+        //protected Oeuvre(string titre, DateTime dateSortie, string description, int? note, string imageName, HashSet<Genre> tagsgenres)
+        //    : this(titre, dateSortie, description, note,imageName,tagsgenres)
+        //{
+
+        //}
+
+        public object Clone()
         {
-            ListAuteur = listAuteurs;
+            return this.MemberwiseClone();
         }
 
         public override string ToString()
