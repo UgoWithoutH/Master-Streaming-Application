@@ -21,8 +21,6 @@ namespace Class
             private set
             {
                 listOeuvres = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(ListOeuvresParGenre));
             }
         }
 
@@ -123,21 +121,6 @@ namespace Class
             MyWatchlist.AjouterOeuvre(new Serie("Harry", new DateTime(1999, 01, 15), "C'est cool", null, "/images/Drame/Notre ete.jpg", 52, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action"), new Genre("Drame")}));
         }
 
-      public void chargeDonnées() // temporaire
-        {
-            AjouterGenre(new Genre("Humour"));
-            AjouterGenre(new Genre("Romance"));
-            AjouterGenre(new Genre("Aventure"));
-            AjouterGenre(new Genre("Action"));
-            AjouterOeuvre(new Serie("Des vies froissees", new DateTime(2019, 10, 1), "Série mêlant Drame et Amour", null, "/images/Drame/Des vies froissees.jpg", 3, new List<Auteur>(), new HashSet<Genre>() { new Genre("Humour"), new Genre("Romance") }));
-            AjouterOeuvre(new Serie("Enola Holmes", DateTime.Now, "Série mêlant Drame et Action", null, "/images/Drame/Enola Holmes.jpg", 3, new List<Auteur>(), new HashSet<Genre>() { new Genre("Aventure") }));
-            AjouterOeuvre(new Serie("La mission", new DateTime(2000, 02, 20), "Pas vraiment une série", null, "/images/Drame/La mission.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
-            AjouterOeuvre(new Serie("Notre été", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
-            AjouterOeuvre(new Serie("Notre hiver", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
-            AjouterOeuvre(new Serie("Notre automn", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
-            AjouterOeuvre(new Serie("Notre printemps", new DateTime(2010, 02, 20), "Pas vraiment une série", 4, "/images/Drame/Notre ete.jpg", 0, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action") }));
-        }
-
         /// <summary>
         /// Ajouter un genre dans le SortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
         /// </summary>
@@ -201,6 +184,9 @@ namespace Class
                         }
                     }
                 }
+                OnPropertyChanged(nameof(ListOeuvres));
+                OnPropertyChanged(nameof(ListOeuvresParGenre));
+                OnPropertyChanged(nameof(ListFiltrée));
                 return true;
             }
             else return false;
