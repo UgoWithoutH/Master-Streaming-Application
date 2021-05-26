@@ -17,16 +17,16 @@ namespace TestU_Recherche
 
             var l1 = new ObservableCollection<Oeuvre>()
             {
-                new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",0,"////",3, new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
-                new Serie("La casa de papel",DateTime.Now,"Série mêlant Drame et Action",null,"////",3, new HashSet<Genre>(){new Genre("Drame")}),
-                new Serie("La petite maison dans la prairie",new DateTime(2000,02,20),"Pas vraiement une série",null,"////",0, new HashSet<Genre>(){new Genre("Drame")}),
+                new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",0,"////",3, new List<Auteur>() {new Auteur("Dupond", "Dupont", Métier.Cascadeur)},new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
+                new Serie("La casa de papel",DateTime.Now,"Série mêlant Drame et Action",null,"////",3, new List<Auteur>() {new Auteur("Dupond", "Dupont", Métier.Cascadeur)},new HashSet<Genre>(){new Genre("Drame")}),
+                new Serie("La petite maison dans la prairie",new DateTime(2000,02,20),"Pas vraiement une série",null,"////",0, new List<Auteur>() {new Auteur("Dupond", "Dupont", Métier.Cascadeur)},new HashSet<Genre>(){new Genre("Drame")}),
             };
 
             var l2 = new ObservableCollection<Oeuvre>()
             {
-                new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",null,"////",3, new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
-                new Serie("Une série",DateTime.Now,"Série mêlant Amour",null,"////",3, new HashSet<Genre>(){new Genre("Amour")}),
-                new Serie("Bonne une série",new DateTime(2000,02,20),"Pas vraiment une série",null,"////",0, new HashSet<Genre>(){new Genre("Amour")}),
+                new Serie("Elite",new DateTime(2019,10,1),"Série mêlant Drame et Amour",null,"////",3, new List<Auteur>() {new Auteur("Dupond", "Dupont", Métier.Cascadeur)}, new HashSet<Genre>(){new Genre("Drame"), new Genre("Amour")}),
+                new Serie("Une série",DateTime.Now,"Série mêlant Amour",null,"////",3, new List<Auteur>() {new Auteur("Dupond", "Dupont", Métier.Cascadeur)}, new HashSet<Genre>(){new Genre("Amour")}),
+                new Serie("Bonne une série",new DateTime(2000,02,20),"Pas vraiment une série",null,"////",0, new List<Auteur>() {new Auteur("Dupond", "Dupont", Métier.Cascadeur)}, new HashSet<Genre>(){new Genre("Amour")}),
             };
 
             ensemble.Add(new Genre("Drame"), l1);

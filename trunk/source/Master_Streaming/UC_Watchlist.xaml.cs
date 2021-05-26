@@ -34,6 +34,7 @@ namespace Master_Streaming
 
         private void Button_Remove(object sender, RoutedEventArgs e)
         {
+            manager.OeuvreWatchSélectionnée = (OeuvreWatch)((ListBoxItem)MyListInWatchlist.ContainerFromElement((Button)sender)).Content;
             manager.MyWatchlist.SupprimerOeuvre(manager.OeuvreWatchSélectionnée.Oeuvre);
         }
     }
