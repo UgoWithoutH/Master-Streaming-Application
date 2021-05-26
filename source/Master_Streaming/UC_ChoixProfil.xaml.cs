@@ -44,7 +44,7 @@ namespace Master_Streaming
         {
             if(e.Key == Key.Return)
             {
-                if (entry_name_new_account.Text == "")
+                if (string.IsNullOrWhiteSpace(entry_name_new_account.Text))
                 {
                     MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_new_account, "Nom invalide");
                     return;
@@ -53,12 +53,12 @@ namespace Master_Streaming
                     if (pm.Nom.Equals(entry_name_new_account.Text))
                     {
                         MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_new_account, "Nom invalide");
-                        entry_name_new_account.Text = "";
+                        entry_name_new_account.Text = string.Empty;
                         return;
                     }
                 mainManager.ListProfils.Add(new ProfilManager(entry_name_new_account.Text));
                 MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_new_account, "Nom du profil :");
-                entry_name_new_account.Text = "";
+                entry_name_new_account.Text = string.Empty;
             }
         }
     }

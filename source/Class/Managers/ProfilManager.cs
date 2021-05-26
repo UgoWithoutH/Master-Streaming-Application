@@ -60,7 +60,16 @@ namespace Class
             }
         }
 
-        public ObservableCollection<Oeuvre> ListFiltrée { get; private set; }
+        public ObservableCollection<Oeuvre> ListFiltrée 
+        {
+            get => listFiltrée;
+            private set
+            {
+                listFiltrée = value;
+                OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<Oeuvre> listFiltrée;
 
         public LinkedList<Serie> ListingSerie { get; private set; }
 
@@ -213,9 +222,7 @@ namespace Class
                     CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
                 }
             }
-            OnPropertyChanged(nameof(ListOeuvres));//test
-            OnPropertyChanged(nameof(ListOeuvresParGenre)); //test
-            OnPropertyChanged(nameof(ListFiltrée));//test
+            ListFiltrée = ListOeuvresParGenre;
         }
 
         public bool checkAjoutOeuvre(Oeuvre oeuvre)
@@ -245,6 +252,7 @@ namespace Class
             if (check == 0)
             {
                 ListingDates[genre].Remove(year);
+                OnPropertyChanged(nameof(ListingDatesParGenre));
             }
         }
 
@@ -270,7 +278,7 @@ namespace Class
                 ListFiltrée = null;
                 result = false;
             }
-            OnPropertyChanged(nameof(ListFiltrée));
+            //OnPropertyChanged(nameof(ListFiltrée));
             return result;
         }
 
@@ -290,7 +298,6 @@ namespace Class
                 }
                 ListFiltrée = new ObservableCollection<Oeuvre>();
                 ListFiltrée.AddRange(liste);
-                OnPropertyChanged(nameof(ListFiltrée));
             }
         }
 
