@@ -6,13 +6,15 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Class
 {
+    [DataContract]
     public class ProfilManager : ObservableObject
     {
-
+        [DataMember]
         private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
 
         public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres
@@ -44,6 +46,7 @@ namespace Class
             }
         }
 
+        [DataMember]
         public Watchlist MyWatchlist { get; set; }
 
         public ObservableCollection<Oeuvre> ListOeuvresParGenre
@@ -82,6 +85,7 @@ namespace Class
             }
         }
 
+        [DataMember]
         private ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>> listingDates;
 
         public ConcurrentObservableSortedSet<string> ListingDatesParGenre
@@ -97,12 +101,14 @@ namespace Class
             }
         }
 
+        [DataMember]
         public ObservableCollection<string> ListingTris { get; private set; }
 
         public ObservableCollection<Oeuvre> ListRecherche { get; set; }
 
         public Serie SerieTemporaireAjout { get; set; }
 
+        [DataMember]
         public string Nom { get; private set; }
 
         public ProfilManager(string nom)

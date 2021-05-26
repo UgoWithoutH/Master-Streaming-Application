@@ -3,16 +3,17 @@ using System;
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Class
 
 {
-
+    [DataContract]
     public class Watchlist
 
     {
-
+        [DataMember]
         public ObservableCollection<OeuvreWatch> OeuvresVisionnees { get; private set; }
 
         public Watchlist()

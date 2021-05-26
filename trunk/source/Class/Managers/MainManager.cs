@@ -7,7 +7,7 @@ namespace Class
 {
     public class MainManager
     {
-        public IPersistanceManager Persistance { get; private set; }
+        public IPersistanceManager Persistance { get; set; }
 
         public ProfilManager ProfilCourant { get; set; }
 

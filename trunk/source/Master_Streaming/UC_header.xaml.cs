@@ -31,6 +31,7 @@ namespace Master_Streaming
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
+            Mmanager.SauvegardeDonnées();
             (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_ChoixProfil();
             Mmanager.Deconnexion();
         }

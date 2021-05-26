@@ -40,7 +40,8 @@ namespace Master_Streaming
             {
                 ContentControlDetail.Visibility = Visibility.Hidden;
                 manager.Filtrage(filtrage.SelectedItem.ToString());
-                trie.SelectedItem = manager.ListingTris.FirstOrDefault(); //ne déclanche par l'évévenement trie_SelectionChanged [attention]
+                //ligne suivante modifiée afin de faire fonctionner la persistance. le filtrage ne marche plus
+                //trie.SelectedItem = manager.ListingTris.FirstOrDefault(); //ne déclanche par l'évévenement trie_SelectionChanged [attention]
                 if(trie.SelectedItem != null)
                     manager.tri(trie.SelectedItem.ToString()); //pour relancer le trie à chaque filtrage (qui est alphabétique par défaut). trie.SelectedItem est null a la première ouverture des données d'un profil utilisateur
             }

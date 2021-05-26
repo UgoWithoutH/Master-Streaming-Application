@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Class
 {
+    [DataContract, KnownType(typeof(Serie))]
     public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable, IDataErrorInfo, ICloneable
     {
         public string Error { get; }
@@ -37,9 +39,11 @@ namespace Class
         }
 
         [Required]
+        [DataMember]
         public string Titre { get; set; }
 
         [Required]
+        [DataMember]
         public DateTime DateSortie { get; set; }
 
         public int? Note {
@@ -55,17 +59,22 @@ namespace Class
                 else note = value;
             }
         }
+        [DataMember]
         private int? note;
 
         [Required]
+        [DataMember]
         public string Description { get; set; }
 
         [Required]
+        [DataMember]
         public string ImageName { get; set; }
 
+        [DataMember]
         public List<Auteur> ListAuteur { get; set; } = null;
 
         [Required]
+        [DataMember]
         public HashSet<Genre> TagsGenres { get; private set; }
 
         protected Oeuvre()

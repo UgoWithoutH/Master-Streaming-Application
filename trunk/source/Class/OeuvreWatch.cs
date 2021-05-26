@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Class
 {
+    [DataContract]
     public class OeuvreWatch : IEquatable<OeuvreWatch>
     {
-        public DateTime TimeAdd { get; }
+        [DataMember]
+        public DateTime TimeAdd { get; set; }
 
+        [DataMember]
         public Oeuvre Oeuvre { get; set; }
 
         public OeuvreWatch(DateTime timeAdd, Oeuvre oeuvre)
