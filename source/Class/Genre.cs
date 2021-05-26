@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Class
 {
+    [DataContract]
     public class Genre : ObservableObject, IEquatable<Genre>, IComparable<Genre>, IComparable
     {
         public string Nom { 
@@ -12,6 +14,7 @@ namespace Class
                 nom = value.ToUpper();
             }
         }
+        [DataMember]
         private string nom;
 
         public Genre (string nom)

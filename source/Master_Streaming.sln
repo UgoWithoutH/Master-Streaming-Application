@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Master_Streaming", "Master_Streaming\Master_Streaming.csproj", "{D3E3DA22-174F-46CE-B796-AFDF775A782C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F956E60C-8B9D-4499-82C6-20E5320F1E1A} = {F956E60C-8B9D-4499-82C6-20E5320F1E1A}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class", "Class\Class.csproj", "{4F8552F9-17F7-42ED-AF2A-D3C4AB49C76D}"
 EndProject
@@ -31,7 +34,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests_Unitaires", "Tests_Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestU_MainManager", "TestU_MainManager\TestU_MainManager.csproj", "{9BABC92D-6E3E-4C89-A977-7E16E4639F14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stub", "Stub\Stub.csproj", "{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stub", "Stub\Stub.csproj", "{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractPersistance", "DataContractPersistance\DataContractPersistance.csproj", "{F956E60C-8B9D-4499-82C6-20E5320F1E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_DataContract", "Test_DataContract\Test_DataContract.csproj", "{AB1E1326-2217-4302-A4D6-19EEF2489324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +94,14 @@ Global
 		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F956E60C-8B9D-4499-82C6-20E5320F1E1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F956E60C-8B9D-4499-82C6-20E5320F1E1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F956E60C-8B9D-4499-82C6-20E5320F1E1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F956E60C-8B9D-4499-82C6-20E5320F1E1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +117,7 @@ Global
 		{D022EA6C-ED1B-4A4F-A945-65A46B864C22} = {71A02715-5698-403A-ACA5-093EF1F32A4A}
 		{AFD76CE4-5C91-4F0E-8713-3380639CC20D} = {08E8A511-F14A-4B6C-9B16-D8948B97D1A7}
 		{9BABC92D-6E3E-4C89-A977-7E16E4639F14} = {08E8A511-F14A-4B6C-9B16-D8948B97D1A7}
+		{AB1E1326-2217-4302-A4D6-19EEF2489324} = {71A02715-5698-403A-ACA5-093EF1F32A4A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6DD33DD3-1EBE-46BF-9030-9DBE084C1BB6}

@@ -14,7 +14,7 @@ namespace Master_Streaming
     /// </summary>
     public partial class App : Application
     {
-        public MainManager Mmanager { get; private set; } = new MainManager(new Stub.Stub());
+        public MainManager Mmanager { get; private set; } = new MainManager(new DataContractPersistance.DataContractPers());
 
         public App()
         {
