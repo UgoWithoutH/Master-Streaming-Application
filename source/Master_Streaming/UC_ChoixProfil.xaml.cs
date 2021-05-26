@@ -30,7 +30,8 @@ namespace Master_Streaming
 
         private void Account_Connexion(object sender, RoutedEventArgs e)
         {
-            mainManager.Connexion("Maël");
+            mainManager.ProfilSélectionné = (ProfilManager) ((ListBoxItem)MylisteProfils.ContainerFromElement((Button)sender)).Content;
+            mainManager.Connexion(mainManager.ProfilSélectionné.Nom);
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
 

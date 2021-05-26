@@ -37,7 +37,7 @@
             <Rectangle Height="3" Fill="White" Margin="50,20,300,0"/>
         </StackPanel>
 
-        <ListBox ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}" SelectedItem="{Binding OeuvreWatchSélectionnée}" Grid.Row="2" Margin="40 0 20 0">
+        <ListBox x:Name="MyListInWatchlist" ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}" SelectedItem="{Binding OeuvreWatchSélectionnée}" Grid.Row="2" Margin="40 0 20 0">
             <ListBox.Resources>
                     <Style x:Key="ButtonRemove" TargetType="Button">
                         <!--pour annuler le design de materialdesign-->

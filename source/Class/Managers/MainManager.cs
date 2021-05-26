@@ -11,6 +11,8 @@ namespace Class
 
         public ProfilManager ProfilCourant { get; set; }
 
+        public ProfilManager ProfilSélectionné { get; set; } = null;
+
         public ObservableCollection<ProfilManager> ListProfils { get; private set; }
 
         public MainManager(IPersistanceManager persistance)

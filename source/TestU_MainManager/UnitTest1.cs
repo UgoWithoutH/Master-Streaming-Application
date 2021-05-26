@@ -9,7 +9,7 @@ namespace TestU_MainManager
         [Fact]
         public void TestMainManager()
         {
-            MainManager LeManager = new MainManager();
+            MainManager LeManager = new MainManager(new Stub.Stub());
             TestAjouteProfil(LeManager);
             TestSupprimeProfil(LeManager);
             TestProfilCourant(LeManager);
