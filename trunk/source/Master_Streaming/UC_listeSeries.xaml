@@ -41,7 +41,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <ComboBox x:Name="filtrage" Grid.Column="2" ItemsSource="{Binding ListingDatesParGenre}" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="filtrage_SelectionChanged">
+            <ComboBox x:Name="filtrage" Grid.Column="2" ItemsSource="{Binding ListingDatesParGenre}" IsSynchronizedWithCurrentItem="True" FontFamily="Comic Sans MS" HorizontalAlignment="Left" SelectionChanged="filtrage_SelectionChanged">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Foreground="Black" Text="{Binding}" FontSize="15"/>

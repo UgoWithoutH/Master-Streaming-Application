@@ -42,7 +42,7 @@
         </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}" SelectedItem="{Binding ProfilSélectionné, Mode=TwoWay}">
+            <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
