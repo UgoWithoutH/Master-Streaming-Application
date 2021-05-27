@@ -19,6 +19,8 @@ namespace Master_Streaming
 
         public App()
         {
+
+            //reprend par défaut les données du Stub si fichier de persistance non existant
             if (File.Exists("../../../../Master_Streaming/bin/Debug/XML/Master_Streaming.xml"))
             {
                 Mmanager = new MainManager(new DataContractPersistance.DataContractPers());
