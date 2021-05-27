@@ -53,7 +53,7 @@ namespace Class
 
         public bool Connexion(string nom)
         {
-            if (ListProfils.Contains(new ProfilManager(nom))) ///truc magique jsp si ça marche
+            if (ListProfils.Contains(new ProfilManager(nom)))
             {
                  ProfilCourant = ListProfils[ListProfils.IndexOf(new ProfilManager(nom))];
                  return true;

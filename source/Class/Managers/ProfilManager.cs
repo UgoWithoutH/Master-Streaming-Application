@@ -26,12 +26,11 @@ namespace Class
             }
         }
 
-
         public Oeuvre OeuvreSélectionnée { get; set; }
 
         public OeuvreWatch OeuvreWatchSélectionnée { get; set; }
 
-
+        [DataMember]
         private Genre genreSélectionné;
 
         public Genre GenreSélectionné
@@ -70,8 +69,10 @@ namespace Class
                 OnPropertyChanged();
             }
         }
+        [DataMember]
         private ObservableCollection<Oeuvre> listFiltrée;
 
+        [DataMember]
         public LinkedList<Serie> ListingSerie { get; private set; }
 
         public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<string>> ListingDates
