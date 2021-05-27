@@ -16,7 +16,7 @@ namespace Test_Serie
 
             Serie s3 = new Serie("Elite", new DateTime(1999,01,15),"C'est cool", null, "///////", 52,null, new HashSet<Genre>() { new Genre("Aventure") });
 
-            Serie s4 = new Serie("Harry", new DateTime(1999, 01, 15), "C'est cool", null, "///////", 52, new HashSet<Genre>() { new Genre("Action"),
+            Serie s4 = new Serie("Harry", new DateTime(1999, 01, 15), "C'est cool", null, "///////", 52, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action"),
                                                                                                                           new Genre("Drame")});
 
           
