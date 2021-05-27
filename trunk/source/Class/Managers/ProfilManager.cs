@@ -113,6 +113,8 @@ namespace Class
         [DataMember]
         public string Nom { get; private set; }
 
+        public Auteur AuteurTemporaireAjout { get; set; }
+
         public ProfilManager(string nom)
         {
             Nom = nom;
@@ -123,10 +125,6 @@ namespace Class
             MyWatchlist = new Watchlist();
             ListingTris = new ObservableCollection<string>() { "Alphabétique", "Notes" };
             SerieTemporaireAjout = new Serie();
-
-            /// temporaire, pour tester le Binding sur la Watchlist
-            MyWatchlist.AjouterOeuvre(new Serie("Elite", DateTime.Now, "C'est cool", 4, "/images/Drame/Enola Holmes.jpg", 52, null, new HashSet<Genre>() { new Genre("Drame") }));
-            MyWatchlist.AjouterOeuvre(new Serie("Harry", new DateTime(1999, 01, 15), "C'est cool", null, "/images/Drame/Notre ete.jpg", 52, new List<Auteur>(), new HashSet<Genre>() { new Genre("Action"), new Genre("Drame")}));
         }
 
         /// <summary>

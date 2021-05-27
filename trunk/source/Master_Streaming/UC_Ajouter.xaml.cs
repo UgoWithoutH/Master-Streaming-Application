@@ -27,6 +27,8 @@ namespace Master_Streaming
         string filename;
         public UC_Ajouter()
         {
+            PManager.SerieTemporaireAjout = new Serie();
+            PManager.AuteurTemporaireAjout = null;//juste pour les test pcq le Binding reprend le nom de l'auteur de l'ancienne oeuvre ajoutée
             InitializeComponent();
             DataContext = PManager;
             ListEnum.ItemsSource = Enum.GetValues((typeof(Métier))).Cast<Métier>();
@@ -39,7 +41,6 @@ namespace Master_Streaming
 
         private void Button_Valid_Click(object sender, RoutedEventArgs e)
         {
-            PManager.SerieTemporaireAjout = new Serie();
             PManager.SerieTemporaireAjout.ImageName = filename; //comme nous n'avons pour l'instant que des séries comme Oeuvre nous faisons de cette manière
             PManager.SerieTemporaireAjout.Titre = this.Titre.Text;
             if (string.IsNullOrWhiteSpace(this.DateSortie.Text))
@@ -94,10 +95,11 @@ namespace Master_Streaming
 
             if (!(string.IsNullOrWhiteSpace(this.nomAuteur.Text) || string.IsNullOrWhiteSpace(this.prenomAuteur.Text)))
             {
-                PManager.SerieTemporaireAjout.ListAuteur.Add(new Auteur(nomAuteur.Text, prenomAuteur.Text, métier[index]));
+                PManager.AuteurTemporaireAjout = new Auteur(nomAuteur.Text, prenomAuteur.Text, métier[index]);
+                PManager.SerieTemporaireAjout.ListAuteur.Add(PManager.AuteurTemporaireAjout);
                 nomAuteur.Text = string.Empty;
                 prenomAuteur.Text = string.Empty;
-                this.ListGenre.SelectedItem = null;
+                //this.ListGenre.SelectedItem = null;
             }
         }
     }

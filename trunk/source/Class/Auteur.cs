@@ -4,17 +4,22 @@ using System.Text;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace Class
 {
+    [DataContract]
     public class Auteur : IEquatable<Auteur>, IDataErrorInfo
     {
+        [DataMember]
         [Required]
         public string Nom { get; private set; } // passer public pour modif
 
+        [DataMember]
         [Required]
         public string Prenom { get; private set; }
 
+        [DataMember]
         [Required]
         public Métier Profession { get; private set; }
 
