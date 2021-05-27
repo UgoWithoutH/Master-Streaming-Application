@@ -53,7 +53,6 @@ namespace Master_Streaming
             manager.OeuvreSélectionnée = OeuvreSélectionnéeBackup;
             manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
-
         }
 
         private void btn_valider_click(object sender, RoutedEventArgs e)

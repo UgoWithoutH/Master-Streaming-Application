@@ -36,9 +36,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestU_MainManager", "TestU_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stub", "Stub\Stub.csproj", "{6BCCF9F5-B3D4-4F59-99AB-EA32A4E0B926}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataContractPersistance", "DataContractPersistance\DataContractPersistance.csproj", "{F956E60C-8B9D-4499-82C6-20E5320F1E1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataContractPersistance", "DataContractPersistance\DataContractPersistance.csproj", "{F956E60C-8B9D-4499-82C6-20E5320F1E1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_DataContract", "Test_DataContract\Test_DataContract.csproj", "{AB1E1326-2217-4302-A4D6-19EEF2489324}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_DataContract", "Test_DataContract\Test_DataContract.csproj", "{AB1E1326-2217-4302-A4D6-19EEF2489324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

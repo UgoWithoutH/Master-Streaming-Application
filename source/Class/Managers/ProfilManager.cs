@@ -107,6 +107,7 @@ namespace Class
 
         public ObservableCollection<Oeuvre> ListRecherche { get; set; }
 
+        [DataMember]
         public Serie SerieTemporaireAjout { get; set; }
 
         [DataMember]
@@ -187,13 +188,15 @@ namespace Class
                             if (!ListingDates[genre].Contains(oeuvre.DateSortie.Year.ToString()))
                             {
                                 ListingDates[genre].Add(oeuvre.DateSortie.Year.ToString());
+                                OnPropertyChanged(nameof(ListingDates));
+                                OnPropertyChanged(nameof(ListingDatesParGenre));
                             }
                         }
                     }
                 }
-                OnPropertyChanged(nameof(ListOeuvres));
-                OnPropertyChanged(nameof(ListOeuvresParGenre));
-                OnPropertyChanged(nameof(ListFiltrée));
+                //OnPropertyChanged(nameof(ListOeuvres));
+                //OnPropertyChanged(nameof(ListOeuvresParGenre));
+                //OnPropertyChanged(nameof(ListFiltrée));
                 return true;
             }
             else return false;

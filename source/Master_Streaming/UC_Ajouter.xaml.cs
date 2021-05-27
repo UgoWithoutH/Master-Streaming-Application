@@ -39,6 +39,7 @@ namespace Master_Streaming
 
         private void Button_Valid_Click(object sender, RoutedEventArgs e)
         {
+            PManager.SerieTemporaireAjout = new Serie();
             PManager.SerieTemporaireAjout.ImageName = filename; //comme nous n'avons pour l'instant que des séries comme Oeuvre nous faisons de cette manière
             PManager.SerieTemporaireAjout.Titre = this.Titre.Text;
             if (string.IsNullOrWhiteSpace(this.DateSortie.Text))
