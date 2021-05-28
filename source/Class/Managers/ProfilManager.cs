@@ -26,7 +26,16 @@ namespace Class
             }
         }
 
-        public Oeuvre OeuvreSélectionnée { get; set; }
+        public Oeuvre OeuvreSélectionnée 
+        {
+            get => oeuvreSélectionnée;
+            set
+            {
+                oeuvreSélectionnée = value;
+                OnPropertyChanged();
+            }
+        }
+        private Oeuvre oeuvreSélectionnée;
 
         public OeuvreWatch OeuvreWatchSélectionnée { get; set; }
 
