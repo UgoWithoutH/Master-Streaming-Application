@@ -40,7 +40,7 @@ namespace Master_Streaming
         private void btn_watch_Click(object sender, RoutedEventArgs e)
         {
 
-            if (manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée))) //checkContainsOeuvresVisionnees(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)) == 1
+            if (manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)))
             {
                 manager.MyWatchlist.SupprimerOeuvre(manager.OeuvreSélectionnée);
             }

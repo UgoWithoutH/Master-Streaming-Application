@@ -49,14 +49,12 @@ namespace Class
             return ListProfils.Remove(new ProfilManager(nom));
         }
 
-        public bool Connexion(string nom)
+        public void Connexion(string nom)
         {
             if (ListProfils.Contains(new ProfilManager(nom)))
             {
                  ProfilCourant = ListProfils[ListProfils.IndexOf(new ProfilManager(nom))];
-                 return true;
             }
-            return false;
         }
 
         public void Deconnexion()

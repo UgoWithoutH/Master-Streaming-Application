@@ -24,31 +24,20 @@ namespace Class
 
         }
 
-        public bool AjouterOeuvre(Oeuvre o)
+        public void AjouterOeuvre(Oeuvre o)
 
         {
+            OeuvresVisionnees.Add(new OeuvreWatch(DateTime.Now, o));
+        } 
 
-            int nbInWatchlistBefore = OeuvresVisionnees.Count;
-
-            OeuvresVisionnees.Add(new OeuvreWatch(DateTime.Now,o));
-
-            int nbInWatchlistAfter = OeuvresVisionnees.Count;
-
-            return nbInWatchlistAfter > nbInWatchlistBefore;
-
-        }
-
-        public bool SupprimerOeuvre(Oeuvre o)
+        public void SupprimerOeuvre(Oeuvre o)
 
         {
 
             foreach (OeuvreWatch ow in OeuvresVisionnees)
 
                 if (o.Titre.Equals(ow.Oeuvre.Titre))
-                    return OeuvresVisionnees.Remove(ow);
-
-            return false;
-
+                    OeuvresVisionnees.Remove(ow);
         }
 
     }
