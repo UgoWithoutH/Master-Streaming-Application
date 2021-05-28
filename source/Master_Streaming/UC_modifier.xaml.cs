@@ -57,8 +57,19 @@ namespace Master_Streaming
 
         private void btn_valider_click(object sender, RoutedEventArgs e)
         {
-            manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
-            (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+            int result = manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
+            if (result == 0)
+            {
+                (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+            }
+            else if (result == 1)
+            {
+                MessageBox.Show("Une oeuvre avec le même titre est déjà existante");
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas renseigné tous les champs obligatoires");
+            }
         }
     }
 }

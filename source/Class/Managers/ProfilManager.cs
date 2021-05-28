@@ -164,10 +164,17 @@ namespace Class
         /// </summary>
         /// <param name="o">Oeuvre qui doit être ajoutée au SortedDictionary des Oeuvres (ListOeuvres)</param>
         /// <returns></returns>
-        public bool AjouterOeuvre(Oeuvre oeuvre)
+        public int AjouterOeuvre(Oeuvre oeuvre)
         {
 
-            if (oeuvre is Serie serie) ListingSerie.AddFirst(serie);
+            if (oeuvre is Serie serie)
+            {
+                if (!ListingSerie.Contains(oeuvre))
+                {
+                    ListingSerie.AddFirst(serie);
+                }
+                else return 1;
+            }
 
             if (oeuvre == null) throw new NullReferenceException("L'oeuvre est null");
 
@@ -195,9 +202,9 @@ namespace Class
                 //OnPropertyChanged(nameof(ListOeuvres));
                 //OnPropertyChanged(nameof(ListOeuvresParGenre));
                 //OnPropertyChanged(nameof(ListFiltrée));
-                return true;
+                return 0;
             }
-            else return false;
+            else return -1;
         }
 
 
