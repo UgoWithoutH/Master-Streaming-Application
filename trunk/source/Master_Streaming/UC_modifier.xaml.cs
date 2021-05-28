@@ -27,7 +27,7 @@ namespace Master_Streaming
         public UC_modifier()
         {
             InitializeComponent();
-            OeuvreSauvegarde = manager.OeuvreSélectionnée.Clone() as Oeuvre; // a cause du PropertyChanged() qui fait une nouvelle collection dans la vue et après manager.OeuvreSélectionée vaut null
+            OeuvreSauvegarde = manager.OeuvreSélectionnée; // a cause du PropertyChanged() qui fait une nouvelle collection dans la vue et après manager.OeuvreSélectionée vaut null
             DataContext = OeuvreSauvegarde;
             OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
             //int index = manager.ListFiltrée.IndexOf(manager.OeuvreSélectionnée);
