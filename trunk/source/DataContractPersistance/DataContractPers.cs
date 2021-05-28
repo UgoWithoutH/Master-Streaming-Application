@@ -10,32 +10,32 @@ namespace DataContractPersistance
 {
     public class DataContractPers : IPersistanceManager
     {
-        public string FilePath { get; set; } = Path.Combine(Directory.GetCurrentDirectory(), "../../../../Master_Streaming/bin/Debug/XML");
+        public string FilePath => Path.Combine(Directory.GetCurrentDirectory(), RelativePath);
+
+        public string RelativePath { get; set; } = "../../../../Master_Streaming/bin/Debug/XML";
 
         public string FileName { get; set; } = "Master_Streaming.xml";
 
-        string FileNameAndPath => Path.Combine(FilePath, FileName);
+        protected XmlObjectSerializer Serializer { get; set; } = new DataContractSerializer(typeof(ObservableCollection<ProfilManager>), new DataContractSerializerSettings() { PreserveObjectReferences = true });
 
-        ObservableCollection<ProfilManager> IPersistanceManager.ChargeDonnées()
+        protected string FileNameAndPath => Path.Combine(FilePath, FileName);
+
+        public virtual ObservableCollection<ProfilManager> ChargeDonnées()
         {
             if (!File.Exists(FileNameAndPath))
                 throw new FileNotFoundException("Fichier de données manquant");
 
             ObservableCollection<ProfilManager> list_profils;
 
-            var serializer = new DataContractSerializer(typeof(ObservableCollection<ProfilManager>));
-
             using (Stream s = File.OpenRead(FileNameAndPath))
             {
-                list_profils = serializer.ReadObject(s) as ObservableCollection<ProfilManager>;
+                list_profils = Serializer.ReadObject(s) as ObservableCollection<ProfilManager>;
             }
             return list_profils;
         }
 
-        void IPersistanceManager.SauvegardeDonnées(ObservableCollection<ProfilManager> ListProfils)
+        public virtual void SauvegardeDonnées(ObservableCollection<ProfilManager> ListProfils)
         {
-            var serializer = new DataContractSerializer(typeof(ObservableCollection<ProfilManager>));
-
             if (!Directory.Exists(FilePath))
             {
                 Directory.CreateDirectory(FilePath);
@@ -47,7 +47,7 @@ namespace DataContractPersistance
             {
                 using (XmlWriter writer = XmlWriter.Create(tw, settings))
                 {
-                    serializer.WriteObject(writer, ListProfils);
+                    Serializer.WriteObject(writer, ListProfils);
                 }
             }
         }

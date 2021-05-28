@@ -27,12 +27,10 @@ namespace Master_Streaming
         public UC_modifier()
         {
             InitializeComponent();
-            OeuvreSauvegarde = manager.OeuvreSélectionnée; // a cause du PropertyChanged() qui fait une nouvelle collection dans la vue et après manager.OeuvreSélectionée vaut null
+            OeuvreSauvegarde = manager.OeuvreSélectionnée; // a cause du OnPropertyChanged() qui fait une nouvelle collection dans la vue et après manager.OeuvreSélectionée vaut null
             DataContext = OeuvreSauvegarde;
             OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
-            //int index = manager.ListFiltrée.IndexOf(manager.OeuvreSélectionnée);
             manager.SupprimerOeuvre(manager.OeuvreSélectionnée); //provoque le bug
-            //manager.OeuvreSélectionnée = manager.ListFiltrée[index + 1];
         }
 
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
@@ -53,8 +51,7 @@ namespace Master_Streaming
 
         private void btn_annuler_Click(object sender, RoutedEventArgs e)
         {
-            manager.OeuvreSélectionnée = OeuvreSélectionnéeBackup;
-            manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
+            manager.AjouterOeuvre(OeuvreSélectionnéeBackup); // provoque le bug aussi
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
 
