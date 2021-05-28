@@ -64,10 +64,20 @@ namespace Master_Streaming
             {
                 PManager.SerieTemporaireAjout.TagsGenres.Add(genre);
             }
-            if (PManager.AjouterOeuvre(PManager.SerieTemporaireAjout))
+            int result = PManager.AjouterOeuvre(PManager.SerieTemporaireAjout);
+            if (result == 0)
             {
                 (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
             }
+            else if(result == 1)
+            {
+                MessageBox.Show("Une oeuvre avec le même titre est déjà existante");
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas renseigné tous les champs obligatoires");
+            }
+                
         }
 
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
