@@ -22,10 +22,13 @@ namespace Master_Streaming
         ProfilManager manager => (Application.Current as App).Mmanager.ProfilCourant;
 
         Oeuvre OeuvreSélectionnéeBackup;
+
+        Oeuvre OeuvreSauvegarde;
         public UC_modifier()
         {
             InitializeComponent();
-            DataContext = manager.OeuvreSélectionnée;
+            OeuvreSauvegarde = manager.OeuvreSélectionnée.Clone() as Oeuvre; // a cause du PropertyChanged() qui fait une nouvelle collection dans la vue et après manager.OeuvreSélectionée vaut null
+            DataContext = OeuvreSauvegarde;
             OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
             //int index = manager.ListFiltrée.IndexOf(manager.OeuvreSélectionnée);
             manager.SupprimerOeuvre(manager.OeuvreSélectionnée); //provoque le bug
@@ -57,7 +60,7 @@ namespace Master_Streaming
 
         private void btn_valider_click(object sender, RoutedEventArgs e)
         {
-            int result = manager.AjouterOeuvre(manager.OeuvreSélectionnée); // provoque le bug aussi
+            int result = manager.AjouterOeuvre(OeuvreSauvegarde); // provoque le bug aussi
             if (result == 0)
             {
                 (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
