@@ -99,12 +99,6 @@ namespace Class
             ListAuteur = listAuteurs;
         }
 
-        //protected Oeuvre(string titre, DateTime dateSortie, string description, int? note, string imageName, HashSet<Genre> tagsgenres)
-        //    : this(titre, dateSortie, description, note,imageName,tagsgenres)
-        //{
-
-        //}
-
         public object Clone()
         {
             return this.MemberwiseClone();
