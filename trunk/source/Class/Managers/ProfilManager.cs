@@ -61,11 +61,7 @@ namespace Class
         {
             get
             {
-                if(ListOeuvres.Keys.Count == 1)
-                {
-                    return null;
-                }
-                else return ListOeuvres[GenreSélectionné];
+                return ListOeuvres[GenreSélectionné];
             }
         }
 
@@ -150,6 +146,10 @@ namespace Class
                 ListOeuvres.Add(genre, new ObservableCollection<Oeuvre>());
                 ListingDates.Add(genre, new ConcurrentObservableSortedSet<string>() { "Toutes dates" });
             }
+            if (ListOeuvres.Count == 1)
+            {
+                GenreSélectionné = genre;
+            }
         }
 
         /// <summary>
@@ -205,12 +205,10 @@ namespace Class
                                 OnPropertyChanged(nameof(ListingDates));
                                 OnPropertyChanged(nameof(ListingDatesParGenre));
                             }
+                            ListFiltrée = ListOeuvresParGenre;
                         }
                     }
                 }
-                //OnPropertyChanged(nameof(ListOeuvres));
-                //OnPropertyChanged(nameof(ListOeuvresParGenre));
-                //OnPropertyChanged(nameof(ListFiltrée));
                 return 0;
             }
             else return -1;

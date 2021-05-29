@@ -3,6 +3,7 @@ using Swordfish.NET.Collections;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -24,6 +25,7 @@ namespace Master_Streaming
     {
         ProfilManager PManager = (Application.Current as App).Mmanager.ProfilCourant;
 
+
         string filename;
         public UC_Ajouter()
         {
@@ -41,7 +43,7 @@ namespace Master_Streaming
 
         private void Button_Valid_Click(object sender, RoutedEventArgs e)
         {
-            PManager.SerieTemporaireAjout.ImageName = filename; //comme nous n'avons pour l'instant que des séries comme Oeuvre nous faisons de cette manière
+            PManager.SerieTemporaireAjout.ImageName = filename;
             PManager.SerieTemporaireAjout.Titre = this.Titre.Text;
             if (string.IsNullOrWhiteSpace(this.DateSortie.Text))
             {

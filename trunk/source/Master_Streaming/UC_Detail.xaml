@@ -98,7 +98,7 @@
                         <DataTemplate>
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Nom}"/>
+                                    <TextBlock Text="{Binding Nom}" Margin="0 0 5 0"/>
                                     <TextBlock Text="{Binding Prenom}"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding Profession}"/>
