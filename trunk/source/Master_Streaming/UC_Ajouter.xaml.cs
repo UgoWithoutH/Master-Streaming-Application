@@ -111,7 +111,6 @@ namespace Master_Streaming
                 PManager.SerieTemporaireAjout.ListAuteur.Add(PManager.AuteurTemporaireAjout);
                 nomAuteur.Text = string.Empty;
                 prenomAuteur.Text = string.Empty;
-                //this.ListGenre.SelectedItem = null;
             }
         }
     }
