@@ -38,40 +38,5 @@ namespace Class
 
             return Equals(obj as OeuvreWatch);
         }
-
-        //public int CompareTo(OeuvreWatch other)
-        //{
-        //    return TimeAdd.CompareTo(other.TimeAdd);
-        //}
-
-        //int IComparable.CompareTo(object obj)
-        //{
-        //    if (!(obj is OeuvreWatch))
-        //    {
-        //        throw new ArgumentException("Argument is not an OeuvreWatch", "obj");
-        //    }
-        //    OeuvreWatch otheroeuvre = obj as OeuvreWatch;
-        //    return this.CompareTo(otheroeuvre);
-        //}
-
-        //public static bool operator <(OeuvreWatch left, OeuvreWatch right)
-        //{
-        //    return left.CompareTo(right) < 0;
-        //}
-
-        //public static bool operator <=(OeuvreWatch left, OeuvreWatch right)
-        //{
-        //    return left.CompareTo(right) <= 0;
-        //}
-
-        //public static bool operator >(OeuvreWatch left, OeuvreWatch right)
-        //{
-        //    return left.CompareTo(right) > 0;
-        //}
-
-        //public static bool operator >=(OeuvreWatch left, OeuvreWatch right)
-        //{
-        //    return left.CompareTo(right) >= 0;
-        //}
     }
 }

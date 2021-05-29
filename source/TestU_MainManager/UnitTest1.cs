@@ -33,7 +33,7 @@ namespace TestU_MainManager
 
         public void TestProfilCourant(MainManager Mana)
         {
-            Assert.True(Mana.Connexion("Marie"));
+            Mana.Connexion("Marie");
             Mana.Deconnexion();
             Assert.Equal(Mana.ProfilCourant, null);
         }

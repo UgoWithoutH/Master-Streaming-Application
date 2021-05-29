@@ -55,7 +55,7 @@ namespace Class
         }
 
         [DataMember]
-        public Watchlist MyWatchlist { get; set; }
+        public Watchlist MyWatchlist { get; private set; }
 
         public ObservableCollection<Oeuvre> ListOeuvresParGenre
         {
@@ -83,7 +83,7 @@ namespace Class
         public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<string>> ListingDates
         {
             get { return listingDates; }
-            set
+            private set
             {
                 listingDates = value;
                 OnPropertyChanged();
@@ -286,7 +286,6 @@ namespace Class
                 ListFiltrée = null;
                 result = false;
             }
-            //OnPropertyChanged(nameof(ListFiltrée));
             return result;
         }
 
