@@ -4,6 +4,10 @@ using System.Text;
 
 namespace Class
 {
+    /// <summary>
+    /// Enumération contenant les métiers qu'un Auteur peut avoir 
+    /// (On considère que chaque Réalisateur, Acteur, Cascadeur... est un "Auteur" de l'Oeuvre)
+    /// </summary>
     public enum Métier
     {
         Réalisateur = 1, // 00001

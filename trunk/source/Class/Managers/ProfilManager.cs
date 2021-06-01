@@ -11,12 +11,16 @@ using System.Text;
 
 namespace Class
 {
+    /// <summary>
+    /// Manager relatif au Profil de l'utilisateur 
+    /// </summary>
     [DataContract]
     public class ProfilManager : ObservableObject
     {
-        [DataMember]
-        private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
-
+        /// <summary>
+        /// Dictionnaire complet, contenant des Genre pour Keys. 
+        /// Chaque Value est une ObservableCollection d'Oeuvre dont chaque Oeuvre possède au moins le Genre en Key dans son attribut TagsGenres.
+        /// </summary>
         public ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> ListOeuvres
         {
             get { return listOeuvres; }
@@ -26,6 +30,12 @@ namespace Class
             }
         }
 
+        [DataMember]
+        private ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> listOeuvres;
+
+        /// <summary>
+        /// Oeuvre sélectionnée par un double-click dans le Master, et dont le Detail est actuellement ouvert
+        /// </summary>
         public Oeuvre OeuvreSélectionnée 
         {
             get => oeuvreSélectionnée;
@@ -35,13 +45,21 @@ namespace Class
                 OnPropertyChanged();
             }
         }
+
         private Oeuvre oeuvreSélectionnée;
 
+
+        /// <summary>
+        /// OeuvreWatch sélectionnée lors de la suppression d'une des OeuvreWatch depuis la Watchlist
+        /// </summary>
         public OeuvreWatch OeuvreWatchSélectionnée { get; set; }
 
-        [DataMember]
-        private Genre genreSélectionné;
-
+        
+        
+        /// <summary>
+        /// Genre selectionné par un click dans le menu déroulant des genres.
+        /// Si aucun Genre n'est sélectionné par l'utilisateur, le Genre sélectionné par défaut est Action.
+        /// </summary>
         public Genre GenreSélectionné
         {
             get { return genreSélectionné; }
@@ -53,10 +71,19 @@ namespace Class
                 OnPropertyChanged(nameof(ListOeuvresParGenre));
             }
         }
+		[DataMember]
+		private Genre genreSélectionné;
 
+
+        /// <summary>
+        /// Watchlist personnelle du profil connecté 
+        /// </summary>
         [DataMember]
         public Watchlist MyWatchlist { get; private set; }
 
+        /// <summary>
+        /// retourne l'ObservableCollection d'Oeuvre dans ListOeuvres dont la Key est le genre sélectionné actuellement.
+        /// </summary>
         public ObservableCollection<Oeuvre> ListOeuvresParGenre
         {
             get
@@ -65,6 +92,9 @@ namespace Class
             }
         }
 
+        /// <summary>
+        /// l'ObservableCollection d'Oeuvre correspondant au filtrage et au tri actuels
+        /// </summary>
         public ObservableCollection<Oeuvre> ListFiltrée 
         {
             get => listFiltrée;
@@ -77,9 +107,15 @@ namespace Class
         [DataMember]
         private ObservableCollection<Oeuvre> listFiltrée;
 
+        /// <summary>
+        /// List contenant chacune des Serie présentes dans le dictionnaire ListOeuvre, en exemplaire unique 
+        /// </summary>
         [DataMember]
         public LinkedList<Serie> ListingSerie { get; private set; }
 
+        /// <summary>
+        /// SortedSet comprenant chacune des différentes dates des Oeuvres présentes dans chaque genre (pour le filtrage par date)
+        /// </summary>
         public ConcurrentObservableSortedDictionary<Genre,ConcurrentObservableSortedSet<string>> ListingDates
         {
             get { return listingDates; }
@@ -94,6 +130,9 @@ namespace Class
         [DataMember]
         private ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>> listingDates;
 
+        /// <summary>
+        /// retourne le SortedSet comprenant chacune des différentes dates des Oeuvres présentes dans le Genre sélectionné par l'utilisateur
+        /// </summary>
         public ConcurrentObservableSortedSet<string> ListingDatesParGenre
         {
             get 

@@ -4,9 +4,15 @@ using System.Runtime.Serialization;
 
 namespace Class
 {
+    /// <summary>
+    /// Grande famille de films/séries (ex : Humour, Horreur, ...)
+    /// </summary>
     [DataContract]
     public class Genre : ObservableObject, IEquatable<Genre>, IComparable<Genre>, IComparable
     {
+        /// <summary>
+        /// nom du genre
+        /// </summary>
         public string Nom { 
             get => nom;
             private set 
@@ -27,6 +33,11 @@ namespace Class
             return Nom;
         }
 
+        /// <summary>
+        /// On considère que 2 Genre sont égaux si leurs attributs Nom sont égaux
+        /// </summary>
+        /// <param name="other">Genre avec lequel comparer</param>
+        /// <returns>true si leurs attributs Nom sont égaux et si le Nom du Genre avec lequel comparer n'est pas null, false sinon</returns>
         public bool Equals(Genre other)
         {
             if (other == null) return false;

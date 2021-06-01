@@ -8,9 +8,15 @@ namespace Class
     [DataContract]
     public class OeuvreWatch : IEquatable<OeuvreWatch>
     {
+        /// <summary>
+        /// Date de création de cette OeuvreWatch
+        /// </summary>
         [DataMember]
         public DateTime TimeAdd { get; set; }
 
+        /// <summary>
+        /// Oeuvre donnée dans le constructeur
+        /// </summary>
         [DataMember]
         public Oeuvre Oeuvre { get; set; }
 
@@ -23,8 +29,14 @@ namespace Class
         public override string ToString()
         {
             return $"{Oeuvre.Titre} , {Oeuvre.DateSortie} , {Oeuvre.Note} , {Oeuvre.Description}";
-        }        
+        }
 
+
+        /// <summary>
+        /// On considère que 2 OeuvreWatch sont égales si leur attribut Oeuvre.Titre est égal
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(OeuvreWatch other)
         {
             return Oeuvre.Titre.Equals(other.Oeuvre.Titre);
