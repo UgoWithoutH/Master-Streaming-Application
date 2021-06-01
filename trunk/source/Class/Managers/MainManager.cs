@@ -44,7 +44,7 @@ namespace Class
         }
 
         /// <summary>
-        /// Sauvegarde les données contenues dans l'ObservableCollection de ProfilManager passée en paramètre
+        /// Sauvegarde les données de ListProfils
         /// </summary>
         public void SauvegardeDonnées()
         {

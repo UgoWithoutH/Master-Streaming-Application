@@ -21,45 +21,59 @@
     <StackPanel Background="#313131">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3.3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Bienvenue sur Master_Streaming" Style="{StaticResource title_key}" Grid.Column="0"/>
-            <Button Height="85" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="Click_newAccount">
+            <Button Height="110" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" Click="Click_newAccount">
                 <StackPanel>
-                    <Image Source="images/icones/add.png" HorizontalAlignment="Center" MaxHeight="30" Margin="0 25 0 0"/>
+                    <Image Source="images/icones/add.png" HorizontalAlignment="Center" MaxHeight="30" Margin="0 5 0 0"/>
                     <TextBlock Text="Nouveau profil" HorizontalAlignment="Center" FontSize="18" Foreground="LightGreen"/>
                 </StackPanel>
             </Button>
 
 
             <TextBox x:Name="entry_name_new_account" materialDesign:HintAssist.Hint="Nom du profil :" Background="CadetBlue" Foreground="AliceBlue" 
-                     Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Return_Key"/>
+                     Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Add_Return_Key"/>
+
+            <Button Height="110" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="Click_suppAccount">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="MinusCircle" Foreground="PaleVioletRed" Height="33" Width="33" HorizontalAlignment="Center" Margin="0 25 0 0"/>
+                    <TextBlock Text="Supprimer" HorizontalAlignment="Center" FontSize="18" Foreground="Plum"/>
+                    <TextBlock Text="profil" HorizontalAlignment="Center" FontSize="18" Foreground="Plum"/>
+                </StackPanel>
+            </Button>
+
+            <TextBox x:Name="entry_name_supp_account" materialDesign:HintAssist.Hint="Nom du profil :" Background="IndianRed" Foreground="AliceBlue" 
+                     Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Supp_Return_Key"/>
+
+
         </Grid>
-
+        
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
+                <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
 
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <materialDesign:PackIcon Kind="Account" Height="100" Width="100"  HorizontalAlignment="Center" Foreground="AliceBlue" Padding="20"/>
-                            <TextBlock Text="{Binding Nom}" FontSize="20" Foreground="AliceBlue" HorizontalAlignment="Center"/>
-                            <Button x:Name="account_connexion" Content="Connexion" Background="Transparent" HorizontalAlignment="Center" Click="Account_Connexion"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="Account" Height="100" Width="100"  HorizontalAlignment="Center" Foreground="AliceBlue" Padding="20"/>
+                                <TextBlock Text="{Binding Nom}" FontSize="20" Foreground="AliceBlue" HorizontalAlignment="Center"/>
+                                <Button x:Name="account_connexion" Content="Connexion" Background="Transparent" HorizontalAlignment="Center" Click="Account_Connexion"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
     </StackPanel>
         
 </UserControl>

@@ -26,6 +26,7 @@ namespace Master_Streaming
             InitializeComponent();
             DataContext = mainManager;
             entry_name_new_account.Visibility = Visibility.Collapsed;
+            entry_name_supp_account.Visibility = Visibility.Collapsed;
         }
 
         private void Account_Connexion(object sender, RoutedEventArgs e)
@@ -38,9 +39,16 @@ namespace Master_Streaming
         private void Click_newAccount(object sender, RoutedEventArgs e)
         {
             entry_name_new_account.Visibility = Visibility.Visible;
+            entry_name_supp_account.Visibility = Visibility.Collapsed;
         }
 
-        private void Entry_Name_Return_Key(object sender, KeyEventArgs e)
+        private void Click_suppAccount(object sender, RoutedEventArgs e)
+        {
+            entry_name_supp_account.Visibility = Visibility.Visible;
+            entry_name_new_account.Visibility = Visibility.Collapsed;
+        }
+
+        private void Entry_Name_Add_Return_Key(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Return)
             {
@@ -53,12 +61,31 @@ namespace Master_Streaming
                     if (pm.Nom.Equals(entry_name_new_account.Text))
                     {
                         MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_new_account, "Nom invalide");
+                        MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_new_account, "Nom du profil :");
                         entry_name_new_account.Text = string.Empty;
                         return;
                     }
                 mainManager.ListProfils.Add(new ProfilManager(entry_name_new_account.Text));
                 MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_new_account, "Nom du profil :");
                 entry_name_new_account.Text = string.Empty;
+                mainManager.SauvegardeDonnées();
+            }
+        }
+
+        private void Entry_Name_Supp_Return_Key(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                if (mainManager.ListProfils.Contains(new ProfilManager(entry_name_supp_account.Text)))
+                {
+                    mainManager.ListProfils.RemoveAt(mainManager.ListProfils.IndexOf(new ProfilManager(entry_name_supp_account.Text)));
+                    MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_supp_account, "Nom du profil :");
+                    entry_name_supp_account.Text = string.Empty;
+                    mainManager.SauvegardeDonnées();
+                    return;
+                }
+                MaterialDesignThemes.Wpf.HintAssist.SetHint(entry_name_supp_account, "Nom invalide");
+                entry_name_supp_account.Text = string.Empty;
             }
         }
     }
