@@ -8,13 +8,22 @@ using System.Runtime.Serialization;
 
 namespace Class
 {
+    /// <summary>
+    /// Représente une personne étant intervenue dans la création d'une Oeuvre
+    /// </summary>
     [DataContract]
     public class Auteur : IEquatable<Auteur>, IDataErrorInfo
     {
+        /// <summary>
+        /// Nom de famille
+        /// </summary>
         [DataMember]
         [Required]
         public string Nom { get; private set; } // passer public pour modif
 
+        /// <summary>
+        /// Prénom
+        /// </summary>
         [DataMember]
         [Required]
         public string Prenom { get; private set; }
@@ -62,6 +71,11 @@ namespace Class
             return $"Nom : {Nom} prénom : {Prenom} profession : {Profession}";
         }
 
+        /// <summary>
+        /// On considère que 2 Auteur sont égaux si leurs attributs Nom, Prenom, Profession sont égaux
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(Auteur other)
         {
             if (other == null) return false;

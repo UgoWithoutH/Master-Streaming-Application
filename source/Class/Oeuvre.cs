@@ -8,6 +8,9 @@ using System.Text;
 
 namespace Class
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [DataContract, KnownType(typeof(Serie))]
     public abstract class Oeuvre : IEquatable<Oeuvre>, IComparable<Oeuvre>, IComparable, IDataErrorInfo, ICloneable
     {
@@ -38,14 +41,24 @@ namespace Class
             }
         }
 
+        /// <summary>
+        /// titre de l'Oeuvre
+        /// </summary>
         [Required]
         [DataMember]
         public string Titre { get; set; }
 
+        /// <summary>
+        /// date de sortie de l'Oeuvre
+        /// </summary>
         [Required]
         [DataMember]
         public DateTime DateSortie { get; set; }
 
+        /// <summary>
+        /// note de l'Oeuvre. Si on veut récupérer la note et qu'elle est null, retourne 0 (note la plus basse).
+        /// Si on veut setter la note à une valeur < 0 ou > 5, remplace cette valeur 0 ou 5 (respectivement min et max de la note).
+        /// </summary>
         public int? Note {
             get
             {
@@ -62,17 +75,30 @@ namespace Class
         [DataMember]
         private int? note;
 
+        /// <summary>
+        /// description de l'Oeuvre
+        /// </summary>
         [Required]
         [DataMember]
         public string Description { get; set; }
 
+        /// <summary>
+        /// chemin de l'image de l'Oeuvre depuis le dossier Master_Streaming
+        /// </summary>
         [Required]
         [DataMember]
         public string ImageName { get; set; }
 
+        /// <summary>
+        /// List des Auteur ayant contribué à la création de l'Oeuvre
+        /// </summary>
         [DataMember]
         public List<Auteur> ListAuteur { get; set; } = null;
 
+        /// <summary>
+        /// HashSet de Genre.
+        /// Contient les Genre dont l'Oeuvre fait partie.
+        /// </summary>
         [Required]
         [DataMember]
         public HashSet<Genre> TagsGenres { get; private set; }
@@ -99,6 +125,10 @@ namespace Class
             ListAuteur = listAuteurs;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>une copie exacte de cette Oeuvre</returns>
         public object Clone()
         {
             return this.MemberwiseClone();
@@ -109,6 +139,11 @@ namespace Class
             return ToString(); //équivalant à this.ToString(), faisant référence au ToString de la classe dérivée
         }
 
+        /// <summary>
+        /// On considère que 2 Oeuvre sont égales si leurs attributs Titre sont égaux
+        /// </summary>
+        /// <param name="other">Oeuvre avec laquelle comparer</param>
+        /// <returns>true si leurs attributs Titre sont égaux, false sinon</returns>
         public bool Equals(Oeuvre other)
         {
             return Titre.Equals(other.Titre);
@@ -121,11 +156,6 @@ namespace Class
             if (GetType() != (obj.GetType())) return false;
 
             return Equals(obj as Oeuvre);
-        }
-
-        public void addTagsGenres(HashSet<Genre> tagsGenres)
-        {
-            TagsGenres = tagsGenres;
         }
 
         public override int GetHashCode()

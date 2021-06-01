@@ -19,11 +19,21 @@ namespace Master_Streaming
     /// </summary>
     public partial class UC_modifier : UserControl
     {
+        /// <summary>
+        /// ProfilManager avec lequel l'utilisateur est connecté
+        /// </summary>
         ProfilManager manager => (Application.Current as App).Mmanager.ProfilCourant;
 
+        /// <summary>
+        /// En cas d'annulation de la modification, permet de revenir à la liste précédente (OeuvreSélectionnée est supprimée du ProfilManager)
+        /// </summary>
         Oeuvre OeuvreSélectionnéeBackup;
 
+        /// <summary>
+        /// Sauvegarde de l'oeuvre sélectionnée précédemment dans le Detail
+        /// </summary>
         Oeuvre OeuvreSauvegarde;
+
         public UC_modifier()
         {
             InitializeComponent();
@@ -33,6 +43,11 @@ namespace Master_Streaming
             manager.SupprimerOeuvre(manager.OeuvreSélectionnée); //provoque le bug
         }
 
+        /// <summary>
+        /// Ouvre l'explorateur de fichiers et laisse l'utilisateur sélectionner une image au format png ou jpg ou pdf
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
@@ -49,12 +64,23 @@ namespace Master_Streaming
             }
         }
 
+        /// <summary>
+        /// Annule la mofification et renvoie au Master
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_annuler_Click(object sender, RoutedEventArgs e)
         {
             manager.AjouterOeuvre(OeuvreSélectionnéeBackup); // provoque le bug aussi
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
 
+        /// <summary>
+        /// Ajoute l'Oeuvre mofifiée.
+        /// Affiche une MessageBox avec des informations sur l'erreur si la nouvelle Oeuvre ne peut pas être ajoutée.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_valider_click(object sender, RoutedEventArgs e)
         {
             int result = manager.AjouterOeuvre(OeuvreSauvegarde); // provoque le bug aussi

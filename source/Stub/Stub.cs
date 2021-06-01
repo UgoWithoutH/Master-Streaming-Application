@@ -8,6 +8,10 @@ namespace Stub
 {
     public class Stub : IPersistanceManager
     {
+        /// <summary>
+        /// Faux chargement de données
+        /// </summary>
+        /// <returns>une ObservableCollection de ProfilManager</returns>
         public ObservableCollection<ProfilManager> ChargeDonnées()
         {
             ObservableCollection<ProfilManager> collecPManager = new ObservableCollection<ProfilManager>();

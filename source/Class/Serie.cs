@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Class
 {
+    /// <summary>
+    /// Oeuvre dont un nombre de saisons peut être récupéré
+    /// </summary>
    public class Serie : Oeuvre
     {
         public int NbSaisons { get; set; }
