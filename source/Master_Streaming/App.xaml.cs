@@ -21,20 +21,7 @@ namespace Master_Streaming
         {
 
             //reprend par défaut les données du Stub si fichier de persistance non existant
-            //if (File.Exists("../../../../Master_Streaming/bin/Debug/XML/Master_Streaming.xml"))
-            //{
-            //    Mmanager = new MainManager(new DataContractPersistance.DataContractPersJSON());
-            //    Mmanager.ChargeDonnées();
-            //}
-
-            //else
-            //{
-            //    Mmanager = new MainManager(new Stub.Stub());
-            //    Mmanager.ChargeDonnées();
-            //    Mmanager.Persistance = new DataContractPersistance.DataContractPersJSON();
-            //    Mmanager.SauvegardeDonnées();
-            //}
-            if (File.Exists("../../../../Master_Streaming/bin/Debug/JSON/Master_Streaming.json"))
+            if (File.Exists("../../../../Master_Streaming/bin/Debug/XML/Master_Streaming.xml"))
             {
                 Mmanager = new MainManager(new DataContractPersistance.DataContractPers());
                 Mmanager.ChargeDonnées();
@@ -47,6 +34,19 @@ namespace Master_Streaming
                 Mmanager.Persistance = new DataContractPersistance.DataContractPers();
                 Mmanager.SauvegardeDonnées();
             }
+            //if (File.Exists("../../../../Master_Streaming/bin/Debug/JSON/Master_Streaming.json"))
+            //{
+            //    Mmanager = new MainManager(new DataContractPersistance.DataContractPersJSON());
+            //    Mmanager.ChargeDonnées();
+            //}
+
+            //else
+            //{
+            //    Mmanager = new MainManager(new Stub.Stub());
+            //    Mmanager.ChargeDonnées();
+            //    Mmanager.Persistance = new DataContractPersistance.DataContractPersJSON();
+            //    Mmanager.SauvegardeDonnées();
+            //}
         }
     }
 }
