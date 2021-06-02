@@ -22,5 +22,31 @@ namespace Master_Streaming
         {
             InitializeComponent();
         }
+
+
+
+        public string TextTitre
+        {
+            get { return (string)GetValue(TextTitreProperty); }
+            set { SetValue(TextTitreProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Titre.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextTitreProperty =
+            DependencyProperty.Register("TextTitre", typeof(string), typeof(UC_serie), new PropertyMetadata("A113"));
+
+
+
+        public string ImageSource
+        {
+            get { return (string)GetValue(ImageSourceProperty); }
+            set { SetValue(ImageSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ImageSourceProperty =
+            DependencyProperty.Register("ImageSource", typeof(string), typeof(UC_serie), new PropertyMetadata("A113"));
+
+
     }
 }
