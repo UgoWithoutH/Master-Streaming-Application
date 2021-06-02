@@ -18,7 +18,7 @@
         </Style>
     </UserControl.Resources>
 
-    <StackPanel Background="#313131">
+    <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3.3*"/>

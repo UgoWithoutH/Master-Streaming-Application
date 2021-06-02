@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-        <Style TargetType="TextBlock">
+        <Style TargetType="TextBlock" x:Key="gigatest">
             <Setter Property="FontFamily" Value="Frank Ruehl CLM"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>

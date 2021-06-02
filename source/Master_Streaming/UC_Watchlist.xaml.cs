@@ -25,6 +25,7 @@ namespace Master_Streaming
         {
             InitializeComponent();
             DataContext = manager;
+            (App.Current.MainWindow as MainWindow).header.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

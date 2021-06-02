@@ -27,6 +27,13 @@ namespace Master_Streaming
             DataContext = mainManager;
             entry_name_new_account.Visibility = Visibility.Collapsed;
             entry_name_supp_account.Visibility = Visibility.Collapsed;
+            MainWindow MyMainWindow = (App.Current.MainWindow as MainWindow);
+            MyMainWindow.VisibilyCollapsedHeader();
+            MyMainWindow.MainWindowColor.Background = (Brush)new BrushConverter().ConvertFrom("#313131");// test
+            MyMainWindow.header.HeaderColor.Background = (Brush)new BrushConverter().ConvertFrom("#232323");
+            MyMainWindow.header.moon.Visibility = Visibility.Visible;
+            MyMainWindow.header.sun.Visibility = Visibility.Collapsed;
+            MyMainWindow.header.ColorMode.IsChecked = false;
         }
 
         private void Account_Connexion(object sender, RoutedEventArgs e)

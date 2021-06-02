@@ -34,6 +34,7 @@ namespace Master_Streaming
             InitializeComponent();
             DataContext = PManager;
             ListEnum.ItemsSource = Enum.GetValues((typeof(Métier))).Cast<Métier>();
+            (App.Current.MainWindow as MainWindow).header.Visibility = Visibility.Collapsed;
         }
 
         private void Button_Annul_Click(object sender, RoutedEventArgs e)

@@ -41,6 +41,7 @@ namespace Master_Streaming
             DataContext = OeuvreSauvegarde;
             OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
             manager.SupprimerOeuvre(manager.OeuvreSélectionnée); //provoque le bug
+            (App.Current.MainWindow as MainWindow).header.Visibility = Visibility.Collapsed;
         }
 
         /// <summary>

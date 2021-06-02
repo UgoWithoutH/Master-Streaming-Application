@@ -32,11 +32,7 @@ namespace Class
         public void SupprimerOeuvre(Oeuvre o)
 
         {
-
-            foreach (OeuvreWatch ow in OeuvresVisionnees)
-
-                if (o.Titre.Equals(ow.Oeuvre.Titre))
-                    OeuvresVisionnees.Remove(ow);
+            OeuvresVisionnees.Remove(new OeuvreWatch(DateTime.Now, o));
         }
 
     }

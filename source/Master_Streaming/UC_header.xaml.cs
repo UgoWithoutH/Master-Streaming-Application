@@ -29,6 +29,9 @@ namespace Master_Streaming
             InitializeComponent();
             DataContext = Pmanager;
             sun.Visibility = Visibility.Collapsed;
+            ColorMode.IsChecked = (App.Current.MainWindow as MainWindow).ColorMode == 0 ? false : true;
+            moon.Visibility = (App.Current.MainWindow as MainWindow).ColorMode == 0 ? Visibility.Visible : Visibility.Collapsed;
+            sun.Visibility = (App.Current.MainWindow as MainWindow).ColorMode == 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
@@ -73,18 +76,25 @@ namespace Master_Streaming
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButton MyToggleButton = (sender as ToggleButton);
-            if(MyToggleButton.IsChecked == false)
-            {
-                //(App.Current.MainWindow as MainWindow).test.Background = Brushes.White;
+            Style a = (App.Current as App).FindResource("gigatest") as Style;
+            Setter setter = a.Setters[1] as Setter;
+            MainWindow MyMainWindow = ((App.Current.MainWindow as MainWindow));
 
-                ((App.Current.MainWindow as MainWindow).contentControlMain.Content as UC_Master).test.Background = Brushes.White;
+            if (MyToggleButton.IsChecked == false)
+            {
+                MyMainWindow.MainWindowColor.Background = (Brush) new BrushConverter().ConvertFrom("#313131");
+                this.HeaderColor.Background = (Brush)new BrushConverter().ConvertFrom("#232323");
                 moon.Visibility = Visibility.Visible;
                 sun.Visibility = Visibility.Collapsed;
+                MyMainWindow.ColorMode = 0;
             }
             else
             {
+                MyMainWindow.MainWindowColor.Background = Brushes.White;
+                this.HeaderColor.Background = (Brush)new BrushConverter().ConvertFrom("#D1D1D1");
                 moon.Visibility = Visibility.Collapsed;
                 sun.Visibility = Visibility.Visible;
+                MyMainWindow.ColorMode = 1;
             }
         }
     }
