@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,6 +28,7 @@ namespace Master_Streaming
         {
             InitializeComponent();
             DataContext = Pmanager;
+            sun.Visibility = Visibility.Collapsed;
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
@@ -65,6 +67,24 @@ namespace Master_Streaming
             if (e.Key == Key.Return)
             {
                 Recherche();
+            }
+        }
+
+        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButton MyToggleButton = (sender as ToggleButton);
+            if(MyToggleButton.IsChecked == false)
+            {
+                //(App.Current.MainWindow as MainWindow).test.Background = Brushes.White;
+
+                ((App.Current.MainWindow as MainWindow).contentControlMain.Content as UC_Master).test.Background = Brushes.White;
+                moon.Visibility = Visibility.Visible;
+                sun.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                moon.Visibility = Visibility.Collapsed;
+                sun.Visibility = Visibility.Visible;
             }
         }
     }

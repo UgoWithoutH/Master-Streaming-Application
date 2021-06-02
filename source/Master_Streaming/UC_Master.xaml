@@ -52,7 +52,7 @@
 
 
 
-    <Grid Background="#313131" x:Name="test1">
+    <Grid x:Name="test">
         <StackPanel Background="#313131">
             <local:UC_header/>
         </StackPanel>

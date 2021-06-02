@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1250" MinHeight="700" MinWidth="1150" MaxHeight="800" MaxWidth="1250">
+        Title="MainWindow" Height="800" Width="1350" MinHeight="700" MinWidth="1150" MaxHeight="800" MaxWidth="1350">
 
 
 
 
     <ScrollViewer x:Name="scrollBar">
-        <StackPanel Background="#313131">
+        <StackPanel x:Name="test"  Background="#313131">
             <ContentControl x:Name="contentControlMain">
                 <local:UC_ChoixProfil/>
             </ContentControl>
