@@ -28,6 +28,9 @@ namespace Master_Streaming
             ListViewMenu.Visibility = Visibility.Collapsed;
             DataContext = manager;
             manager.GenreSélectionné = manager.ListOeuvres.Keys.FirstOrDefault();
+            MainWindow MyMainWindow = (App.Current.MainWindow as MainWindow);
+            (App.Current.MainWindow as MainWindow).header.Visibility = Visibility.Visible;
+            MyMainWindow.VisibilyVisibledHeader();
             //uc_listSeries.filtrage.SelectedItem = "Toutes dates";
             //uc_listSeries.trie.SelectedItem = "Alphabétique"; //Quand la liste sera faite pour se binde dessus
         }

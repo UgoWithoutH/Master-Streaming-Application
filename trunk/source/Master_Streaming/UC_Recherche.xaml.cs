@@ -38,6 +38,7 @@ namespace Master_Streaming
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+            (Application.Current.MainWindow as MainWindow).header.entree_Recherche.Text = string.Empty;
         }
     }
 }

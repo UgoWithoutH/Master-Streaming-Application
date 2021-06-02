@@ -28,16 +28,13 @@
 
     </UserControl.Resources>
 
-    <StackPanel Background="#313131">
-        <StackPanel>
-            <local:UC_header x:Name="header"></local:UC_header>
-        </StackPanel>
+    <StackPanel>
         <StackPanel Margin="10 0 10 0">
             <Button Content="Retour" Background="Black" BorderBrush="White" Width="80" HorizontalAlignment="Left" Click="Button_Click"/>
             <StackPanel Margin="0 25 25 0">
                 <TextBlock x:Name="textRecherche" FontSize="27" FontFamily="Comic Sans MS" Margin="0 0 0 20" HorizontalAlignment="Center"/>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                    <ListBox x:Name="MylisteRecherche" ItemsSource="{Binding ListRecherche}" SelectedIndex="0" Background="#313131" BorderBrush="#313131" MouseDoubleClick="MylisteRecherche_MouseDoubleClick">
+                    <ListBox x:Name="MylisteRecherche" ItemsSource="{Binding ListRecherche}" SelectedIndex="0" BorderBrush="#313131" MouseDoubleClick="MylisteRecherche_MouseDoubleClick">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>

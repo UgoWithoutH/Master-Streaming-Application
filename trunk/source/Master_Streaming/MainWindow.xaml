@@ -9,12 +9,12 @@
 
 
 
-
-    <ScrollViewer x:Name="scrollBar">
-        <StackPanel x:Name="test"  Background="#313131">
-            <ContentControl x:Name="contentControlMain">
-                <local:UC_ChoixProfil/>
-            </ContentControl>
-        </StackPanel>
-    </ScrollViewer>
+    <StackPanel x:Name="MainWindowColor" Background="#313131">
+        <local:UC_header x:Name="header" Background="#232323"></local:UC_header>
+        <StackPanel>
+                <ContentControl x:Name="contentControlMain">
+                    <local:UC_ChoixProfil/>
+                </ContentControl>
+            </StackPanel>
+    </StackPanel>
 </Window>

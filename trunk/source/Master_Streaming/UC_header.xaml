@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="1250">
+             d:DesignHeight="450" d:DesignWidth="1250"
+             x:Name="root">
 
-    <Grid Background="#232323">
+    <Grid x:Name="HeaderColor" Background="{Binding }">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.5*"/>
@@ -19,9 +20,9 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         
-        <Button Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked"/>
+        <Button x:Name="watchlist" Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked"/>
         <TextBlock Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
-        <Button Background="White" Grid.Column="3" Width="150" Height="33">
+        <Button x:Name="recherche" Background="White" Grid.Column="3" Width="150" Height="33">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -38,15 +39,15 @@
                 </TextBox>
             </Grid>
         </Button>
-        <Button Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked"/>
+        <Button x:Name="ajout" Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked"/>
 
         <StackPanel Orientation="Horizontal"  Grid.Column="5" VerticalAlignment="Center">
             <materialDesign:PackIcon x:Name="moon" Kind="WeatherNight" Foreground="White"/>
             <materialDesign:PackIcon x:Name="sun" Kind="WhiteBalanceSunny" Foreground="White"/>
-            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" Margin="10 0 0 0" Click="ToggleButton_Click"/>
+            <ToggleButton x:Name="ColorMode" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" Margin="10 0 0 0" Click="ToggleButton_Click"/>
         </StackPanel>
         
-        <materialDesign:PopupBox Grid.Column="6" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+        <materialDesign:PopupBox x:Name="deconnexion" Grid.Column="6" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
             <StackPanel Width="150">
                 <Button x:Name="ButtonPopUpLogout" Click="ButtonPopUpLogout_Click" Width="150">
                     <TextBlock Foreground="Black" FontSize="15">

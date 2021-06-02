@@ -52,10 +52,10 @@
 
 
 
-    <Grid x:Name="test">
-        <StackPanel Background="#313131">
-            <local:UC_header/>
-        </StackPanel>
+    <Grid>
+        <!--<StackPanel>--><!--Background="#313131"--><!--
+            <local:UC_header x:Name="header"/>
+        </StackPanel>-->
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
             <Grid.Effect>
                 <DropShadowEffect/>
@@ -123,7 +123,7 @@
                 </ListView>
             </StackPanel>
         </Grid>
-        <StackPanel Margin="80 100 0 0" x:Name="test2">
+        <StackPanel Margin="80 100 0 0">
             <local:UC_listeSeries x:Name="uc_listSeries"></local:UC_listeSeries>
         </StackPanel>
 
