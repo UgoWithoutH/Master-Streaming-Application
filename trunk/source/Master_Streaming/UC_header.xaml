@@ -14,6 +14,7 @@
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
@@ -39,7 +40,13 @@
         </Button>
         <Button Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked"/>
 
-        <materialDesign:PopupBox Grid.Column="5" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+        <StackPanel Orientation="Horizontal"  Grid.Column="5" VerticalAlignment="Center">
+            <materialDesign:PackIcon x:Name="moon" Kind="WeatherNight" Foreground="White"/>
+            <materialDesign:PackIcon x:Name="sun" Kind="WhiteBalanceSunny" Foreground="White"/>
+            <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" Margin="10 0 0 0" Click="ToggleButton_Click"/>
+        </StackPanel>
+        
+        <materialDesign:PopupBox Grid.Column="6" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
             <StackPanel Width="150">
                 <Button x:Name="ButtonPopUpLogout" Click="ButtonPopUpLogout_Click" Width="150">
                     <TextBlock Foreground="Black" FontSize="15">
