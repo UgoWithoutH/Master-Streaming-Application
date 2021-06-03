@@ -8,13 +8,15 @@
         Title="MainWindow" Height="800" Width="1350" MinHeight="700" MinWidth="1150" MaxHeight="800" MaxWidth="1350">
 
 
-
-    <StackPanel x:Name="MainWindowColor" Background="#313131">
-        <local:UC_header x:Name="header" Background="#232323"></local:UC_header>
-        <StackPanel>
+    <ScrollViewer>
+        <StackPanel x:Name="MainWindowColor" Background="#313131">
+        
+            <local:UC_header x:Name="header" Background="#232323"></local:UC_header>
+            <StackPanel>
                 <ContentControl x:Name="contentControlMain">
                     <local:UC_ChoixProfil/>
                 </ContentControl>
             </StackPanel>
-    </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </Window>

@@ -52,7 +52,7 @@ namespace Class
         /// date de sortie de l'Oeuvre
         /// </summary>
         [Required]
-        [DataMember]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public DateTime DateSortie { get; set; }
 
         /// <summary>
