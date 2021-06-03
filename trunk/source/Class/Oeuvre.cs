@@ -52,7 +52,7 @@ namespace Class
         /// date de sortie de l'Oeuvre
         /// </summary>
         [Required]
-        [DataMember(IsRequired = false, EmitDefaultValue = false)]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)] //pour le bug du chargement de données  via JSON (DateTime.MinValue)
         public DateTime DateSortie { get; set; }
 
         /// <summary>
