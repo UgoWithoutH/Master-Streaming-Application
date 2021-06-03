@@ -131,18 +131,20 @@ namespace Class
         private ConcurrentObservableSortedDictionary<Genre, ConcurrentObservableSortedSet<string>> listingDates;
 
         /// <summary>
-        /// retourne le SortedSet comprenant chacune des différentes dates des Oeuvres présentes dans le Genre sélectionné par l'utilisateur
+        /// retourne le ObservableCollection comprenant chacune des différentes dates des Oeuvres présentes dans le Genre sélectionné par l'utilisateur (pas très propre mais on a préféré ce concentrer sur autre chose)
         /// </summary>
-        public ConcurrentObservableSortedSet<string> ListingDatesParGenre
+        public ObservableCollection<string> ListingDatesParGenre
         {
             get 
             { 
                 if(GenreSélectionné != null)
                 {
-                    return ListingDates[GenreSélectionné];
+                    var liste = new ObservableCollection<string>();
+                    liste.AddRange(ListingDates[GenreSélectionné].ToList());
+                    return liste;
                 }
 
-                return new ConcurrentObservableSortedSet<string>();
+                return new ObservableCollection<string>();
             }
         }
 
