@@ -63,6 +63,12 @@
             </StackPanel>-->
             <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
                 <ListBox x:Name="MylisteSerie" ItemsSource="{Binding ListFiltrée}" SelectedItem="{Binding OeuvreSélectionnée}" SelectedIndex="0" BorderBrush="#313131" MouseDoubleClick="MylisteSerie_MouseDoubleClick"><!--Background="#313131"-->
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>

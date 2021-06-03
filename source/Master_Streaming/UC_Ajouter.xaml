@@ -121,7 +121,7 @@
                 <TextBlock Text="Auteurs :" Style="{StaticResource champs}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Text="Nom" Style="{StaticResource champs}" Margin="0 0 10 0"/>
-                    <TextBox x:Name="nomAuteur" Text="{Binding AuteurTemporaireAjout.Nom,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True,Mode=OneWay}" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
+                    <TextBox x:Name="nomAuteur" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <StackPanel>

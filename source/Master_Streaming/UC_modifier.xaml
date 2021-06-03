@@ -95,7 +95,7 @@
 
                 <StackPanel>
                     <TextBlock Text="Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center" Margin="0 0 0 30"/>
-                    <ListBox x:Name="ListGenre" ItemsSource="{Binding ListOeuvres.Keys}" Height="220" SelectionMode="Multiple">
+                    <ListBox x:Name="ListGenre" ItemsSource="{Binding TagsGenres}" Height="220" SelectionMode="Multiple">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Nom}"/>
@@ -120,7 +120,7 @@
                 <TextBlock Text="Auteurs :" Style="{StaticResource champs}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Text="Nom" Style="{StaticResource champs}" Margin="0 0 10 0"/>
-                    <TextBox x:Name="nomAuteur" Text="{Binding AuteurTemporaireAjout.Nom,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
+                    <TextBox x:Name="nomAuteur" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <StackPanel>
