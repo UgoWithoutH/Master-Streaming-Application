@@ -33,7 +33,7 @@ namespace Master_Streaming
 
         // Using a DependencyProperty as the backing store for Titre.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextTitreProperty =
-            DependencyProperty.Register("TextTitre", typeof(string), typeof(UC_serie), new PropertyMetadata("A113"));
+            DependencyProperty.Register("TextTitre", typeof(string), typeof(UC_serie), new PropertyMetadata());
 
 
 
@@ -45,7 +45,7 @@ namespace Master_Streaming
 
         // Using a DependencyProperty as the backing store for ImageSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(string), typeof(UC_serie), new PropertyMetadata("A113"));
+            DependencyProperty.Register("ImageSource", typeof(string), typeof(UC_serie), new PropertyMetadata());
 
 
     }
