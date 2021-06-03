@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="120"/>
+                <RowDefinition Height="130"/>
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
             <TextBlock Text="Bienvenue sur Master_Streaming" Style="{StaticResource title_key}" Grid.Column="0"/>
@@ -41,7 +41,7 @@
             <TextBox x:Name="entry_name_new_account" materialDesign:HintAssist.Hint="Nom du profil :" Background="CadetBlue" Foreground="AliceBlue" 
                      Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Add_Return_Key"/>
 
-            <Button Height="110" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="Click_suppAccount">
+            <Button Height="120" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="Click_suppAccount">
                 <StackPanel>
                     <materialDesign:PackIcon Kind="MinusCircle" Foreground="PaleVioletRed" Height="33" Width="33" HorizontalAlignment="Center" Margin="0 25 0 0"/>
                     <TextBlock Text="Supprimer" HorizontalAlignment="Center" FontSize="18" Foreground="Plum"/>
