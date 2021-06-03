@@ -71,7 +71,7 @@ namespace Master_Streaming
                         uc_listSeries.filtrage.Visibility = Visibility.Visible;
                         uc_listSeries.trie.Visibility = Visibility.Visible;
                     }
-                }
+            }
         }
 
         private void CollapsedVisibility()
