@@ -27,11 +27,27 @@ namespace Master_Streaming
         public UC_header()
         {
             InitializeComponent();
+            InitializeColorModeHeader();
             DataContext = Pmanager;
-            sun.Visibility = Visibility.Collapsed;
-            ColorMode.IsChecked = (App.Current.MainWindow as MainWindow).ColorMode == 0 ? false : true;
-            moon.Visibility = (App.Current.MainWindow as MainWindow).ColorMode == 0 ? Visibility.Visible : Visibility.Collapsed;
-            sun.Visibility = (App.Current.MainWindow as MainWindow).ColorMode == 0 ? Visibility.Collapsed : Visibility.Visible;
+        }
+
+        private void InitializeColorModeHeader()
+        {
+            if ((App.Current.MainWindow as MainWindow).ColorMode == 0)
+            {
+                ColorMode.IsChecked = false;
+                moon.Visibility = Visibility.Visible;
+                sun.Visibility = Visibility.Collapsed;
+                titre.Foreground = Brushes.Black;
+            }
+            else
+            {
+                ColorMode.IsChecked = true;
+                moon.Visibility = Visibility.Collapsed;
+                sun.Visibility = Visibility.Visible;
+                titre.Foreground = Brushes.White;
+            }
+
         }
 
         private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
@@ -76,8 +92,6 @@ namespace Master_Streaming
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButton MyToggleButton = (sender as ToggleButton);
-            Style a = (App.Current as App).FindResource("gigatest") as Style;
-            Setter setter = a.Setters[1] as Setter;
             MainWindow MyMainWindow = ((App.Current.MainWindow as MainWindow));
 
             if (MyToggleButton.IsChecked == false)

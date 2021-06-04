@@ -65,7 +65,9 @@ namespace Master_Streaming
         {
             this.Visibility = Visibility.Hidden;
             manager.SupprimerOeuvre(manager.OeuvreSélectionnée);
-            manager.tri((((App.Current.MainWindow as MainWindow).contentControlMain.Content as UC_Master).uc_listSeries.trie.SelectedItem.ToString())); //pour relancer le tri car il est écrasé
+            if((App.Current.MainWindow as MainWindow).contentControlMain.Content is UC_Master MyUcMaster){
+                manager.tri(MyUcMaster.uc_listSeries.trie.SelectedItem.ToString()); //pour relancer le tri car il est écrasé
+            }
         }
     }
 }

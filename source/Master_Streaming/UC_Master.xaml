@@ -51,12 +51,9 @@
     </UserControl.Triggers>
 
     <Grid Height="1000">
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer>
             <Grid Height="1200">
-                <!--<StackPanel>--><!--Background="#313131"--><!--
-                    <local:UC_header x:Name="header"/>
-                </StackPanel>-->
-                <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
+                <Grid x:Name="GridMenu" Width="70" Height="auto" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
                     <Grid.Effect>
                         <DropShadowEffect/>
                     </Grid.Effect>

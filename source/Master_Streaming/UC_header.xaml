@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         
         <Button x:Name="watchlist" Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked"/>
-        <TextBlock Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
+        <TextBlock x:Name="titre" Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
         <Button x:Name="recherche" Background="White" Grid.Column="3" Width="150" Height="33">
             <Grid>
                 <Grid.ColumnDefinitions>

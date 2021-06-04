@@ -27,7 +27,7 @@ namespace Master_Streaming
     {
         public ProfilManager manager => (App.Current as App).Mmanager.ProfilCourant;
 
-        public int ColorMode;
+        public int ColorMode; //0 = sombre et 1 = clair
 
         public MainWindow()
         {
