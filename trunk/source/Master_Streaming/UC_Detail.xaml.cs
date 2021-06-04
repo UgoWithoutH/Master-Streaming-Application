@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -23,8 +24,21 @@ namespace Master_Streaming
         public UC_Detail()
         {
             InitializeComponent();
+            InitializeColorDetail((App.Current.MainWindow as MainWindow).header.ColorMode);
             DataContext = manager.OeuvreSélectionnée;
             Text_BtnWatch();
+        }
+
+        private void InitializeColorDetail(ToggleButton MyToggleButton)
+        {
+            if((App.Current.MainWindow as MainWindow).ColorMode == 0)
+            {
+                bordure.BorderBrush = Brushes.White;
+            }
+            else
+            {
+                bordure.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#232323");
+            }
         }
 
         private void Text_BtnWatch()
