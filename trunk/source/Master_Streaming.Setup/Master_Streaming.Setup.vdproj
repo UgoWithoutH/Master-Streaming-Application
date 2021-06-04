@@ -37,6 +37,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -53,6 +69,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -152,7 +176,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Master_Streaming.Setup"
         "ProductCode" = "8:{67BC4102-089D-4DF7-89ED-DDCDCFDDE89B}"
-        "PackageCode" = "8:{BF03FAF4-32EB-4D41-9DC2-BBD2818896D6}"
+        "PackageCode" = "8:{EA6C8ED1-053B-4CB7-80DC-585A92161549}"
         "UpgradeCode" = "8:{C919A3AE-9853-43F7-8A45-A3F0A9621C98}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -272,20 +296,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E935BBCC40C94E9587397850106812AE"
-            {
-            "Name" = "8:Master_Streaming"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_46072E4F40254C5EBDD3E5063A3EFB3C"
-            "Folder" = "8:_446C021D181D4BF3B9A0A2DACA62D02F"
-            "WorkingFolder" = "8:_27D4442E4BDC41D280139820E672BFFD"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {

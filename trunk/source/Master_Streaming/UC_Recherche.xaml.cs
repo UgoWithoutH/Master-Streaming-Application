@@ -28,7 +28,7 @@ namespace Master_Streaming
             textRecherche.Text = "Recherche pour : " + recherche;
         }
 
-        private void MylisteRecherche_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void MylisteRecherche_MouseSimpleClick(object sender, MouseButtonEventArgs e)
         {
             manager.OeuvreSélectionnée = (sender as ListBox).SelectedItem as Oeuvre; // SelectedItem="{Binding OeuvreSélectionée}" ne marche pas au tout premier doubleckick avec SelectedItem en xaml
             ContentControlDetailRecherche.Visibility = Visibility.Visible;

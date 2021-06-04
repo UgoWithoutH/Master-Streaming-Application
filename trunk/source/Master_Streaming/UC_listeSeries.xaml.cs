@@ -58,8 +58,9 @@ namespace Master_Streaming
 
         }
 
-        private void MylisteSerie_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void MylisteSerie_MouseSimpleClick(object sender, MouseButtonEventArgs e)
         {
+            //manager.OeuvreSélectionnée = MylisteSerie.SelectedItem as Oeuvre;
             ContentControlDetail.Visibility = Visibility.Visible;
             ContentControlDetail.Content = new UC_Detail();
         }

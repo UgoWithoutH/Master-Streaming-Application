@@ -34,7 +34,7 @@
             <StackPanel Margin="0 25 25 0">
                 <TextBlock x:Name="textRecherche" FontSize="27" FontFamily="Comic Sans MS" Margin="0 0 0 20" HorizontalAlignment="Center"/>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-                    <ListBox x:Name="MylisteRecherche" ItemsSource="{Binding ListRecherche}" SelectedIndex="0" BorderBrush="#313131" MouseDoubleClick="MylisteRecherche_MouseDoubleClick">
+                    <ListBox x:Name="MylisteRecherche" ItemsSource="{Binding ListRecherche}" SelectedIndex="0" BorderBrush="#313131" PreviewMouseUp="MylisteRecherche_MouseSimpleClick">
                         <ListBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel/>
