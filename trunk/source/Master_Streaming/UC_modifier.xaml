@@ -8,7 +8,6 @@
              d:DesignHeight="800" d:DesignWidth="1200">
     <UserControl.Resources>
         <Style TargetType="TextBlock" x:Key="champs">
-            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
         <Thickness x:Key="spaceChamps" Left="50"/>
@@ -16,7 +15,6 @@
         <Style TargetType="TextBlock" x:Key="AutorChamp">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="White"/>
         </Style>
 
         <Style TargetType="TextBox" x:Key="cancelDesignMaterialDesign"></Style>
@@ -98,7 +96,7 @@
                     <ListBox x:Name="ListGenre" ItemsSource="{Binding TagsGenres}" Height="220" SelectionMode="Multiple">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Nom}"/>
+                                <TextBlock Text="{Binding Nom}" Foreground="Chocolate"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

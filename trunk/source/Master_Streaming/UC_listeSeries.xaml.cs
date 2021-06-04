@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -40,8 +41,6 @@ namespace Master_Streaming
             {
                 ContentControlDetail.Visibility = Visibility.Hidden;
                 manager.Filtrage(filtrage.SelectedItem.ToString());
-                //ligne suivante modifiée afin de faire fonctionner la persistance. le filtrage ne marche plus
-                //trie.SelectedItem = manager.ListingTris.FirstOrDefault(); //ne déclanche par l'évévenement trie_SelectionChanged [attention]
                 if(trie.SelectedItem != null)
                     manager.tri(trie.SelectedItem.ToString()); //pour relancer le trie à chaque filtrage (qui est alphabétique par défaut). trie.SelectedItem est null a la première ouverture des données d'un profil utilisateur
             }
@@ -58,9 +57,20 @@ namespace Master_Streaming
 
         }
 
+        private void changeColorUcMaster(MainWindow mainWindow, ToggleButton toggleButton)
+        {
+            if (toggleButton.IsChecked == false)
+            {
+                texteGenre.Foreground = (Brush) new BrushConverter().ConvertFrom("#313131");
+            }
+            else
+            {
+                texteGenre.Foreground = (Brush)new BrushConverter().ConvertFrom("#313131");
+            }
+        }
+
         private void MylisteSerie_MouseSimpleClick(object sender, MouseButtonEventArgs e)
         {
-            //manager.OeuvreSélectionnée = MylisteSerie.SelectedItem as Oeuvre;
             ContentControlDetail.Visibility = Visibility.Visible;
             ContentControlDetail.Content = new UC_Detail();
         }
