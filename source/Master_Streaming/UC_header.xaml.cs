@@ -106,9 +106,11 @@ namespace Master_Streaming
         {
             ToggleButton MyToggleButton = sender as ToggleButton;
             MainWindow MyMainWindow = App.Current.MainWindow as MainWindow;
+            Object contentOfContentControl = MyMainWindow.contentControlMain.Content;
             ChangeColorHeader(MyMainWindow, MyToggleButton);
-            if (MyMainWindow.contentControlMain.Content is UC_Master ucMaster) ChangeColorUcMaster(ucMaster, MyToggleButton);
-            if (MyMainWindow.contentControlMain.Content is UC_Recherche ucRecherche) ChangeColorUcRecherche(ucRecherche, MyToggleButton);
+            if (contentOfContentControl is UC_Master ucMaster) ChangeColorUcMaster(ucMaster, MyToggleButton);
+            if (contentOfContentControl is UC_Recherche ucRecherche) ChangeColorUcRecherche(ucRecherche, MyToggleButton);
+            if(contentOfContentControl is UC_Master || contentOfContentControl is UC_Recherche ) CheckChangeColorUcDetail(contentOfContentControl, MyToggleButton);
             if (MyToggleButton.IsChecked == false)
             {
                 ToggleBaseColour(true);
@@ -119,6 +121,54 @@ namespace Master_Streaming
                 ToggleBaseColour(false);
                 (App.Current.MainWindow as MainWindow).ColorMode = 1;
             }
+        }
+
+        private void CheckChangeColorUcDetail(Object contentOfcontentControl, ToggleButton toggleButton)
+        {
+            if(contentOfcontentControl is UC_Master ucMaster)
+            {
+             Object contentControlDetail = ucMaster.uc_listSeries.ContentControlDetail.Content;
+             if (contentControlDetail != null)
+                {
+                    if(toggleButton.IsChecked == false)
+                    {
+                        (contentControlDetail as UC_Detail).bordure.BorderBrush = Brushes.White;
+                    }
+                    else
+                    {
+                        (contentControlDetail as UC_Detail).bordure.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#232323");
+                    }
+                }   
+            }
+            else if(contentOfcontentControl is UC_Recherche ucRecherche)
+            {
+                Object ContentControlDetailRecherche = ucRecherche.ContentControlDetailRecherche.Content;
+                if(ContentControlDetailRecherche != null)
+                {
+                    if (toggleButton.IsChecked == false)
+                    {
+                        (ContentControlDetailRecherche as UC_Detail).bordure.BorderBrush = Brushes.White;
+                    }
+                    else
+                    {
+                        (ContentControlDetailRecherche as UC_Detail).bordure.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#232323");
+                    }
+                }
+            }
+        }
+
+        public void ChangeColorUcDetail(UC_Master ucMaster2, ToggleButton toggleButton) // public pour l'appel dans le code behind de UC_listeSeries
+        {
+            UC_Detail MyUcDetail = ucMaster2.uc_listSeries.ContentControlDetail.Content as UC_Detail;
+            if (toggleButton.IsChecked == false)
+            {
+                MyUcDetail.bordure.BorderBrush = Brushes.White;
+            }
+            else
+            {
+                MyUcDetail.bordure.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#313131");
+            }
+
         }
 
         private void ChangeColorUcWatchlist(UC_Watchlist ucWatchlist, ToggleButton toggleButton)

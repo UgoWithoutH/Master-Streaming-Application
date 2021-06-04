@@ -11,11 +11,10 @@
     <UserControl.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
         </Style>
     </UserControl.Resources>
 
-    <Border Padding="50 0 5 0" BorderBrush="White" BorderThickness="1" Margin="50 0 50 0">
+    <Border x:Name="bordure" Padding="50 0 5 0" BorderThickness="1" Margin="50 0 50 0">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

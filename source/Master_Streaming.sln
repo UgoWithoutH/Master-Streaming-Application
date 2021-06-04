@@ -42,7 +42,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test_DataContract", "Test_D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistance", "Persistance", "{EC68EC02-A4B6-4B5A-BB93-1CCFEEF70D5E}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Master_Streaming.Setup", "Master_Streaming.Setup\Master_Streaming.Setup.vdproj", "{95C5F030-9A27-428E-A761-19EA33CB3DE3}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Master_Streaming.Setup", "Master_Streaming.Setup\Master_Streaming.Setup.vdproj", "{674CE9B8-9415-47EC-962E-B59D91EA4AF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,8 +106,8 @@ Global
 		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB1E1326-2217-4302-A4D6-19EEF2489324}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95C5F030-9A27-428E-A761-19EA33CB3DE3}.Debug|Any CPU.ActiveCfg = Debug
-		{95C5F030-9A27-428E-A761-19EA33CB3DE3}.Release|Any CPU.ActiveCfg = Release
+		{674CE9B8-9415-47EC-962E-B59D91EA4AF2}.Debug|Any CPU.ActiveCfg = Debug
+		{674CE9B8-9415-47EC-962E-B59D91EA4AF2}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
