@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -31,8 +32,6 @@ namespace Master_Streaming
             MainWindow MyMainWindow = (App.Current.MainWindow as MainWindow);
             (App.Current.MainWindow as MainWindow).header.Visibility = Visibility.Visible;
             MyMainWindow.VisibilyVisibledHeader();
-            //uc_listSeries.filtrage.SelectedItem = "Toutes dates";
-            //uc_listSeries.trie.SelectedItem = "Alphabétique"; //Quand la liste sera faite pour se binde dessus
         }
 
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)

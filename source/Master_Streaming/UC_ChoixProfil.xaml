@@ -9,7 +9,6 @@
 
     <UserControl.Resources>
         <Style TargetType="TextBlock" x:Key="title_key">
-            <Setter Property="Foreground" Value="AliceBlue"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="0 20 10 0"/>
             <Setter Property="FontSize" Value="30"/>
@@ -56,8 +55,8 @@
         </Grid>
         
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}">
-                    <ListBox.ItemsPanel>
+            <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}">
+                <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>
                         </ItemsPanelTemplate>
@@ -66,10 +65,14 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
-                                <materialDesign:PackIcon Kind="Account" Height="100" Width="100"  HorizontalAlignment="Center" Foreground="AliceBlue" Padding="20"/>
-                                <TextBlock Text="{Binding Nom}" FontSize="20" Foreground="AliceBlue" HorizontalAlignment="Center"/>
-                                <Button x:Name="account_connexion" Content="Connexion" Background="Transparent" HorizontalAlignment="Center" Click="Account_Connexion"/>
-                            </StackPanel>
+                                <materialDesign:PackIcon Kind="Account" Height="100" Width="100"  HorizontalAlignment="Center" Padding="20"/>
+                                <TextBlock Foreground="Chocolate" Text="{Binding Nom}" FontSize="20" HorizontalAlignment="Center"/>
+                            <Button HorizontalAlignment="Center" Click="Account_Connexion" Background="Chocolate" BorderBrush="White">
+                                <Button.Content>
+                                    <TextBlock Text="Connexion"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

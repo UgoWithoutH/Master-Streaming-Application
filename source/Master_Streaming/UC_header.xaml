@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="1250"
              x:Name="root">
 
-    <Grid x:Name="HeaderColor" Background="{Binding }">
+    <Grid x:Name="HeaderColor">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1.5*"/>

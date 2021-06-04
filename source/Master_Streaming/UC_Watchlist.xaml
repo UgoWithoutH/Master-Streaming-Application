@@ -14,7 +14,6 @@
 
         <Style TargetType="TextBlock" x:Key="TextBlockBinding">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
         </Style>
     </UserControl.Resources>
 
@@ -33,8 +32,8 @@
         </Button>
         
         <StackPanel  Grid.Row="1" Margin="0 0 0 18">
-            <TextBlock Text="Watchlist" FontSize="45" FontFamily="Frank Ruehl CLM" Margin="40,30,40,0"/>
-            <Rectangle Height="3" Fill="White" Margin="50,20,300,0"/>
+            <TextBlock x:Name="Titre" Text="Watchlist" FontSize="45" FontFamily="Frank Ruehl CLM" Margin="40,30,40,0"/>
+            <Rectangle x:Name="barre" Height="3" Fill="White" Margin="50,20,300,0"/>
         </StackPanel>
 
         <ListBox x:Name="MyListInWatchlist" ItemsSource="{Binding MyWatchlist.OeuvresVisionnees}" Grid.Row="2" Margin="40 0 20 0">
