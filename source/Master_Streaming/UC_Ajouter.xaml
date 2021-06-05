@@ -90,7 +90,7 @@
 
 
             <StackPanel Orientation="Horizontal"  Grid.Row="2" Grid.Column="2">
-                <Line X1="0" Y1="50" X2="0" Y2="250" Width="25" Stroke="BlueViolet"/>
+                <Line X1="0" Y1="50" X2="0" Y2="250" Width="25" Stroke="Chocolate"/>
 
                 <StackPanel>
                     <TextBlock Text="Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center" Margin="0 0 0 30"/>
@@ -146,7 +146,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=.}"/>
+                            <TextBlock Text="{Binding Path=.}" Foreground="Chocolate"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

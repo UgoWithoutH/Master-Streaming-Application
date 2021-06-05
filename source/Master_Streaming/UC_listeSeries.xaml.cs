@@ -71,8 +71,11 @@ namespace Master_Streaming
 
         private void MylisteSerie_MouseSimpleClick(object sender, MouseButtonEventArgs e)
         {
-            ContentControlDetail.Visibility = Visibility.Visible;
-            ContentControlDetail.Content = new UC_Detail();
+            if(manager.OeuvreSélectionnée != null)
+            {
+                ContentControlDetail.Visibility = Visibility.Visible;
+                ContentControlDetail.Content = new UC_Detail();
+            }
         }
     }
 }

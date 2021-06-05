@@ -269,6 +269,11 @@ namespace Class
                 {
                     value.Remove(oeuvre);
                     CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
+                    OeuvreWatch OeuvreWatchSuppression = new OeuvreWatch(DateTime.Now, oeuvre);
+                    if (MyWatchlist.OeuvresVisionnees.Contains(OeuvreWatchSuppression))
+                    {
+                        MyWatchlist.OeuvresVisionnees.Remove(OeuvreWatchSuppression);
+                    }
                 }
             }
             ListFiltrée = ListOeuvresParGenre;
