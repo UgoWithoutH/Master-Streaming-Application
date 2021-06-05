@@ -50,7 +50,7 @@
         <materialDesign:PopupBox x:Name="deconnexion" Grid.Column="6" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
             <StackPanel Width="150">
                 <Button x:Name="ButtonPopUpLogout" Click="ButtonPopUpLogout_Click" Width="150">
-                    <TextBlock Foreground="Black" FontSize="15">
+                    <TextBlock x:Name="textbox_deconnexion" FontSize="15">
                         Déconnexion
                     </TextBlock>
                 </Button>
