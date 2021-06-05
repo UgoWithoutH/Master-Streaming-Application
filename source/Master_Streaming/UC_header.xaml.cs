@@ -217,6 +217,7 @@ namespace Master_Streaming
             if(toggleButton.IsChecked == false)
             {
                 this.HeaderColor.Background = (Brush)new BrushConverter().ConvertFrom("#232323");
+                this.textbox_deconnexion.Foreground = Brushes.White;
                 moon.Visibility = Visibility.Visible;
                 sun.Visibility = Visibility.Collapsed;
                 titre.Foreground = Brushes.White;
@@ -224,6 +225,7 @@ namespace Master_Streaming
             else
             {
                 this.HeaderColor.Background = (Brush)new BrushConverter().ConvertFrom("#D1D1D1");
+                this.textbox_deconnexion.Foreground = Brushes.Black;
                 moon.Visibility = Visibility.Collapsed;
                 sun.Visibility = Visibility.Visible;
                 titre.Foreground = Brushes.Black;
