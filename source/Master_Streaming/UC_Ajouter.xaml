@@ -69,7 +69,7 @@
 
             <StackPanel Grid.Column="1" Grid.Row="1" >
                 <StackPanel Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
-                    <TextBlock Text="Date de sortie :" Style="{StaticResource champs}" Height="30"/>
+                    <TextBlock Text="Date de sortie (année/mois/jour) :" Style="{StaticResource champs}" Height="30"/>
                     <TextBox x:Name="DateSortie" materialDesign:HintAssist.Hint="(DD/MM/YYYY)" materialDesign:HintAssist.Foreground="Black" FontWeight="Bold" MinWidth="200" Margin="0"/>
                 </StackPanel>
 
