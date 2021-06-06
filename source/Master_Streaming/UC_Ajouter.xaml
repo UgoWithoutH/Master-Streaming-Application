@@ -55,7 +55,7 @@
                 <Button Width="auto" Height="500"  Background="#DCE2E7" BorderBrush="{x:Null}" VerticalAlignment="Top" Click="Open_File_Explorer">
                     <Button.Content>
                         <StackPanel>
-                            <TextBlock x:Name="imageText" Text="Cliquez içi pour choisir une image" FontSize="20"/>
+                            <TextBlock x:Name="imageText" Text="*Cliquez içi pour choisir une image" FontSize="20"/>
                             <Image x:Name="imageChoix"/>
                         </StackPanel>
                     </Button.Content>
@@ -63,13 +63,13 @@
                 <materialDesign:RatingBar x:Name="BasicRatingBar" Value="3" HorizontalAlignment="Center" Margin="0 15 0 0"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
-                <TextBlock Text="Titre :" Style="{StaticResource champs}" Height="30"/>
+                <TextBlock Text="*Titre :" Style="{StaticResource champs}" Height="30"/>
                 <TextBox x:Name="Titre" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" >
                 <StackPanel Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
-                    <TextBlock Text="Date de sortie (année/mois/jour) :" Style="{StaticResource champs}" Height="30"/>
+                    <TextBlock Text="*Date de sortie :" Style="{StaticResource champs}" Height="30"/>
                     <TextBox x:Name="DateSortie" materialDesign:HintAssist.Hint="(DD/MM/YYYY)" materialDesign:HintAssist.Foreground="Black" FontWeight="Bold" MinWidth="200" Margin="0"/>
                 </StackPanel>
 
@@ -80,7 +80,7 @@
             </StackPanel>
             
             <StackPanel Grid.Column="1" Grid.Row="2" Margin="{StaticResource spaceChamps}">
-                <TextBlock Text="Description :" Style="{StaticResource champs}"/>
+                <TextBlock Text="*Description :" Style="{StaticResource champs}"/>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
                         <TextBox x:Name="Description" Margin="25" Height="200" TextWrapping="Wrap"/>
@@ -93,7 +93,7 @@
                 <Line X1="0" Y1="50" X2="0" Y2="250" Width="25" Stroke="Chocolate"/>
 
                 <StackPanel>
-                    <TextBlock Text="Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center" Margin="0 0 0 30"/>
+                    <TextBlock Text="*Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center" Margin="0 0 0 30"/>
                     <ListBox x:Name="ListGenre" ItemsSource="{Binding ListOeuvres.Keys}" Height="220" SelectionMode="Multiple">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
