@@ -219,7 +219,9 @@ namespace Class
 
             if (oeuvre is Serie serie)
             {
-                if (!ListingSerie.Contains(oeuvre) && !string.IsNullOrWhiteSpace(oeuvre.Titre))
+                if (string.IsNullOrWhiteSpace(oeuvre.Titre)) return -1;
+
+                if (!ListingSerie.Contains(oeuvre))
                 {
                     ListingSerie.AddFirst(serie);
                 }

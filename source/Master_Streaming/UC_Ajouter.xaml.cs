@@ -60,8 +60,9 @@ namespace Master_Streaming
             }
             else
             {
-                PManager.SerieTemporaireAjout.Note = this.BasicRatingBar.Value;
+                PManager.SerieTemporaireAjout.NbSaisons = int.Parse(this.nbSaisons.Text);
             }
+            PManager.SerieTemporaireAjout.Note = this.BasicRatingBar.Value;
             foreach (Genre genre in this.ListGenre.SelectedItems)
             {
                 PManager.SerieTemporaireAjout.TagsGenres.Add(genre);
