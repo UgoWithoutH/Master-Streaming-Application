@@ -50,7 +50,7 @@
         </EventTrigger>
     </UserControl.Triggers>
 
-    <Grid>
+    <Grid Height="1000">
         <ScrollViewer VerticalScrollBarVisibility="Hidden">
             <Grid Height="1200">
                 <Grid x:Name="GridMenu" Width="70" Height="auto" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
