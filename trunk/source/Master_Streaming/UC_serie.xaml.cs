@@ -23,8 +23,6 @@ namespace Master_Streaming
             InitializeComponent();
         }
 
-
-
         public string TextTitre
         {
             get { return (string)GetValue(TextTitreProperty); }

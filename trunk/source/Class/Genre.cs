@@ -54,10 +54,7 @@ namespace Class
         }
         public override int GetHashCode()
         {
-            int hashCode = 1067912786;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Nom);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(nom);
-            return hashCode;
+            return Nom.GetHashCode();
         }
 
         public int CompareTo(Genre other)

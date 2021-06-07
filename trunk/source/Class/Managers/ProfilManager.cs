@@ -148,18 +148,28 @@ namespace Class
             }
         }
 
+        /// <summary>
+        /// représente l'ensemble des tries appliquable dans le profils utilisateur
+        /// </summary>
         [DataMember]
         public ObservableCollection<string> ListingTris { get; private set; }
 
+        /// <summary>
+        /// Collection qui récuperera 
+        /// </summary>
         public ObservableCollection<Oeuvre> ListRecherche { get; set; }
 
+        /// <summary>
+        /// Série temporaire permettant l'ajout d'une oeuvre au compte utilsisateur
+        /// </summary>
         [DataMember]
         public Serie SerieTemporaireAjout { get; set; }
 
+        /// <summary>
+        /// Nom du profil utilisateur
+        /// </summary>
         [DataMember]
         public string Nom { get; private set; }
-
-        public Auteur AuteurTemporaireAjout { get; set; }
 
         public ProfilManager(string nom)
         {
@@ -174,7 +184,7 @@ namespace Class
         }
 
         /// <summary>
-        /// Ajouter un genre dans le SortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
+        /// Ajouter un genre dans le ObservableSortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
         /// </summary>
         /// <param name="g">Genre qui doit être ajouté</param>
         /// <returns>true si l'ajout du genre a réussi sinon false</returns>
@@ -194,7 +204,7 @@ namespace Class
         }
 
         /// <summary>
-        /// Supprimer un Genre dans le le SortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
+        /// Supprimer un Genre dans le ObservableSortedDictionary des Oeuvres (ListOeuvres) et des Dates (ListingDates)
         /// </summary>
         /// <param name="g">Genre qui doit être supprimé</param>
         /// <returns>true si la suppression du genre a réussi sinon false</returns>
@@ -210,10 +220,12 @@ namespace Class
         }
 
         /// <summary>
-        /// 
+        /// Ajouter uene oeuvre dans le ObservableSortedDictionary des Oeuvres (ListOeuvres) et la date de sortie dans (ListingDates)
         /// </summary>
         /// <param name="o">Oeuvre qui doit être ajoutée au SortedDictionary des Oeuvres (ListOeuvres)</param>
-        /// <returns></returns>
+        /// <returns>-1 si l'oeuvre a un titre null ou s'il manque un champ obligatoire
+        ///           0 si l'oeuvre a été ajoutée
+        ///           1 si une oeuvre déjà existante possède le même titre que l'oeuvre voulant être ajoutée</returns>
         public int AjouterOeuvre(Oeuvre oeuvre)
         {
 
@@ -257,7 +269,10 @@ namespace Class
             else return -1;
         }
 
-
+        /// <summary>
+        /// Supprimer une oeuvre du ObservableSortedDictionary des Oeuvres (ListOeuvres) pour chaques genres(Key) que l'oeuvre possède
+        /// </summary>
+        /// <param name="oeuvre">Oeuvre voulant être supprimée</param>
         public void SupprimerOeuvre(Oeuvre oeuvre)
         {
             if (oeuvre is Serie serie) ListingSerie.Remove(serie);
@@ -276,6 +291,11 @@ namespace Class
             ListFiltrée = ListOeuvresParGenre;
         }
 
+        /// <summary>
+        /// Permet de vérifier si l'ajout de l'oeuvre peut être effectuer, si les champs obligatoires sont remplies
+        /// </summary>
+        /// <param name="oeuvre"></param>
+        /// <returns>false en cas d'invalidité et true si l'ajout est valide</returns>
         public bool checkAjoutOeuvre(Oeuvre oeuvre)
         {
             if (string.IsNullOrWhiteSpace(oeuvre.Titre)) return false;
@@ -287,6 +307,11 @@ namespace Class
             return true;
         }
 
+        /// <summary>
+        /// Vérifie si pour un genre donné il existe encore une oeuvre qui possède la même année de sortie que celle passée en paramètre.
+        /// </summary>
+        /// <param name="genre">genre pour lequel le listing (value) d'oeuvres doit êre vérifiée</param>
+        /// <param name="year">année qui doit être vérifié dans le filtrage</param>
         public void CheckListDates(Genre genre, string year)
         {
             int check = 0;
@@ -307,6 +332,12 @@ namespace Class
             }
         }
 
+        /// <summary>
+        /// Permet de filtrée ListeFiltrée en fonction du filtre passé en paramètre
+        /// </summary>
+        /// <param name="filtre">chaine de caractère choisit par l'utiisateur pour filtrer ListeFiltrée</param>
+        /// <returns>false si le filtre passé en paramètre est null
+        ///          true si le filtrage à eu lieu</returns>
         public bool Filtrage(string filtre)
         {
             bool result = true;
@@ -320,7 +351,7 @@ namespace Class
                 else
                 {
                     int dateFiltre = int.Parse(filtre);
-                    ListFiltrée = new ObservableCollection<Oeuvre>(); //Dans notre cas on ne peut pas utiliser clear() car ListFiltrée et ListOeuvresParGenre pointe sur la même zone mémoire dans le tas
+                    ListFiltrée = new ObservableCollection<Oeuvre>(); //Dans notre cas on ne peut pas utiliser clear() car ListFiltrée et ListOeuvresParGenre pointent sur la même zone mémoire dans le tas
                     ListFiltrée.AddRange(ListOeuvresParGenre.Where(oeuvre => oeuvre.DateSortie.Year == dateFiltre));
                 }
             }
@@ -332,6 +363,10 @@ namespace Class
             return result;
         }
 
+        /// <summary>
+        /// Permet de trier ListeFiltrée en fonction du trie passé en paramètre
+        /// </summary>
+        /// <param name="tri">chaine de caractère choisit par l'utiisateur pour filtrer ListeFiltrée</param>
         public void tri(string tri)
         {
             if (ListFiltrée != null)
@@ -351,6 +386,11 @@ namespace Class
             }
         }
 
+        /// <summary>
+        /// Permet de changer le genre sélectionné dans le cas ou l'utilisateur supprime le genre qu'il a sélectionné au préalable (pour éviter des excpetions liées à la mémoire)
+        /// </summary>
+        /// <param name="données">données du compte utilisateur (Genres/listing d'oeuvres)</param>
+        /// <param name="Textgenre">nom du genre supprimé</param>
         public void ChangeGenreSélectionné(ConcurrentObservableSortedDictionary<Genre, ObservableCollection<Oeuvre>> données, string Textgenre)
         {
 
@@ -379,6 +419,11 @@ namespace Class
             }
         }
 
+        /// <summary>
+        /// Recherche les oeuvres commençant par la chaine de caractère passée en paramètres. Cette méthode délègue la responsabilité de la recherche à la classe utilitaire URecherche
+        /// </summary>
+        /// <param name="chaine">chaine de caractère cherchant qui doit être comparé avec le début du titre des Oeuvres du profil utilisateur</param>
+        /// <returns>retourne ObservableCollection étant le résultat de la recherche</returns>
         public ObservableCollection<Oeuvre> Recherche(string chaine)
         {
             return ListOeuvres.RechercherOeuvres(chaine);
@@ -400,7 +445,7 @@ namespace Class
 
         public override int GetHashCode()
         {
-            return 217408413 + EqualityComparer<string>.Default.GetHashCode(Nom);
+            return Nom.GetHashCode();
         }
     }
 }

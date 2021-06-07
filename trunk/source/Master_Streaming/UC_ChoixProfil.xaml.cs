@@ -53,6 +53,11 @@ namespace Master_Streaming
             entry_name_new_account.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// gère l'ajout d'un nouveau profil utilisateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Entry_Name_Add_Return_Key(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.Return)
@@ -77,6 +82,11 @@ namespace Master_Streaming
             }
         }
 
+        /// <summary>
+        /// gère la suppression d'un profil utilisateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Entry_Name_Supp_Return_Key(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Return)

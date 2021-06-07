@@ -160,7 +160,7 @@ namespace Class
 
         public override int GetHashCode()
         {
-            return 590323563 + EqualityComparer<string>.Default.GetHashCode(Titre);
+            return Titre.GetHashCode();
         }
 
         public int CompareTo(Oeuvre other)

@@ -47,8 +47,8 @@ namespace Master_Streaming
         /// <summary>
         /// Ouvre l'explorateur de fichiers et laisse l'utilisateur sélectionner une image au format png ou jpg ou pdf
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">référence sur le contrôle/objet qui a déclenché l'événement</param>
+        /// <param name="e">données de l'événement</param>
         private void Open_File_Explorer(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
@@ -68,8 +68,8 @@ namespace Master_Streaming
         /// <summary>
         /// Annule la mofification et renvoie au Master
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">référence sur le contrôle/objet qui a déclenché l'événement</param>
+        /// <param name="e">données de l'événement</param>
         private void btn_annuler_Click(object sender, RoutedEventArgs e)
         {
             manager.AjouterOeuvre(OeuvreSélectionnéeBackup); // provoque le bug aussi

@@ -57,18 +57,6 @@ namespace Master_Streaming
 
         }
 
-        private void changeColorUcMaster(MainWindow mainWindow, ToggleButton toggleButton)
-        {
-            if (toggleButton.IsChecked == false)
-            {
-                texteGenre.Foreground = (Brush) new BrushConverter().ConvertFrom("#313131");
-            }
-            else
-            {
-                texteGenre.Foreground = (Brush)new BrushConverter().ConvertFrom("#313131");
-            }
-        }
-
         private void MylisteSerie_MouseSimpleClick(object sender, MouseButtonEventArgs e)
         {
             if(manager.OeuvreSélectionnée != null)

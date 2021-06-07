@@ -29,6 +29,10 @@ namespace Master_Streaming
             Text_BtnWatch();
         }
 
+        /// <summary>
+        /// initialise la couleur de l'user control s'il vient dêtre affiché
+        /// </summary>
+        /// <param name="MyToggleButton"></param>
         private void InitializeColorDetail(ToggleButton MyToggleButton)
         {
             if((App.Current.MainWindow as MainWindow).ColorMode == 0)
@@ -46,6 +50,10 @@ namespace Master_Streaming
             btn_watch.Content = GetText();
         }
 
+        /// <summary>
+        /// permet d'avoir un texte dynamique dans le bouton d'ajout ou de suppression à la Watchlist
+        /// </summary>
+        /// <returns></returns>
         private string GetText()
         {
             return manager.MyWatchlist.OeuvresVisionnees.Contains(new OeuvreWatch(DateTime.Now, manager.OeuvreSélectionnée)) ? "Supprimer de la Watchlist" : "Ajouter à la Watchlist"; 

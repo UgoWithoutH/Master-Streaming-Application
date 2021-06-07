@@ -27,6 +27,9 @@ namespace Master_Streaming
     {
         public ProfilManager manager => (App.Current as App).Mmanager.ProfilCourant;
 
+        /// <summary>
+        /// Permet de savoir quel mode de couleur est en cours
+        /// </summary>
         public int ColorMode; //0 = sombre et 1 = clair
 
         public MainWindow()
@@ -35,6 +38,9 @@ namespace Master_Streaming
             VisibilyCollapsedHeader();
         }
 
+        /// <summary>
+        /// permet de masquer des éléments du header de notre application
+        /// </summary>
         public void VisibilyCollapsedHeader()
         {
             header.watchlist.Visibility = Visibility.Collapsed;
@@ -43,6 +49,9 @@ namespace Master_Streaming
             header.deconnexion.Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Permet de rendre visible des éléments du header de notre application
+        /// </summary>
         public void VisibilyVisibledHeader()
         {
             header.watchlist.Visibility = Visibility.Visible;
