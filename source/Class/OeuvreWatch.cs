@@ -50,5 +50,10 @@ namespace Class
 
             return Equals(obj as OeuvreWatch);
         }
+
+        public override int GetHashCode()
+        {
+            return Oeuvre.Titre.GetHashCode();
+        }
     }
 }

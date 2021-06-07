@@ -34,6 +34,11 @@ namespace Master_Streaming
             MyMainWindow.VisibilyVisibledHeader();
         }
 
+        /// <summary>
+        /// Permet de cacher des élements du menu
+        /// </summary>
+        /// <param name="sender">référence sur le contrôle/objet qui a déclenché l'événement</param>
+        /// <param name="e">données de l'événement</param>
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Visible;
@@ -45,6 +50,12 @@ namespace Master_Streaming
             ListViewMenu.Visibility = Visibility.Collapsed;
         }
 
+
+        /// <summary>
+        /// Permet de rendre visible des éléments du menu
+        /// </summary>
+        /// <param name="sender">référence sur le contrôle/objet qui a déclenché l'événement</param>
+        /// <param name="e">données de l'événement</param>
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
@@ -58,7 +69,7 @@ namespace Master_Streaming
         {
             if (e.AddedItems.Count != 0)
             {
-                manager.GenreSélectionné = (e.AddedItems[0] as Genre);
+                manager.GenreSélectionné = e.AddedItems[0] as Genre;
                 CollapsedVisibility();
                 uc_listSeries.filtrage.SelectedItem = "Toutes dates"; //valeur par défaut de la combobox du filtrage
                 uc_listSeries.trie.SelectedItem = "Alphabétique"; //valeur par défaut de la combobox du tri
@@ -124,8 +135,6 @@ namespace Master_Streaming
 
         private void SuppGenreBox_Validated_With_Enter(object sender, KeyEventArgs e)
         {
-            //bool isExistant = false;
-
             if (e.Key == Key.Return)
             {
                 if (manager.ListOeuvres.ContainsKey(new Genre(boxSuppGenre.Text.ToUpper())))

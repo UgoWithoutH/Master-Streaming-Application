@@ -15,19 +15,22 @@ namespace Class
     public class Auteur : IEquatable<Auteur>, IDataErrorInfo
     {
         /// <summary>
-        /// Nom de famille
+        /// Nom de famille de l'auteur
         /// </summary>
         [DataMember]
         [Required]
         public string Nom { get; private set; } // passer public pour modif
 
         /// <summary>
-        /// Prénom
+        /// Prénom de l'auteur
         /// </summary>
         [DataMember]
         [Required]
         public string Prenom { get; private set; }
 
+        /// <summary>
+        /// Profession de l'auteur
+        /// </summary>
         [DataMember]
         [Required]
         public Métier Profession { get; private set; }
@@ -89,6 +92,11 @@ namespace Class
             if (GetType() != obj.GetType()) return false;
 
             return Equals(obj as Auteur);
+        }
+
+        public override int GetHashCode()
+        {
+            return Nom.GetHashCode() + Prenom.GetHashCode();
         }
     }
 }

@@ -12,6 +12,9 @@ namespace Class
     public class Watchlist
 
     {
+        /// <summary>
+        /// Collection stockant les oeuvres déja visionnées du compte utilisateur
+        /// </summary>
         [DataMember]
         public ObservableCollection<OeuvreWatch> OeuvresVisionnees { get; private set; }
 
@@ -23,12 +26,20 @@ namespace Class
 
         }
 
+        /// <summary>
+        /// Ajoute une Oeuvre à la collection OeuvresVisionnees
+        /// </summary>
+        /// <param name="o">Oeuvre voulant être ajoutée</param>
         public void AjouterOeuvre(Oeuvre o)
 
         {
             OeuvresVisionnees.Add(new OeuvreWatch(DateTime.Now, o));
-        } 
+        }
 
+        /// <summary>
+        /// Supprime une Oeuvre de la collection OeuvresVisionnees
+        /// </summary>
+        /// <param name="o">Oeuvre voulant être supprimée</param>
         public void SupprimerOeuvre(Oeuvre o)
 
         {

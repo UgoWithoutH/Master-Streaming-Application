@@ -35,6 +35,9 @@ namespace Master_Streaming
             DataContext = Pmanager;
         }
 
+        /// <summary>
+        /// Permet d'initialiser les couleurs du header de notre application en fonction du mode de couleur
+        /// </summary>
         private void InitializeColorModeHeader()
         {
             if ((App.Current.MainWindow as MainWindow).ColorMode == 0)
@@ -102,13 +105,17 @@ namespace Master_Streaming
             _paletteHelper.SetTheme(theme);
         }
 
+        /// <summary>
+        /// Permet de changer la couleur du Background de l'application en fonction de la valeur du ToggleButton. Permet également de changer la couleur des différents contrôles utilisateurs de l'application
+        /// </summary>
+        /// <param name="sender">référence sur le contrôle/objet qui a déclenché l'événement</param>
+        /// <param name="e">données de l'événement</param>
         private void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButton MyToggleButton = sender as ToggleButton;
             MainWindow MyMainWindow = App.Current.MainWindow as MainWindow;
             Object contentOfContentControl = MyMainWindow.contentControlMain.Content;
             ChangeColorHeader(MyMainWindow, MyToggleButton);
-            if (contentOfContentControl is UC_Master ucMaster) ChangeColorUcMaster(ucMaster, MyToggleButton);
             if (contentOfContentControl is UC_Recherche ucRecherche) ChangeColorUcRecherche(ucRecherche, MyToggleButton);
             if(contentOfContentControl is UC_Master || contentOfContentControl is UC_Recherche ) CheckChangeColorUcDetail(contentOfContentControl, MyToggleButton);
             if (MyToggleButton.IsChecked == false)
@@ -123,6 +130,11 @@ namespace Master_Streaming
             }
         }
 
+        /// <summary>
+        /// Permet de changer la couleur de certains composants de l'user control UC_Detail. 
+        /// </summary>
+        /// <param name="contentOfcontentControl">contenu du ContentControl présent dans MainWindow</param>
+        /// <param name="toggleButton">ToggleButton du changement de couleur de l'application</param>
         private void CheckChangeColorUcDetail(Object contentOfcontentControl, ToggleButton toggleButton)
         {
             if(contentOfcontentControl is UC_Master ucMaster)
@@ -157,20 +169,11 @@ namespace Master_Streaming
             }
         }
 
-        public void ChangeColorUcDetail(UC_Master ucMaster2, ToggleButton toggleButton) // public pour l'appel dans le code behind de UC_listeSeries
-        {
-            UC_Detail MyUcDetail = ucMaster2.uc_listSeries.ContentControlDetail.Content as UC_Detail;
-            if (toggleButton.IsChecked == false)
-            {
-                MyUcDetail.bordure.BorderBrush = Brushes.White;
-            }
-            else
-            {
-                MyUcDetail.bordure.BorderBrush = (Brush)new BrushConverter().ConvertFrom("#313131");
-            }
-
-        }
-
+        /// <summary>
+        /// Permet de changer la couleur de certains composants de l'user control UC_Watchlist. 
+        /// </summary>
+        /// <param name="ucWatchlist">UC_Watchlist de l'application</param>
+        /// <param name="toggleButton">ToggleButton du changement de couleur de l'application</param>
         private void ChangeColorUcWatchlist(UC_Watchlist ucWatchlist, ToggleButton toggleButton)
         {
             if (toggleButton.IsChecked == false)
@@ -186,6 +189,11 @@ namespace Master_Streaming
 
         }
 
+        /// <summary>
+        /// Permet de changer la couleur de certains composants de l'user control UC_Recherche. 
+        /// </summary>
+        /// <param name="ucRecherche">UC_Recherche</param>
+        /// <param name="toggleButton">ToggleButton du changement de couleur de l'application</param>
         private void ChangeColorUcRecherche(UC_Recherche ucRecherche, ToggleButton toggleButton)
         {
             if (toggleButton.IsChecked == false)
@@ -199,6 +207,11 @@ namespace Master_Streaming
 
         }
 
+        /// <summary>
+        /// Permet de changer la couleur de certains composants de l'user control UC_Master. 
+        /// </summary>
+        /// <param name="ucMaster">UC_Master de l'application</param>
+        /// <param name="toggleButton">ToggleButton du changement de couleur de l'application</param>
         private void ChangeColorUcMaster(UC_Master ucMaster,ToggleButton toggleButton)
         {
             if(toggleButton.IsChecked == false)
@@ -212,6 +225,11 @@ namespace Master_Streaming
 
         }
 
+        /// <summary>
+        /// Permet de changer la couleur de certains composants de l'user control UC_Detail et de gérer la visibilité de l'icone clair/sombre. 
+        /// </summary>
+        /// <param name="mainWindow">MainWindow de l'application</param>
+        /// <param name="toggleButton">ToggleButton du changement de couleur de l'application</param>
         private void ChangeColorHeader(MainWindow mainWindow, ToggleButton toggleButton)
         {
             if(toggleButton.IsChecked == false)
