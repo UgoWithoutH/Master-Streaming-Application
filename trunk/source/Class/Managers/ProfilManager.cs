@@ -229,7 +229,7 @@ namespace Class
         public int AjouterOeuvre(Oeuvre oeuvre)
         {
 
-            if (oeuvre is Serie serie)
+            if (oeuvre is Serie serie && checkAjoutOeuvre(oeuvre))
             {
                 if (string.IsNullOrWhiteSpace(oeuvre.Titre)) return -1;
 
@@ -299,7 +299,7 @@ namespace Class
         public bool checkAjoutOeuvre(Oeuvre oeuvre)
         {
             if (string.IsNullOrWhiteSpace(oeuvre.Titre)) return false;
-            if (oeuvre.DateSortie == null) return false;
+            if (oeuvre.DateSortie.Equals(new DateTime(01,01,0001))) return false;
             if (string.IsNullOrWhiteSpace(oeuvre.Description)) return false;
             if (string.IsNullOrWhiteSpace(oeuvre.ImageName)) return false;
             if (oeuvre.TagsGenres.Count == 0) return false;

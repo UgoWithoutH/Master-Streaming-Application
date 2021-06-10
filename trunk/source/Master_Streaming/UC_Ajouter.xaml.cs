@@ -45,22 +45,28 @@ namespace Master_Streaming
         {
             PManager.SerieTemporaireAjout.ImageName = filename;
             PManager.SerieTemporaireAjout.Titre = this.Titre.Text;
-            if (string.IsNullOrWhiteSpace(this.DateSortie.Text))
+            if (string.IsNullOrWhiteSpace(this.DateSortie.Text) || !DateTime.TryParse(this.DateSortie.Text, out DateTime res))
             {
-                PManager.SerieTemporaireAjout.DateSortie = new DateTime(0);
+                MessageBox.Show("Date invalide");
+                return;
             }
             else
             {
-                PManager.SerieTemporaireAjout.DateSortie = Convert.ToDateTime(this.DateSortie.Text);
+                PManager.SerieTemporaireAjout.DateSortie = res;
             }
             PManager.SerieTemporaireAjout.Description = this.Description.Text;
             if (string.IsNullOrWhiteSpace(this.nbSaisons.Text))
             {
                 PManager.SerieTemporaireAjout.NbSaisons = 0;
             }
+            else if (!int.TryParse(this.nbSaisons.Text, out int resultat))
+            {
+                MessageBox.Show("chaine de caractère non valide pour le nombre de saisons");
+                return;
+            }
             else
             {
-                PManager.SerieTemporaireAjout.NbSaisons = int.Parse(this.nbSaisons.Text);
+                PManager.SerieTemporaireAjout.NbSaisons = resultat;
             }
             PManager.SerieTemporaireAjout.Note = this.BasicRatingBar.Value;
             foreach (Genre genre in this.ListGenre.SelectedItems)
@@ -89,6 +95,7 @@ namespace Master_Streaming
             dialog.InitialDirectory = @"C:\Users\Public\Pictures";
             dialog.FileName = "Images";
             dialog.DefaultExt = ".png | .jpg | .gif";
+            dialog.Filter = "All images files (.jpg, .png, .gif)|*.jpg;*.png;*.gif|JPG files (.jpg)|*.jpg|PNG files (.png)|*.png|GIF files (.gif)|*.gif";
 
             bool? result = dialog.ShowDialog();
 
