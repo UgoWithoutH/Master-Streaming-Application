@@ -36,7 +36,7 @@ namespace Master_Streaming
             //    Mmanager.Persistance = new DataContractPersistance.DataContractPers();
             //    Mmanager.SauvegardeDonnées();
             //}
-            if (File.Exists("../../../../Master_Streaming/bin/Debug/JSON/Master_Streaming.json"))
+            if (File.Exists("../../../../Master_Streaming/bin/Release/JSON/Master_Streaming.json"))
             {
                 Mmanager = new MainManager(new DataContractPersistance.DataContractPersJSON());
                 Mmanager.ChargeDonnées();

@@ -12,7 +12,7 @@ namespace DataContractPersistance
     {
         public string FilePath => Path.Combine(Directory.GetCurrentDirectory(), RelativePath);
 
-        public string RelativePath { get; set; } = "../../../../Master_Streaming/bin/Debug/XML";
+        public string RelativePath { get; set; } = "../../../../Master_Streaming/bin/Release/XML";
 
         public string FileName { get; set; } = "Master_Streaming.xml";
 
