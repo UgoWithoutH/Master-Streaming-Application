@@ -34,7 +34,17 @@ Comment lancer l'application :
 2) un racourcis de l'application apparait sur le bureau. Il est aussi possible de trouver Master_Streaming.exe dans le dossier Program Files (x86)\Master_Streaming_Company\Master_Streaming.Setup\Master_Streaming.
 Il suffit ensuite de lancer l'executable
 
+Description fonctionnement de l'application : 
+Notre application possède un système de compte utilisateur l'utilisateur peut ajouter/supprimer des comptes utilisateurs. Chaque compte utilisateur peut ajouter et supprimer des genres, ajouter/modifier/supprimer des séries, rechercher des séries, ajouter/supprimer de la watchlist.
 
+Ajout sur ergonomie :
+- mode clair/sombre permettant de changer les couleurs de l'application
+- menu des genres déroulant via une animation
+- utilisation de Material Design
+
+Accessibilité : 
+- Racourcis clavier pour ouvrir la watchlist, ajouter une oeuvre, changer la couleur de l'application et se déconnecter
+- Ajout de "tooltip" au survol de certains éléments de l'application améliorant la compréhension de l'utilisateur
 
 Bonne utilisation !
 
