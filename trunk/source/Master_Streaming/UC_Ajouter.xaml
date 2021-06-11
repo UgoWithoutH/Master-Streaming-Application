@@ -48,7 +48,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="300"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="55"/>
 
             </Grid.RowDefinitions>
             <StackPanel Grid.RowSpan="4"  Margin="15 30">
