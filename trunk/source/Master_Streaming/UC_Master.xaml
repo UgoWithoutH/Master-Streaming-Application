@@ -5,12 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="800" d:DesignWidth="1250" MinHeight="800" MinWidth="1250">
+             d:DesignHeight="800" d:DesignWidth="1250">
     <UserControl.Resources>
 
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
         </Style>
 
         <Style TargetType="Image">
@@ -51,7 +50,7 @@
     </UserControl.Triggers>
 
     <Grid Height="1000">
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer>
             <Grid Height="1200">
                 <Grid x:Name="GridMenu" Width="70" Height="auto" HorizontalAlignment="Left" Background="#B2B2B2" Panel.ZIndex="1">
                     <Grid.Effect>
@@ -109,7 +108,7 @@
 
                         </Grid>
 
-                        <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ListOeuvres.Keys}" SelectionMode="Single" SelectionChanged="ListViewMenu_SelectionChanged">
+                        <ListView x:Name="ListViewMenu" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding ListOeuvres.Keys}" SelectionMode="Single" SelectionChanged="ListViewMenu_SelectionChanged" Height="400">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Width="170">

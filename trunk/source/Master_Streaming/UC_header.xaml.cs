@@ -57,7 +57,7 @@ namespace Master_Streaming
 
         }
 
-        private void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
+        public void ButtonPopUpLogout_Click(object sender, RoutedEventArgs e)
         {
             Mmanager.SauvegardeDonnées();
             (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_ChoixProfil();
@@ -110,7 +110,7 @@ namespace Master_Streaming
         /// </summary>
         /// <param name="sender">référence sur le contrôle/objet qui a déclenché l'événement</param>
         /// <param name="e">données de l'événement</param>
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
+        public void ToggleButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleButton MyToggleButton = sender as ToggleButton;
             MainWindow MyMainWindow = App.Current.MainWindow as MainWindow;
@@ -203,24 +203,6 @@ namespace Master_Streaming
             else
             {
                 ucRecherche.textRecherche.Foreground = (Brush)new BrushConverter().ConvertFrom("#313131");
-            }
-
-        }
-
-        /// <summary>
-        /// Permet de changer la couleur de certains composants de l'user control UC_Master. 
-        /// </summary>
-        /// <param name="ucMaster">UC_Master de l'application</param>
-        /// <param name="toggleButton">ToggleButton du changement de couleur de l'application</param>
-        private void ChangeColorUcMaster(UC_Master ucMaster,ToggleButton toggleButton)
-        {
-            if(toggleButton.IsChecked == false)
-            {
-                ucMaster.uc_listSeries.texteGenre.Foreground = Brushes.White;
-            }
-            else
-            {
-                ucMaster.uc_listSeries.texteGenre.Foreground = (Brush) new BrushConverter().ConvertFrom("#313131");
             }
 
         }

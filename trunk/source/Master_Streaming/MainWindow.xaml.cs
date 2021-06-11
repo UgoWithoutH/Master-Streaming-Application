@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -32,6 +33,7 @@ namespace Master_Streaming
         /// </summary>
         public int ColorMode; //0 = sombre et 1 = clair
 
+        private bool ctrlKey;
         public MainWindow()
         {
             InitializeComponent();
@@ -60,21 +62,46 @@ namespace Master_Streaming
             header.deconnexion.Visibility = Visibility.Visible;
         }
 
-        //public (Brush,Brush)CheckColorMode()
-        //{
-        //    Brush brush1, brush2;
-        //    if ((contentControlMain.Content as UC_Master).header.ColorMode.IsChecked == false)
-        //    {
-        //        brush1 = (Brush)new BrushConverter().ConvertFrom("#313131");
-        //        brush2 = (Brush)new BrushConverter().ConvertFrom("#232323");
-        //        return (brush1,brush2);
-        //    }
-        //    else
-        //    {
-        //        brush1 = Brushes.White;
-        //        brush2 = (Brush)new BrushConverter().ConvertFrom("#D1D1D1");
-        //        return (brush1, brush2);
-        //    }
-        //}
+        private void raccourcis_key(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.LeftCtrl)
+                ctrlKey = true;
+
+            if(ctrlKey && e.Key == Key.A && (contentControlMain.Content is UC_Master || contentControlMain.Content is UC_Recherche))
+            {
+                (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Watchlist();
+                ctrlKey = false;
+            }
+
+            else if(ctrlKey && e.Key == Key.Z && (contentControlMain.Content is UC_Master || contentControlMain.Content is UC_Recherche))
+            {
+                (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Ajouter();
+                ctrlKey = false;
+            }
+
+            else if(ctrlKey && e.Key == Key.S && (contentControlMain.Content is UC_Master || contentControlMain.Content is UC_Recherche))
+            {
+                header.ButtonPopUpLogout_Click(new Object(),new RoutedEventArgs());
+            }
+
+            else if(ctrlKey && e.Key == Key.E && (contentControlMain.Content is UC_Master || contentControlMain.Content is UC_Recherche || contentControlMain.Content is UC_ChoixProfil))
+            {
+                ToggleButton MyToggleButton = this.header.ColorMode;
+                if (MyToggleButton.IsChecked == true)
+                {
+                    MyToggleButton.IsChecked = false;
+                    header.ToggleButton_Click(MyToggleButton, new RoutedEventArgs());
+                }
+
+                else
+                {
+                    MyToggleButton.IsChecked = true;
+                    header.ToggleButton_Click(MyToggleButton, new RoutedEventArgs());
+                }
+
+            }
+
+
+        }
     }
 }

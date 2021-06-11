@@ -26,8 +26,7 @@
         </Style>
 
     </UserControl.Resources>
-
-    <StackPanel>
+    
         <StackPanel Margin="10 0 10 0">
             <Button Content="Retour" Background="Black" BorderBrush="White" Width="80" HorizontalAlignment="Left" Click="Button_Click"/>
             <StackPanel Margin="0 25 25 0">
@@ -51,9 +50,9 @@
                     </ListBox>
                 </ScrollViewer>
             </StackPanel>
+            
             <ContentControl x:Name="ContentControlDetailRecherche">
 
             </ContentControl>
         </StackPanel>
-    </StackPanel>
 </UserControl>

@@ -286,6 +286,19 @@ namespace Class
                 {
                     value.Remove(oeuvre);
                     CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
+                    try // pour empêcher cette exception : System.InvalidOperationException : 'Collection was modified; enumeration operation may not execute.'
+                    {
+                        foreach (OeuvreWatch oeuvreWatch in MyWatchlist.OeuvresVisionnees)
+                        {
+                            if (oeuvreWatch.Oeuvre.Equals(oeuvre))
+                            {
+                                MyWatchlist.SupprimerOeuvre(oeuvre);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    { 
+                    }
                 }
             }
             ListFiltrée = ListOeuvresParGenre;
