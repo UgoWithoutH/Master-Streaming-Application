@@ -13,7 +13,7 @@ namespace DataContractPersistance
     {
         public DataContractPersJSON()
         {
-            RelativePath = "../../../../Master_Streaming/bin/Debug/JSON";
+            RelativePath = "../../../../Master_Streaming/bin/Release/JSON";
             FileName = "Master_Streaming.json";
             Serializer = new DataContractJsonSerializer(typeof(ObservableCollection<ProfilManager>));
         }
