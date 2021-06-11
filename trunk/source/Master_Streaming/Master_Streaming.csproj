@@ -18,6 +18,7 @@
     <None Remove="images\icones\add.png" />
     <None Remove="images\icones\loupe.png" />
     <None Remove="images\icones\minus.png" />
+    <None Remove="images\icones\M_S.png" />
     <None Remove="images\Série policières\La reine du sud.jpg" />
     <None Remove="images\Série policières\Ozark.jpg" />
     <None Remove="images\Série policières\Permis de vivre.jpg" />
@@ -45,6 +46,7 @@
     <Resource Include="images\icones\add.png" />
     <Resource Include="images\icones\loupe.png" />
     <Resource Include="images\icones\minus.png" />
+    <Resource Include="images\icones\M_S.png" />
     <Resource Include="images\Série policières\La reine du sud.jpg" />
     <Resource Include="images\Série policières\Ozark.jpg" />
     <Resource Include="images\Série policières\Permis de vivre.jpg" />
