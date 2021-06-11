@@ -36,6 +36,7 @@ Il suffit ensuite de lancer l'executable
 
 Description fonctionnement de l'application : 
 Notre application possède un système de compte utilisateur l'utilisateur peut ajouter/supprimer des comptes utilisateurs. Chaque compte utilisateur peut ajouter et supprimer des genres, ajouter/modifier/supprimer des séries, rechercher des séries, ajouter/supprimer de la watchlist.
+Pour ajouter des séries il faut au préalable avoir au moins ajouté un genre.
 
 Ajout sur ergonomie :
 - mode clair/sombre permettant de changer les couleurs de l'application
