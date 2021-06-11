@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Icon="images/icones/M_S.png"
         Title="Master Streaming" Height="900" Width="1350" MinHeight="800" MinWidth="1350" MaxHeight="900" MaxWidth="1500"
         KeyDown="raccourcis_key"
         Background="{DynamicResource MaterialDesignPaper}" TextElement.Foreground="{DynamicResource MaterialDesignBody}">
