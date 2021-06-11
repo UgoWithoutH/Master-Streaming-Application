@@ -20,7 +20,7 @@
             <ColumnDefinition Width="0.5*"/>
         </Grid.ColumnDefinitions>
         
-        <Button x:Name="watchlist" Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked"/>
+        <Button x:Name="watchlist" Content="Watchlist" Grid.Column="1" Width="100" Height="30" HorizontalAlignment="Left" Margin="15" BorderBrush="White" Background="#AD5AFF" Click="Watchlist_Button_Clicked" ToolTip="Watclist (Ctrl + A)"/>
         <TextBlock x:Name="titre" Grid.Column="2" Text="Master Streaming" HorizontalAlignment="Center" VerticalAlignment="center" FontSize="30"/>
         <Button x:Name="recherche" Background="White" Grid.Column="3" Width="150" Height="33">
             <Grid>
@@ -32,22 +32,22 @@
                 <Button Click="Enter_Recherche"  Background="Transparent" BorderBrush="Transparent" Width="60" Grid.Column="0" Margin="-25,-7,0,0">
                     <Image Source="images/icones/loupe.png"/>
                 </Button>
-                <TextBox x:Name="entree_Recherche" Grid.Column="1"  HorizontalAlignment="Right" Foreground="Black" KeyDown="entree_Recherche_KeyDown">
+                <TextBox x:Name="entree_Recherche" Grid.Column="1"  HorizontalAlignment="Right" Foreground="Black" KeyDown="entree_Recherche_KeyDown" MaxLength="20">
                     <materialDesign:HintAssist.Hint>
                         <TextBlock Foreground="DarkSlateGray" VerticalAlignment="Center" FontSize="16" Width="100" Margin="5 0 0 0">Recherche</TextBlock>
                     </materialDesign:HintAssist.Hint>
                 </TextBox>
             </Grid>
         </Button>
-        <Button x:Name="ajout" Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked"/>
+        <Button x:Name="ajout" Grid.Column="4" Content="Ajouter" Width="100" Height="30" HorizontalAlignment="Right" Margin="15" BorderBrush="white" Background="green" Click="Ajouter_Button_Clicked" ToolTip="Ajouter (Ctrl + Z)"/>
 
         <StackPanel Orientation="Horizontal"  Grid.Column="5" VerticalAlignment="Center">
             <materialDesign:PackIcon x:Name="moon" Kind="WeatherNight" Foreground="White"/>
             <materialDesign:PackIcon x:Name="sun" Kind="WhiteBalanceSunny" Foreground="White"/>
-            <ToggleButton x:Name="ColorMode" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="Default ToggleButton Style" Margin="10 0 0 0" Click="ToggleButton_Click"/>
+            <ToggleButton x:Name="ColorMode" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="10 0 0 0" Click="ToggleButton_Click" ToolTip="Changer la couleur (Ctrl + E)"/>
         </StackPanel>
         
-        <materialDesign:PopupBox x:Name="deconnexion" Grid.Column="6" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+        <materialDesign:PopupBox x:Name="deconnexion" Grid.Column="6" Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" ToolTip="Deconnexion (Ctrl + S)">
             <StackPanel Width="150">
                 <Button x:Name="ButtonPopUpLogout" Click="ButtonPopUpLogout_Click" Width="150">
                     <TextBlock x:Name="textbox_deconnexion" FontSize="15">

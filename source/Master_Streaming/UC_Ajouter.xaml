@@ -48,7 +48,7 @@
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="300"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="55"/>
+                <RowDefinition Height="150"/>
 
             </Grid.RowDefinitions>
             <StackPanel Grid.RowSpan="4"  Margin="15 30">
@@ -64,7 +64,7 @@
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="{StaticResource spaceChamps}">
                 <TextBlock Text="*Titre :" Style="{StaticResource champs}" Height="30"/>
-                <TextBox x:Name="Titre" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0"/>
+                <TextBox x:Name="Titre" VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Bold" MinWidth="200" Margin="0" MaxLength="20"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" >
@@ -75,7 +75,7 @@
 
                 <StackPanel Orientation="Horizontal" Margin="18 18 0 0">
                     <TextBlock Text="Nombre de saisons :" Style="{StaticResource champs}" Height="30"/>
-                    <TextBox x:Name="nbSaisons" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" MinWidth="200"/>
+                    <TextBox x:Name="nbSaisons" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" MinWidth="200" MaxLength="6"/>
                 </StackPanel>
             </StackPanel>
             
@@ -83,21 +83,21 @@
                 <TextBlock Text="*Description :" Style="{StaticResource champs}"/>
                 <ScrollViewer VerticalScrollBarVisibility="Hidden">
                     <StackPanel>
-                        <TextBox x:Name="Description" Margin="25" Height="200" TextWrapping="Wrap"/>
+                        <TextBox x:Name="Description" Margin="25" Height="200" TextWrapping="Wrap" MaxLength="400"/>
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
 
 
             <StackPanel Orientation="Horizontal"  Grid.Row="2" Grid.Column="2">
-                <Line X1="0" Y1="50" X2="0" Y2="250" Width="25" Stroke="Chocolate"/>
+                <Line X1="0" Y1="50" X2="0" Y2="250" Width="25" Stroke="BlueViolet"/>
 
                 <StackPanel>
                     <TextBlock Text="*Genres :" Style="{StaticResource champs}" HorizontalAlignment="Center" Margin="0 0 0 30"/>
                     <ListBox x:Name="ListGenre" ItemsSource="{Binding ListOeuvres.Keys}" Height="220" SelectionMode="Multiple">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Nom}" Foreground="Chocolate"/>
+                                <TextBlock Text="{Binding Nom}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -119,7 +119,7 @@
                 <TextBlock Text="Auteurs :" Style="{StaticResource champs}"/>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Text="Nom" Style="{StaticResource champs}" Margin="0 0 10 0"/>
-                    <TextBox x:Name="nomAuteur" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left">
+                    <TextBox x:Name="nomAuteur" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" MaxLength="13">
                         <Validation.ErrorTemplate>
                             <ControlTemplate>
                                 <StackPanel>
@@ -135,7 +135,7 @@
 
                 <StackPanel Grid.Row="2" Orientation="Horizontal">
                     <TextBlock  VerticalAlignment="Center" Text="Prénom" Style="{StaticResource champs}" Margin="0 0 10 0"/>
-                    <TextBox  x:Name="prenomAuteur" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left"/>
+                    <TextBox  x:Name="prenomAuteur" Grid.Column="1" Grid.Row="1" Width="200" Height="30" HorizontalAlignment="Left" MaxLength="13"/>
                 </StackPanel>
                 <TextBlock Grid.Row="1" Grid.Column="1" Text="Profession :" Style="{StaticResource champs}" Margin="10 0 0 0"/>
                 <ListBox Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" x:Name="ListEnum" Height="100" Margin="10 0 0 0">
@@ -146,7 +146,7 @@
                     </ListBox.ItemsPanel>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Path=.}" Foreground="Chocolate"/>
+                            <TextBlock Text="{Binding Path=.}"/>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>

@@ -50,7 +50,7 @@
 
 
             <TextBox x:Name="entry_name_new_account" materialDesign:HintAssist.Hint="Nom du profil :" Background="CadetBlue" Foreground="AliceBlue" 
-                     Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Add_Return_Key"/>
+                     Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Add_Return_Key" MaxLength="15"/>
 
             <Button Height="120" Grid.Column="2" Background="Transparent" BorderBrush="Transparent" Click="Click_suppAccount">
                 <StackPanel>
@@ -61,20 +61,18 @@
             </Button>
 
             <TextBox x:Name="entry_name_supp_account" materialDesign:HintAssist.Hint="Nom du profil :" Background="IndianRed" Foreground="AliceBlue" 
-                     Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Supp_Return_Key"/>
+                     Grid.Column="2" HorizontalAlignment="Center" Grid.Row="1" KeyDown="Entry_Name_Supp_Return_Key" MaxLength="15"/>
 
 
         </Grid>
-        
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}" ItemTemplate="{StaticResource ResourceKey=profils_template}">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-            </ListBox>
-            </ScrollViewer>
+
+        <ListBox x:Name="MylisteProfils" ItemsSource="{Binding ListProfils}" ItemTemplate="{StaticResource ResourceKey=profils_template}" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="500">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </StackPanel>
         
 </UserControl>

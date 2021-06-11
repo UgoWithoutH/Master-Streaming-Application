@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Master_Streaming" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="900" Width="1350" MinHeight="800" MinWidth="1350" MaxHeight="1000" MaxWidth="1350"
+        Title="Master Streaming" Height="900" Width="1350" MinHeight="800" MinWidth="1350" MaxHeight="900" MaxWidth="1500"
+        KeyDown="raccourcis_key"
         Background="{DynamicResource MaterialDesignPaper}" TextElement.Foreground="{DynamicResource MaterialDesignBody}">
 
-    <StackPanel x:Name="MainWindowColor"><!--Background="#313131"-->
+    <StackPanel x:Name="MainWindowColor">
 
-        <local:UC_header x:Name="header"></local:UC_header> <!--Background="#232323"-->
+        <local:UC_header x:Name="header"></local:UC_header>
         <StackPanel>
             <ContentControl x:Name="contentControlMain">
                 <local:UC_ChoixProfil/>

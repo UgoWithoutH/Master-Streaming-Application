@@ -7,7 +7,6 @@
         <ResourceDictionary>
             <Style TargetType="TextBlock">
                 <Setter Property="FontFamily" Value="Frank Ruehl CLM"/>
-                <Setter Property="Foreground" Value="White"/>
             </Style>
 
 
