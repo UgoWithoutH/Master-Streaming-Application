@@ -286,22 +286,33 @@ namespace Class
                 {
                     value.Remove(oeuvre);
                     CheckListDates(genre, oeuvre.DateSortie.Year.ToString());
-                    try // pour empêcher cette exception : System.InvalidOperationException : 'Collection was modified; enumeration operation may not execute.'
-                    {
-                        foreach (OeuvreWatch oeuvreWatch in MyWatchlist.OeuvresVisionnees)
-                        {
-                            if (oeuvreWatch.Oeuvre.Equals(oeuvre))
-                            {
-                                MyWatchlist.SupprimerOeuvre(oeuvre);
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    { 
-                    }
                 }
             }
             ListFiltrée = ListOeuvresParGenre;
+        }
+
+
+        /// <summary>
+        /// Permet d'ajouter une oeuvre à la watchlist dans le cas de la modification d'une Oeuvre puis de l'ajout
+        /// </summary>
+        /// <param name="oeuvreBack">Sauvegarde de l'oeuvre qui a été supprimé lors de la modification</param>
+        /// <param name="OeuvreModify">Oeuvre qui a été modifié</param>
+        public void OeuvreWasInWatchlist(Oeuvre oeuvreBack, Oeuvre OeuvreModify)
+        {
+            try // pour empêcher cette exception : System.InvalidOperationException : 'Collection was modified; enumeration operation may not execute.'
+            {
+                foreach (OeuvreWatch oeuvreWatch in MyWatchlist.OeuvresVisionnees)
+                {
+                    if (oeuvreWatch.Oeuvre.Equals(oeuvreBack))
+                    {
+                        MyWatchlist.SupprimerOeuvre(oeuvreBack);
+                        MyWatchlist.AjouterOeuvre(OeuvreModify);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+            }
         }
 
         /// <summary>

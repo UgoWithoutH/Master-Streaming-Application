@@ -32,6 +32,7 @@ namespace Master_Streaming
         /// <summary>
         /// Sauvegarde de l'oeuvre sélectionnée précédemment dans le Detail
         /// </summary>
+        ///
         Oeuvre OeuvreSauvegarde;
 
         public UC_modifier()
@@ -40,7 +41,7 @@ namespace Master_Streaming
             OeuvreSauvegarde = manager.OeuvreSélectionnée; // a cause du OnPropertyChanged() qui fait une nouvelle collection dans la vue et après manager.OeuvreSélectionée vaut null
             DataContext = OeuvreSauvegarde;
             OeuvreSélectionnéeBackup = manager.OeuvreSélectionnée.Clone() as Oeuvre;
-            manager.SupprimerOeuvre(manager.OeuvreSélectionnée); //provoque le bug
+            manager.SupprimerOeuvre(manager.OeuvreSélectionnée);
             (App.Current.MainWindow as MainWindow).header.Visibility = Visibility.Collapsed;
         }
 
@@ -72,7 +73,7 @@ namespace Master_Streaming
         /// <param name="e">données de l'événement</param>
         private void btn_annuler_Click(object sender, RoutedEventArgs e)
         {
-            manager.AjouterOeuvre(OeuvreSélectionnéeBackup); // provoque le bug aussi
+            manager.AjouterOeuvre(OeuvreSélectionnéeBackup);
             (Application.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
         }
 
@@ -84,9 +85,10 @@ namespace Master_Streaming
         /// <param name="e"></param>
         private void btn_valider_click(object sender, RoutedEventArgs e)
         {
-            int result = manager.AjouterOeuvre(OeuvreSauvegarde); // provoque le bug aussi
+            int result = manager.AjouterOeuvre(OeuvreSauvegarde);
             if (result == 0)
             {
+                manager.OeuvreWasInWatchlist(OeuvreSélectionnéeBackup, OeuvreSauvegarde);
                 (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
             }
             else if (result == 1)
