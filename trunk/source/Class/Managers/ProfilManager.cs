@@ -295,6 +295,23 @@ namespace Class
 
 
         /// <summary>
+        /// Recherche si l'oeuvre est présente dans la watchlist
+        /// </summary>
+        /// <param name="oeuvre">Oeuvre qui est recherchée</param>
+        /// <returns>true si elle est présente, false dans le cas contraire</returns>
+        public bool OeuvreIsInWatchlist(Oeuvre oeuvre)
+        {
+            foreach (OeuvreWatch oeuvreWatch in MyWatchlist.OeuvresVisionnees)
+            {
+                if (oeuvreWatch.Oeuvre.Equals(oeuvre))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
         /// Permet d'ajouter une oeuvre à la watchlist dans le cas de la modification d'une Oeuvre puis de l'ajout
         /// </summary>
         /// <param name="oeuvreBack">Sauvegarde de l'oeuvre qui a été supprimé lors de la modification</param>
@@ -303,13 +320,10 @@ namespace Class
         {
             try // pour empêcher cette exception : System.InvalidOperationException : 'Collection was modified; enumeration operation may not execute.'
             {
-                foreach (OeuvreWatch oeuvreWatch in MyWatchlist.OeuvresVisionnees)
+                if (OeuvreIsInWatchlist(oeuvreBack))
                 {
-                    if (oeuvreWatch.Oeuvre.Equals(oeuvreBack))
-                    {
-                        MyWatchlist.SupprimerOeuvre(oeuvreBack);
-                        MyWatchlist.AjouterOeuvre(OeuvreModify);
-                    }
+                    MyWatchlist.SupprimerOeuvre(oeuvreBack);
+                    MyWatchlist.AjouterOeuvre(OeuvreModify);
                 }
             }
             catch (Exception e)

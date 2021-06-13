@@ -27,6 +27,10 @@ namespace Master_Streaming
             InitializeColorDetail((App.Current.MainWindow as MainWindow).header.ColorMode);
             DataContext = manager.OeuvreSélectionnée;
             Text_BtnWatch();
+            if((Application.Current.MainWindow as MainWindow).contentControlMain.Content is UC_Recherche)
+            {
+                btn_suppr.Visibility = Visibility.Hidden;
+            }
         }
 
         /// <summary>
@@ -86,6 +90,10 @@ namespace Master_Streaming
         private void Btn_supprimer_click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
+            if (manager.OeuvreIsInWatchlist(manager.OeuvreSélectionnée))
+            {
+                manager.MyWatchlist.SupprimerOeuvre(manager.OeuvreSélectionnée);
+            }
             manager.SupprimerOeuvre(manager.OeuvreSélectionnée);
             if((App.Current.MainWindow as MainWindow).contentControlMain.Content is UC_Master MyUcMaster){
                 manager.tri(MyUcMaster.uc_listSeries.trie.SelectedItem.ToString()); //pour relancer le tri car il est écrasé
