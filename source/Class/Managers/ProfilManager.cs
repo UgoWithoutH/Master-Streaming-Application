@@ -223,16 +223,17 @@ namespace Class
         /// Ajouter uene oeuvre dans le ObservableSortedDictionary des Oeuvres (ListOeuvres) et la date de sortie dans (ListingDates)
         /// </summary>
         /// <param name="o">Oeuvre qui doit être ajoutée au SortedDictionary des Oeuvres (ListOeuvres)</param>
-        /// <returns>-1 si l'oeuvre a un titre null ou s'il manque un champ obligatoire
-        ///           0 si l'oeuvre a été ajoutée
-        ///           1 si une oeuvre déjà existante possède le même titre que l'oeuvre voulant être ajoutée</returns>
+        /// <returns> 0 si l'oeuvre a été ajoutée
+        ///           1 si une oeuvre déjà existante possède le même titre que l'oeuvre voulant être ajoutée
+        ///           2 si la description n'est pas renseignée
+        ///           3 si l'oeuvre ne possède aucun genre dans TagsGenres
+        ///           4 si ImageName de l'oeuvre est null
+        ///           5 si l'oeuvre a un Titre null ou formé d'espaces</returns>
         public int AjouterOeuvre(Oeuvre oeuvre)
         {
 
             if (oeuvre is Serie serie && checkAjoutOeuvre(oeuvre))
             {
-                if (string.IsNullOrWhiteSpace(oeuvre.Titre)) return -1;
-
                 if (!ListingSerie.Contains(oeuvre))
                 {
                     ListingSerie.AddFirst(serie);
@@ -240,11 +241,9 @@ namespace Class
                 else return 1;
             }
 
-            if (oeuvre == null) throw new NullReferenceException("L'oeuvre est null");
 
             if (checkAjoutOeuvre(oeuvre))
             {
-
                 foreach (Genre genre in oeuvre.TagsGenres)
                 {
                     if (ListOeuvres.ContainsKey(genre))
@@ -266,7 +265,10 @@ namespace Class
                 }
                 return 0;
             }
-            else return -1;
+            else if (string.IsNullOrWhiteSpace((oeuvre.Description))) return 2;
+            else if (oeuvre.TagsGenres.Count == 0) return 3;
+            else if (oeuvre.ImageName.Equals(null)) return 4;
+            else return 5;
         }
 
         /// <summary>
@@ -322,6 +324,7 @@ namespace Class
         /// <returns>false en cas d'invalidité et true si l'ajout est valide</returns>
         public bool checkAjoutOeuvre(Oeuvre oeuvre)
         {
+            if (oeuvre == null) throw new NullReferenceException("L'oeuvre est null");
             if (string.IsNullOrWhiteSpace(oeuvre.Titre)) return false;
             if (oeuvre.DateSortie.Equals(new DateTime(01,01,0001))) return false;
             if (string.IsNullOrWhiteSpace(oeuvre.Description)) return false;
