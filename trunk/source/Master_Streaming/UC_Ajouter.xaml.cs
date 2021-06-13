@@ -47,7 +47,7 @@ namespace Master_Streaming
             PManager.SerieTemporaireAjout.Titre = this.Titre.Text;
             if (string.IsNullOrWhiteSpace(this.DateSortie.Text) || !DateTime.TryParse(this.DateSortie.Text, out DateTime res))
             {
-                MessageBox.Show("Date invalide");
+                MessageBox.Show("Veuillez renseigner une date de sortie valide svp (DD/MM/YYYY)");
                 return;
             }
             else
@@ -74,17 +74,43 @@ namespace Master_Streaming
                 PManager.SerieTemporaireAjout.TagsGenres.Add(genre);
             }
             int result = PManager.AjouterOeuvre(PManager.SerieTemporaireAjout);
-            if (result == 0)
+            switch (result)
             {
-                (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
-            }
-            else if(result == 1)
-            {
-                MessageBox.Show("Une oeuvre avec le même titre est déjà existante");
-            }
-            else
-            {
-                MessageBox.Show("Vous n'avez pas renseigné tous les champs obligatoires");
+                case 0:
+                    {
+                        (App.Current.MainWindow as MainWindow).contentControlMain.Content = new UC_Master();
+                        break;
+                    }
+
+                case 1:
+                    {
+                        MessageBox.Show("Une oeuvre avec le même titre est déjà existante");
+                        break;
+                    }
+
+                case 2:
+                    {
+                        MessageBox.Show("Veuillez renseigner une description svp");
+                        break;
+                    }
+
+                case 3:
+                    {
+                        MessageBox.Show("Votre Oeuvre doit appartenir à un ou plusieurs Genres");
+                        break;
+                    }
+
+                case 4:
+                    {
+                        MessageBox.Show("Il faut donner une Image à votre Oeuvre ! ça fera plus joli :)");
+                        break;
+                    }
+
+                default:
+                    {
+                        MessageBox.Show("Veuillez renseigner un Titre svp");
+                        break;
+                    }
             }
                 
         }
