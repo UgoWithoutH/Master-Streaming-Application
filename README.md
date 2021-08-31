@@ -6,9 +6,8 @@ Pour lancer l'application, un double-click sur l'exécutable dans votre Bureau s
 
 
 
-Master_Streaming est une application développée par Ugo VIGNON et Maël CHAUMONT lors du 
-
-projet tuteuré de 1ère année de DUT de développement d'une application WPF en C# et XAML.
+Master_Streaming est une application développée par Ugo VIGNON et Maël CHAUMONT lors du projet tutoré de 1ère année d'IUT Informatique. 
+C'est une application WPF en C# et XAML.
 
 
 
