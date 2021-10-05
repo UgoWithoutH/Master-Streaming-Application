@@ -1,5 +1,7 @@
 # master-Streaming-Application
 
+lien vers la vidéo de présentation : https://youtu.be/k0irIeIzTuU
+
 Veuillez, s'il vous plaît, lire ce fichier avant votre première utilisation de Master_Streaming.
 
 Pour lancer l'application, un double-click sur l'exécutable dans votre Bureau suffit.
